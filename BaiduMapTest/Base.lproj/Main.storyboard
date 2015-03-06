@@ -1,25 +1,311 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="agS-Ht-Pae">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--图层展示功能-->
+        <scene sceneID="kAg-YJ-9yt">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="khh-TP-yNQ" userLabel="图层展示功能" customClass="MapViewViewController" customModule="BaiduMapTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="VyV-41-kHa"/>
+                        <viewControllerLayoutGuide type="bottom" id="1gz-2v-85j"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="KDx-RE-oiB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="L4X-rp-9E2">
+                                <rect key="frame" x="200" y="72" width="200" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Cov-dy-2mu"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="矢量地图"/>
+                                    <segment title="卫星地图"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeTheMapType:" destination="khh-TP-yNQ" eventType="valueChanged" id="PC7-Zk-89s"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="路况" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ell-xj-xBp">
+                                <rect key="frame" x="16" y="115" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3g1-sF-pDg">
+                                <rect key="frame" x="58" y="110" width="51" height="31"/>
+                                <connections>
+                                    <action selector="changeSwitchValue:" destination="khh-TP-yNQ" eventType="valueChanged" id="fC4-5A-Z11"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3D楼宇" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hki-e3-83v">
+                                <rect key="frame" x="236" y="115" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Bp-Rh-QMc">
+                                <rect key="frame" x="300" y="110" width="51" height="31"/>
+                                <connections>
+                                    <action selector="changeSwitchValue:" destination="khh-TP-yNQ" eventType="valueChanged" id="qe2-K3-FkP"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="热力图" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5R-B2-rby">
+                                <rect key="frame" x="476" y="115" width="51" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Onk-0Q-9Hv">
+                                <rect key="frame" x="535" y="110" width="51" height="31"/>
+                                <connections>
+                                    <action selector="changeSwitchValue:" destination="khh-TP-yNQ" eventType="valueChanged" id="MH8-rJ-hUh"/>
+                                </connections>
+                            </switch>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aiy-3S-UDW">
+                                <rect key="frame" x="0.0" y="149" width="600" height="451"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hki-e3-83v" firstAttribute="centerY" secondItem="ell-xj-xBp" secondAttribute="centerY" id="4wB-5m-yjr"/>
+                            <constraint firstItem="Hki-e3-83v" firstAttribute="top" secondItem="L4X-rp-9E2" secondAttribute="bottom" constant="15" id="6hF-6s-KEq"/>
+                            <constraint firstItem="Hki-e3-83v" firstAttribute="centerY" secondItem="6Bp-Rh-QMc" secondAttribute="centerY" id="94G-0c-X4H"/>
+                            <constraint firstItem="ell-xj-xBp" firstAttribute="leading" secondItem="KDx-RE-oiB" secondAttribute="leading" constant="16" id="D0u-4t-zr8">
+                                <variation key="widthClass=compact" constant="2"/>
+                            </constraint>
+                            <constraint firstItem="Hki-e3-83v" firstAttribute="centerY" secondItem="Onk-0Q-9Hv" secondAttribute="centerY" id="Do2-Q8-ZCi"/>
+                            <constraint firstAttribute="trailing" secondItem="Onk-0Q-9Hv" secondAttribute="trailing" constant="16" id="FHv-6d-AP0">
+                                <variation key="widthClass=compact" constant="2"/>
+                            </constraint>
+                            <constraint firstItem="1gz-2v-85j" firstAttribute="top" secondItem="aiy-3S-UDW" secondAttribute="bottom" id="GYH-Ve-icU"/>
+                            <constraint firstItem="Hki-e3-83v" firstAttribute="centerY" secondItem="3g1-sF-pDg" secondAttribute="centerY" id="I5f-IL-gLC"/>
+                            <constraint firstItem="Onk-0Q-9Hv" firstAttribute="leading" secondItem="d5R-B2-rby" secondAttribute="trailing" constant="8" id="LTr-2V-oiP">
+                                <variation key="widthClass=compact" constant="2"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="L4X-rp-9E2" secondAttribute="centerX" id="Mc9-qv-Wn9"/>
+                            <constraint firstItem="6Bp-Rh-QMc" firstAttribute="leading" secondItem="Hki-e3-83v" secondAttribute="trailing" constant="8" id="RuS-15-2Ec">
+                                <variation key="widthClass=compact" constant="2"/>
+                            </constraint>
+                            <constraint firstItem="aiy-3S-UDW" firstAttribute="leading" secondItem="KDx-RE-oiB" secondAttribute="leading" id="S6A-xV-FmR"/>
+                            <constraint firstAttribute="trailing" secondItem="aiy-3S-UDW" secondAttribute="trailing" id="aog-JI-MJo"/>
+                            <constraint firstItem="Hki-e3-83v" firstAttribute="centerY" secondItem="d5R-B2-rby" secondAttribute="centerY" id="bWk-Xz-YhR"/>
+                            <constraint firstItem="Hki-e3-83v" firstAttribute="leading" secondItem="3g1-sF-pDg" secondAttribute="trailing" constant="129" id="lMg-fv-Pbg">
+                                <variation key="widthClass=compact" constant="6"/>
+                                <variation key="widthClass=regular" constant="233"/>
+                            </constraint>
+                            <constraint firstItem="L4X-rp-9E2" firstAttribute="top" secondItem="VyV-41-kHa" secondAttribute="bottom" constant="8" id="raT-7g-d3R"/>
+                            <constraint firstItem="aiy-3S-UDW" firstAttribute="top" secondItem="Onk-0Q-9Hv" secondAttribute="bottom" constant="8" id="tNi-wb-gwa"/>
+                            <constraint firstItem="3g1-sF-pDg" firstAttribute="leading" secondItem="ell-xj-xBp" secondAttribute="trailing" constant="8" id="xIg-NZ-tkT">
+                                <variation key="widthClass=compact" constant="2"/>
+                            </constraint>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sgm_MapChoosen" destination="L4X-rp-9E2" id="Ogu-HF-hrV"/>
+                        <outlet property="swh_3D" destination="6Bp-Rh-QMc" id="hTs-K5-GED"/>
+                        <outlet property="swh_Hot" destination="Onk-0Q-9Hv" id="YGG-YY-bbn"/>
+                        <outlet property="swh_Road" destination="3g1-sF-pDg" id="Gk6-YC-qF2"/>
+                        <outlet property="view_mapView" destination="aiy-3S-UDW" id="Wdq-mh-BVy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H7t-AJ-qva" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="508" y="-584"/>
+        </scene>
+        <!--欢迎界面-->
+        <scene sceneID="IPI-A3-GSg">
+            <objects>
+                <tableViewController id="yol-CR-2KL" userLabel="欢迎界面" customClass="BaseTableViewController" customModule="BaiduMapTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="suJ-45-WKG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="ET1-vT-yWQ">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ET1-vT-yWQ" id="gqG-1t-LP2">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yol-CR-2KL" id="56f-Aj-qXP"/>
+                            <outlet property="delegate" destination="yol-CR-2KL" id="u7R-YK-DeL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="百度地图SDK 2.6.0(made by 星夜暮晨)" id="9Yr-mQ-iEG"/>
+                    <connections>
+                        <segue destination="r55-HC-xdi" kind="show" identifier="BaseMapSegue" id="f5j-1R-y9N"/>
+                        <segue destination="Mv7-8N-42s" kind="show" identifier="MultiMapSegue" id="jFm-sr-2Ma"/>
+                        <segue destination="khh-TP-yNQ" kind="show" identifier="MapViewSegue" id="oPc-jV-u05"/>
+                        <segue destination="afN-VQ-5kR" kind="show" identifier="MapControlSegue" id="5a1-An-tOf"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YmV-ka-Q2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="508" y="95"/>
+        </scene>
+        <!--基本地图功能-->
+        <scene sceneID="Atm-ks-XDC">
+            <objects>
+                <viewController storyboardIdentifier="BaseMap" useStoryboardIdentifierAsRestorationIdentifier="YES" id="r55-HC-xdi" userLabel="基本地图功能" customClass="BaseMapViewController" customModule="BaiduMapTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W2k-xW-TNT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q2g-AC-9bw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DCt-Bg-vwK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EOE-Ah-VGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1214" y="95"/>
+        </scene>
+        <!--地图操作功能-->
+        <scene sceneID="TXh-ut-Pma">
+            <objects>
+                <viewController storyboardIdentifier="MapControl" useStoryboardIdentifierAsRestorationIdentifier="YES" id="afN-VQ-5kR" userLabel="地图操作功能" customClass="MapControlViewController" customModule="BaiduMapTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fQG-gu-Juv"/>
+                        <viewControllerLayoutGuide type="bottom" id="Daa-zu-xvd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QKv-IR-u4y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="缩放" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoU-Wa-C6f">
+                                <rect key="frame" x="16" y="76" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="俯视" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9S-kX-S6M">
+                                <rect key="frame" x="492" y="76" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jwk-iC-Qj5">
+                                <rect key="frame" x="58" y="72" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="dh2-SK-dE4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="TextfieldValueChange:" destination="afN-VQ-5kR" eventType="editingDidEnd" id="BIV-L1-dyk"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="90" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Zt-9v-zSh">
+                                <rect key="frame" x="310" y="72" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="erg-3M-nWt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="TextfieldValueChange:" destination="afN-VQ-5kR" eventType="editingDidEnd" id="zT5-1g-Jcs"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="-30" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xRt-Im-62L">
+                                <rect key="frame" x="534" y="72" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="4Z6-3b-BYE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="TextfieldValueChange:" destination="afN-VQ-5kR" eventType="editingDidEnd" id="hen-bD-5nv"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旋转" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uae-jY-lsG">
+                                <rect key="frame" x="268" y="76" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击、长按或者双击地图以获取地图状态" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heo-mH-889">
+                                <rect key="frame" x="147" y="110" width="306" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eoU-Wa-C6f" firstAttribute="leading" secondItem="QKv-IR-u4y" secondAttribute="leading" constant="16" id="0Aa-3L-z1a"/>
+                            <constraint firstAttribute="centerX" secondItem="heo-mH-889" secondAttribute="centerX" id="3na-ez-nL5"/>
+                            <constraint firstItem="uae-jY-lsG" firstAttribute="centerY" secondItem="5Zt-9v-zSh" secondAttribute="centerY" id="6Jb-0q-6fy"/>
+                            <constraint firstItem="jwk-iC-Qj5" firstAttribute="leading" secondItem="eoU-Wa-C6f" secondAttribute="trailing" constant="8" id="Cvq-bX-ynT"/>
+                            <constraint firstAttribute="trailing" secondItem="xRt-Im-62L" secondAttribute="trailing" constant="16" id="Tse-fX-5iF"/>
+                            <constraint firstItem="eoU-Wa-C6f" firstAttribute="top" secondItem="fQG-gu-Juv" secondAttribute="bottom" constant="12" id="Tz5-eN-AQx"/>
+                            <constraint firstItem="5Zt-9v-zSh" firstAttribute="leading" secondItem="uae-jY-lsG" secondAttribute="trailing" constant="8" id="VbC-t0-OBi"/>
+                            <constraint firstItem="uae-jY-lsG" firstAttribute="centerY" secondItem="E9S-kX-S6M" secondAttribute="centerY" id="WQ0-q0-FKm"/>
+                            <constraint firstItem="uae-jY-lsG" firstAttribute="leading" secondItem="jwk-iC-Qj5" secondAttribute="trailing" constant="160" id="XDu-Du-iMu">
+                                <variation key="widthClass=compact" constant="15"/>
+                                <variation key="widthClass=regular" constant="260"/>
+                            </constraint>
+                            <constraint firstItem="heo-mH-889" firstAttribute="top" secondItem="5Zt-9v-zSh" secondAttribute="bottom" constant="8" id="cqS-Uz-2jF"/>
+                            <constraint firstItem="uae-jY-lsG" firstAttribute="centerY" secondItem="jwk-iC-Qj5" secondAttribute="centerY" id="f55-wG-H0N"/>
+                            <constraint firstItem="xRt-Im-62L" firstAttribute="leading" secondItem="E9S-kX-S6M" secondAttribute="trailing" constant="8" id="iKA-2H-cSE"/>
+                            <constraint firstItem="uae-jY-lsG" firstAttribute="centerY" secondItem="eoU-Wa-C6f" secondAttribute="centerY" id="reZ-js-yOu"/>
+                            <constraint firstItem="uae-jY-lsG" firstAttribute="centerY" secondItem="xRt-Im-62L" secondAttribute="centerY" id="z3w-41-FEw"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="lbl_text" destination="heo-mH-889" id="VyG-Ut-gdX"/>
+                        <outlet property="txf_Overlook" destination="xRt-Im-62L" id="tCP-8W-BSr"/>
+                        <outlet property="txf_Rotate" destination="5Zt-9v-zSh" id="Vqh-cN-oAR"/>
+                        <outlet property="txf_Zoom" destination="jwk-iC-Qj5" id="wha-Yt-8m8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="avT-F1-PrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1866" y="89"/>
+        </scene>
+        <!--多地图使用功能-->
+        <scene sceneID="cDl-RG-Nq7">
+            <objects>
+                <viewController storyboardIdentifier="MultiMap" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mv7-8N-42s" userLabel="多地图使用功能" customClass="MultiMapViewController" customModule="BaiduMapTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jkK-GW-Zg8"/>
+                        <viewControllerLayoutGuide type="bottom" id="JAf-y9-MgA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bGH-S0-81a">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MUJ-UD-w9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="508" y="817"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gei-Hx-OiU">
+            <objects>
+                <navigationController id="agS-Ht-Pae" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cwn-gT-Q5m">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yol-CR-2KL" kind="relationship" relationship="rootViewController" id="Jcu-AD-gby"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p88-dr-yf1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-172" y="95"/>
         </scene>
     </scenes>
 </document>
