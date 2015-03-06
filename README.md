@@ -51,15 +51,15 @@
 
 ##待解决问题
 
-1. iOS SDK 2.6.0 版本，Xcode 会提示一个警告：
+1.iOS SDK 2.6.0 版本，Xcode 会提示一个警告：
 
 > ld: warning: instance method 'update3DView:overlook:' in category from /Users/semper_idem/编程项目/BaiduMapTest/libs/Release-iphonesimulator/libbaidumapapi.a(BMKMapView.o) overrides method from class in /Users/semper_idem/编程项目/BaiduMapTest/libs/Release-iphonesimulator/libbaidumapapi.a(BMKAnnotationView.o)
 
 
-  大体意思是百度的 SDK 中的BMKMapView.o这个文件重写了BMKAnnotationView.p这个文件的update3DView:overlook:这个方法。因此会导致后面这个文件的这个方法不可用。
+大体意思是百度的 SDK 中的BMKMapView.o这个文件重写了BMKAnnotationView.p这个文件的update3DView:overlook:这个方法。因此会导致后面这个文件的这个方法不可用。
 
-  这个是 SDK 2.6.0的一个 BUG，目前官方尚未给出解决方法，只是提出没有任何影响，因为那个方法并不会被调用。
+这个是 SDK 2.6.0的一个 BUG，目前官方尚未给出解决方法，只是提出没有任何影响，因为那个方法并不会被调用。
 
-2. iOS SDK 地图操作功能中的截图功能未实现，貌似Swift使用百度地图的 takeSnapshoot()功能会导致项目崩溃，待解决。
+2.iOS SDK 地图操作功能中的截图功能未实现，貌似Swift使用百度地图的 takeSnapshoot()功能会导致项目崩溃，待解决。
 
-3. 仅对 iPhone 5s 做了简要的适配，对 iPad 以及 iPhone 6 Plus 等设备的适配并未完善。
+3.仅对 iPhone 5s 做了简要的适配，对 iPad 以及 iPhone 6 Plus 等设备的适配并未完善。
