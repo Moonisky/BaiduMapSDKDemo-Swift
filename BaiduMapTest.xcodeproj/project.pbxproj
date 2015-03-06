@@ -20,6 +20,8 @@
 		735BF9C31A90CCC000D95BA5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924201A8FA85D0065A546 /* QuartzCore.framework */; };
 		735BF9C41A90CCC600D95BA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924281A8FA8C50065A546 /* Security.framework */; };
 		735BF9C51A90CCCC00D95BA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924241A8FA86D0065A546 /* SystemConfiguration.framework */; };
+		73B90C6A1AA9782C0041BE28 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B90C681AA9782C0041BE28 /* LocationViewController.swift */; };
+		73B90C6B1AA9782C0041BE28 /* MapUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B90C691AA9782C0041BE28 /* MapUIViewController.swift */; };
 		73C923B21A8FA30C0065A546 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C923B11A8FA30C0065A546 /* AppDelegate.swift */; };
 		73C923B51A8FA30C0065A546 /* BaiduMapTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 73C923B31A8FA30C0065A546 /* BaiduMapTest.xcdatamodeld */; };
 		73C923B71A8FA30C0065A546 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C923B61A8FA30C0065A546 /* ViewController.swift */; };
@@ -61,6 +63,8 @@
 		7309A57E1A9317450084974E /* MultiMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiMapViewController.swift; path = ViewController/MultiMapViewController.swift; sourceTree = "<group>"; };
 		7309A5801A9320F10084974E /* MapViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewViewController.swift; path = ViewController/MapViewViewController.swift; sourceTree = "<group>"; };
 		7309A5821A9329CC0084974E /* MapControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapControlViewController.swift; path = ViewController/MapControlViewController.swift; sourceTree = "<group>"; };
+		73B90C681AA9782C0041BE28 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = ViewController/LocationViewController.swift; sourceTree = "<group>"; };
+		73B90C691AA9782C0041BE28 /* MapUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapUIViewController.swift; path = ViewController/MapUIViewController.swift; sourceTree = "<group>"; };
 		73C923AC1A8FA30C0065A546 /* BaiduMapTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiduMapTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73C923B01A8FA30C0065A546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73C923B11A8FA30C0065A546 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 				7309A57E1A9317450084974E /* MultiMapViewController.swift */,
 				7309A5801A9320F10084974E /* MapViewViewController.swift */,
 				7309A5821A9329CC0084974E /* MapControlViewController.swift */,
+				73B90C681AA9782C0041BE28 /* LocationViewController.swift */,
+				73B90C691AA9782C0041BE28 /* MapUIViewController.swift */,
 				7309A57C1A92FA2E0084974E /* Constant.swift */,
 			);
 			name = "View Controller";
@@ -473,8 +479,10 @@
 				7309A5811A9320F10084974E /* MapViewViewController.swift in Sources */,
 				7309A57D1A92FA2E0084974E /* Constant.swift in Sources */,
 				7309A57B1A92F9E50084974E /* BaseMapViewController.swift in Sources */,
+				73B90C6B1AA9782C0041BE28 /* MapUIViewController.swift in Sources */,
 				73C923B71A8FA30C0065A546 /* ViewController.swift in Sources */,
 				73C923D61A8FA37C0065A546 /* tmp.mm in Sources */,
+				73B90C6A1AA9782C0041BE28 /* LocationViewController.swift in Sources */,
 				7309A5831A9329CC0084974E /* MapControlViewController.swift in Sources */,
 				7309A5771A92F03A0084974E /* BaseTableViewController.swift in Sources */,
 				73C923B51A8FA30C0065A546 /* BaiduMapTest.xcdatamodeld in Sources */,
