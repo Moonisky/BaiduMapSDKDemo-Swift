@@ -11,20 +11,7 @@ import UIKit
 class AnimatedAnnotationView: BMKAnnotationView {
     
     // 属性
-    var annotationImages: [UIImage]! {
-        set {
-            if annotationImageView.isAnimating() {
-                annotationImageView.stopAnimating()
-            }
-            annotationImageView.animationImages = annotationImages
-            annotationImageView.animationDuration = 0.5 * NSTimeInterval(self.annotationImages.count)
-            annotationImageView.animationRepeatCount = 0
-            annotationImageView.startAnimating()
-        }
-        get {
-            return self.annotationImages
-        }
-    }
+    var annotationImages: [UIImage]!
     var annotationImageView: UIImageView!
     
     override init!(annotation: BMKAnnotation!, reuseIdentifier: String!) {
@@ -41,5 +28,20 @@ class AnimatedAnnotationView: BMKAnnotationView {
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setAnnotationImages(images: [UIImage]) {
+        annotationImages = images
+        updateImageView()
+    }
+    
+    func updateImageView() {
+        if annotationImageView.isAnimating() {
+            annotationImageView.stopAnimating()
+        }
+        annotationImageView.animationImages = annotationImages
+        annotationImageView.animationDuration = 0.5 * NSTimeInterval(self.annotationImages.count)
+        annotationImageView.animationRepeatCount = 0
+        annotationImageView.startAnimating()
     }
 }

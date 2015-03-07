@@ -73,9 +73,13 @@ class AnnotationViewController: UIViewController, BMKMapViewDelegate {
     
     /// 添加图片图层覆盖物
     func addGroundOverlay() {
+        var bundlepath = NSBundle.mainBundle().resourcePath?.stringByAppendingPathComponent("mapapi.bundle")
+        var bundle = NSBundle(path: bundlepath!)!
+        var image = UIImage(contentsOfFile: bundle.pathForResource("test", ofType: "png", inDirectory: "images")!)
+    
         // 第一种
         var coordinator = CLLocationCoordinate2DMake(39.800, 116.404)
-        var ground = BMKGroundOverlay(position: coordinator, zoomLevel: 11, anchor: CGPointMake(0, 0), icon: UIImage(named: "test.png"))
+        var ground = BMKGroundOverlay(position: coordinator, zoomLevel: 11, anchor: CGPointMake(0, 0), icon: image)
         ground.alpha = 0.5
         mapView.addOverlay(ground)
         
@@ -85,7 +89,7 @@ class AnnotationViewController: UIViewController, BMKMapViewDelegate {
             CLLocationCoordinate2DMake(39.950, 116.430)]
         
         var bound = BMKCoordinateBounds(northEast: coordinators[1], southWest: coordinators[0])
-        var ground2 = BMKGroundOverlay(bounds: bound, icon: UIImage(named: "test.png"))
+        var ground2 = BMKGroundOverlay(bounds: bound, icon: image)
         mapView.addOverlay(ground2)
     }
     
@@ -216,24 +220,35 @@ class AnnotationViewController: UIViewController, BMKMapViewDelegate {
             return annotationView
         }
         
-        // 动画标注
-        var AnnotationViewID = "AnimatedAnnotation"
-        var annotationView: AnimatedAnnotationView?
-        if annotationView == nil {
-            annotationView = AnimatedAnnotationView(annotation: annotation, reuseIdentifier: AnnotationViewID)
+        if annotation as BMKPointAnnotation == animatedAnnotation {
+            // 动画标注
+            var AnnotationViewID = "AnimatedAnnotation"
+            var annotationView: AnimatedAnnotationView? = nil
+            if annotationView == nil {
+                annotationView = AnimatedAnnotationView(annotation: annotation, reuseIdentifier: AnnotationViewID)
+            }
+            var images = Array(count: 3, repeatedValue: UIImage())
+            for i in 1...3 {
+                var image = UIImage(named: "poi_\(i).png")
+                images[i-1] = image!
+            }
+            annotationView?.setAnnotationImages(images)
+            return annotationView
         }
-        var images = Array(count: 3, repeatedValue: UIImage())
-        for i in 1...3 {
-            var image = UIImage(named: "poi_\(i).png")
-            images[i] = image!
-        }
-        annotationView?.annotationImages = images
-        return annotationView
+        return nil
     }
     
     // 当点击annotation view弹出的泡泡时，调用此接口
     func mapView(mapView: BMKMapView!, annotationViewForBubble view: BMKAnnotationView!) {
         println("点击了泡泡~")
+    }
+    
+    // 地图初始化完毕的设置
+    func mapViewDidFinishLoading(mapView: BMKMapView!) {
+        mapView.removeOverlays(mapView.overlays)
+        mapView.removeAnnotations(mapView.annotations)
+        // 添加内置覆盖物
+        addOverlayView()
     }
     
     // MARK: - 协议代理设置
