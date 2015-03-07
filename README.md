@@ -9,17 +9,33 @@
 
 ##功能说明
 
+在使用前请定位到 `AppDelegate.swift`文件中，将 ak 更换为自己的百度地图 ak
+
+应用界面如下图所示，主要提供了以下几种功能：
+
+![主界面](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8A%E5%8D%8811.39.21.png)
+
 ###基本地图功能
 
 能够显示基础地图，支持多点触摸、双击放大、多点单击缩小、旋转等手势操作，效果如图所示：
 
+![基本地图功能](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8A%E5%8D%8811.39.29.png)
+
 ###多地图使用功能
+
+![多地图使用功能](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8A%E5%8D%8811.39.36.png)
 
 ###图层展示功能
 
+![图层展示功能](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8A%E5%8D%8811.39.43.png)
+
 ###地图操作功能
 
+![地图操作功能](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8A%E5%8D%8811.39.49.png)
+
 ###UI 控制功能
+
+![UI 控制功能能](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8A%E5%8D%8811.39.54.png)
 
 ###定位功能
 
