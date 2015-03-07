@@ -65,7 +65,7 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
         super.viewDidLoad()
     
         // 设置标题
-        self.title = arrayOfDemoName[4]
+        self.title = arrayOfDemoName[5]
         
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
@@ -76,12 +76,12 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
         btn_FollowHead.enabled = false
         btn_Stop.enabled = false
         
-        // 定位功能初始化
-        locationService = BMKLocationService()
         // 设置定位精确度，默认：kCLLocationAccuracyBest
         BMKLocationService.setLocationDesiredAccuracy(kCLLocationAccuracyBest)
         //指定最小距离更新(米)，默认：kCLDistanceFilterNone
         BMKLocationService.setLocationDistanceFilter(10)
+        // 定位功能初始化
+        locationService = BMKLocationService()
 
         // 创建地图视图约束
         var constraints = [NSLayoutConstraint]()
@@ -102,6 +102,7 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
     // 用户位置更新后，会调用此函数
     func didUpdateBMKUserLocation(userLocation: BMKUserLocation!) {
         mapView.updateLocationData(userLocation)
+        mapView.centerCoordinate = userLocation.location.coordinate
     }
     
     // 用户方向更新后，会调用此函数

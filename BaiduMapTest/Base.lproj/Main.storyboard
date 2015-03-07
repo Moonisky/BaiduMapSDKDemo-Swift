@@ -146,6 +146,7 @@
                         <segue destination="afN-VQ-5kR" kind="show" identifier="MapControlSegue" id="5a1-An-tOf"/>
                         <segue destination="GhA-my-5u9" kind="show" identifier="MapUISegue" id="OE9-0K-JiY"/>
                         <segue destination="0xf-aK-Smn" kind="show" identifier="LocationSegue" id="AFq-GR-9x6"/>
+                        <segue destination="Ish-T3-BH2" kind="show" identifier="AnnotationSegue" id="Z2c-jk-kKv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YmV-ka-Q2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -501,6 +502,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U1Y-Yy-1hs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1214" y="817"/>
+        </scene>
+        <!--覆盖物功能-->
+        <scene sceneID="Wyy-Dr-wNo">
+            <objects>
+                <viewController storyboardIdentifier="Annotation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ish-T3-BH2" userLabel="覆盖物功能" customClass="AnnotationViewController" customModule="BaiduMapTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xb0-q3-w1f"/>
+                        <viewControllerLayoutGuide type="bottom" id="b7U-dq-9Hc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xJf-cM-4xq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qZo-5o-CdN">
+                                <rect key="frame" x="16" y="72" width="568" height="29"/>
+                                <segments>
+                                    <segment title="内置覆盖物"/>
+                                    <segment title="添加标注"/>
+                                    <segment title=" 图片图层"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="Ish-T3-BH2" eventType="valueChanged" id="nZ5-bD-8GW"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qZo-5o-CdN" secondAttribute="trailing" constant="16" id="6q5-FG-eO1"/>
+                            <constraint firstItem="qZo-5o-CdN" firstAttribute="top" secondItem="xb0-q3-w1f" secondAttribute="bottom" constant="8" id="dS5-dJ-XIx"/>
+                            <constraint firstItem="qZo-5o-CdN" firstAttribute="leading" secondItem="xJf-cM-4xq" secondAttribute="leading" constant="16" id="vQo-xX-wpV"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="segment" destination="qZo-5o-CdN" id="5Cw-90-eh8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RMU-2y-4lk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1921" y="-584"/>
         </scene>
     </scenes>
 </document>
