@@ -21,35 +21,55 @@
 
 ![基本地图功能](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8A%E5%8D%8811.39.29.png)
 
+在地图加载完成后，会弹出一个提示框提示“MapView 已加载完成”。这个类主要完成最基本的地图界面的加载。
+
 ###多地图使用功能
 
 ![多地图使用功能](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8A%E5%8D%8811.39.36.png)
+
+同时显示两个地图，一个是卫星图，一个是普通矢量图。
 
 ###图层展示功能
 
 ![图层展示功能](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8A%E5%8D%8811.39.43.png)
 
+提供卫星图和矢量图的切换，同时可以打开路况开关、3D 楼宇开关以及百度自有热力图的开关。这里 UI 采用 StoryBoard 形式来实现，比较冗余。
+
 ###地图操作功能
 
 ![地图操作功能](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8A%E5%8D%8811.39.49.png)
+
+提供缩放级别、旋转度、俯视度的精确定义和修改，同时实现点击、双击、长按手势的响应，自此之后采取代码添加 Map 的形式来实现，代码较为复杂，因为采取了手动添加约束。
+
+> FIXME: 截图功能待实现
 
 ###UI 控制功能
 
 ![UI 控制功能](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8A%E5%8D%8811.39.54.png)
 
+提供是否允许手势缩放、平移的控制，以及是否显示比例尺、设置指南针位置等设置，UI 同上。
+
 ###定位功能
 
 **开启定位功能**
 
+> 注意，采取模拟器来模拟定位功能时，请使用 Debug -> Location -> Custom Location来手动定义当前位置。如果没有显示，或者定位功能启动失败，请先选择 “无”或者“Apple”，然后再重新定义当前位置。
+
 ![定位功能开启](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8B%E5%8D%8811.15.45.png)
+
+定位功能开启后，是以普通态来显示的定位图标，也就是一个圆点。
 
 **跟随态**
 
 ![跟随态](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8B%E5%8D%8811.16.26.png)
 
+跟随态是以一个箭头的方式来显示。
+
 **罗盘态**
 
 ![罗盘态](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8B%E5%8D%8811.16.21.png)
+
+罗盘态是以一个罗盘的方式来显示的。
 
 ###覆盖物功能
 
@@ -57,13 +77,19 @@
 
 ![内置覆盖物](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8B%E5%8D%8811.16.32.png)
 
+内置覆盖物当中主要有虚线、矩形、线条、圆、多边形的自定义绘制。
+
 **添加标注**
 
 ![添加标注](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8B%E5%8D%8811.16.34.png)
 
+添加标注主要添加一个可移动的标注以及一个不可移动的自动变化样式的自定义标注。
+
 **图片图层**
 
 ![图片图层](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift/blob/master/Screenshots/iOS%20Simulator%20Screen%20Shot%202015%E5%B9%B43%E6%9C%887%E6%97%A5%20%E4%B8%8B%E5%8D%8811.16.40.png)
+
+图片图层主要是添加一个图片到地图视图上。
 
 ##-----------以下未完成--------------
 
