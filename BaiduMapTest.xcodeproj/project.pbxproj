@@ -21,6 +21,15 @@
 		735BF9C31A90CCC000D95BA5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924201A8FA85D0065A546 /* QuartzCore.framework */; };
 		735BF9C41A90CCC600D95BA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924281A8FA8C50065A546 /* Security.framework */; };
 		735BF9C51A90CCCC00D95BA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924241A8FA86D0065A546 /* SystemConfiguration.framework */; };
+		73B85CB71AAC86AE005874FD /* GeocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CB61AAC86AE005874FD /* GeocodeViewController.swift */; };
+		73B85CB91AAC877A005874FD /* RouteSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CB81AAC877A005874FD /* RouteSearchViewController.swift */; };
+		73B85CBB1AAC8794005874FD /* BusLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CBA1AAC8794005874FD /* BusLineViewController.swift */; };
+		73B85CBD1AAC87A7005874FD /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CBC1AAC87A7005874FD /* OfflineViewController.swift */; };
+		73B85CBF1AAC87BE005874FD /* HeatMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CBE1AAC87BE005874FD /* HeatMapViewController.swift */; };
+		73B85CC11AAC87CE005874FD /* ShortURLShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CC01AAC87CE005874FD /* ShortURLShareViewController.swift */; };
+		73B85CC31AAC87DD005874FD /* CloudSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CC21AAC87DD005874FD /* CloudSearchViewController.swift */; };
+		73B85CC51AAC87F0005874FD /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CC41AAC87F0005874FD /* NavigationViewController.swift */; };
+		73B85CC71AAC87FF005874FD /* OpenGLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CC61AAC87FF005874FD /* OpenGLViewController.swift */; };
 		73B90C6A1AA9782C0041BE28 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B90C681AA9782C0041BE28 /* LocationViewController.swift */; };
 		73B90C6B1AA9782C0041BE28 /* MapUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B90C691AA9782C0041BE28 /* MapUIViewController.swift */; };
 		73B90C6D1AA979760041BE28 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 73B90C6C1AA979750041BE28 /* README.md */; };
@@ -61,7 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7309A5761A92F03A0084974E /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		7309A5761A92F03A0084974E /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewController.swift; path = ViewController/BaseTableViewController.swift; sourceTree = "<group>"; };
 		7309A5781A92F4940084974E /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbaidumapapi.a; path = libs/Universal/libbaidumapapi.a; sourceTree = "<group>"; };
 		7309A57A1A92F9E50084974E /* BaseMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseMapViewController.swift; path = ViewController/BaseMapViewController.swift; sourceTree = "<group>"; };
 		7309A57C1A92FA2E0084974E /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -69,12 +78,21 @@
 		7309A5801A9320F10084974E /* MapViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewViewController.swift; path = ViewController/MapViewViewController.swift; sourceTree = "<group>"; };
 		7309A5821A9329CC0084974E /* MapControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapControlViewController.swift; path = ViewController/MapControlViewController.swift; sourceTree = "<group>"; };
 		732EF2951AAC3C23004945D1 /* CustomOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomOverlay.swift; path = Elements/CustomOverlay.swift; sourceTree = "<group>"; };
+		73B85CB61AAC86AE005874FD /* GeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeocodeViewController.swift; path = ViewController/GeocodeViewController.swift; sourceTree = "<group>"; };
+		73B85CB81AAC877A005874FD /* RouteSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteSearchViewController.swift; path = ViewController/RouteSearchViewController.swift; sourceTree = "<group>"; };
+		73B85CBA1AAC8794005874FD /* BusLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusLineViewController.swift; path = ViewController/BusLineViewController.swift; sourceTree = "<group>"; };
+		73B85CBC1AAC87A7005874FD /* OfflineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineViewController.swift; path = ViewController/OfflineViewController.swift; sourceTree = "<group>"; };
+		73B85CBE1AAC87BE005874FD /* HeatMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeatMapViewController.swift; path = ViewController/HeatMapViewController.swift; sourceTree = "<group>"; };
+		73B85CC01AAC87CE005874FD /* ShortURLShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShortURLShareViewController.swift; path = ViewController/ShortURLShareViewController.swift; sourceTree = "<group>"; };
+		73B85CC21AAC87DD005874FD /* CloudSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudSearchViewController.swift; path = ViewController/CloudSearchViewController.swift; sourceTree = "<group>"; };
+		73B85CC41AAC87F0005874FD /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationViewController.swift; path = ViewController/NavigationViewController.swift; sourceTree = "<group>"; };
+		73B85CC61AAC87FF005874FD /* OpenGLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenGLViewController.swift; path = ViewController/OpenGLViewController.swift; sourceTree = "<group>"; };
 		73B90C681AA9782C0041BE28 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = ViewController/LocationViewController.swift; sourceTree = "<group>"; };
 		73B90C691AA9782C0041BE28 /* MapUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapUIViewController.swift; path = ViewController/MapUIViewController.swift; sourceTree = "<group>"; };
 		73B90C6C1AA979750041BE28 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		73B90C6E1AA99E390041BE28 /* AnnotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnnotationViewController.swift; path = ViewController/AnnotationViewController.swift; sourceTree = "<group>"; };
 		73B90C701AA99EA60041BE28 /* CustomOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomOverlayViewController.swift; path = ViewController/CustomOverlayViewController.swift; sourceTree = "<group>"; };
-		73B90C721AA99ED50041BE28 /* PoiSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoiSearchViewController.swift; sourceTree = "<group>"; };
+		73B90C721AA99ED50041BE28 /* PoiSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PoiSearchViewController.swift; path = ViewController/PoiSearchViewController.swift; sourceTree = "<group>"; };
 		73B90C761AA9A90B0041BE28 /* AnimatedAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimatedAnnotationView.swift; path = Elements/AnimatedAnnotationView.swift; sourceTree = "<group>"; };
 		73C923AC1A8FA30C0065A546 /* BaiduMapTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiduMapTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73C923B01A8FA30C0065A546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -235,7 +253,15 @@
 				73B90C6E1AA99E390041BE28 /* AnnotationViewController.swift */,
 				73B90C701AA99EA60041BE28 /* CustomOverlayViewController.swift */,
 				73B90C721AA99ED50041BE28 /* PoiSearchViewController.swift */,
-				7309A57C1A92FA2E0084974E /* Constant.swift */,
+				73B85CB61AAC86AE005874FD /* GeocodeViewController.swift */,
+				73B85CB81AAC877A005874FD /* RouteSearchViewController.swift */,
+				73B85CBA1AAC8794005874FD /* BusLineViewController.swift */,
+				73B85CBC1AAC87A7005874FD /* OfflineViewController.swift */,
+				73B85CBE1AAC87BE005874FD /* HeatMapViewController.swift */,
+				73B85CC01AAC87CE005874FD /* ShortURLShareViewController.swift */,
+				73B85CC21AAC87DD005874FD /* CloudSearchViewController.swift */,
+				73B85CC41AAC87F0005874FD /* NavigationViewController.swift */,
+				73B85CC61AAC87FF005874FD /* OpenGLViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -251,6 +277,7 @@
 		73B90C741AA9A8EB0041BE28 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				7309A57C1A92FA2E0084974E /* Constant.swift */,
 				732EF2941AAC3C12004945D1 /* CustomOverlay */,
 				73B90C751AA9A8F10041BE28 /* Annotations */,
 			);
@@ -518,6 +545,9 @@
 				7309A5811A9320F10084974E /* MapViewViewController.swift in Sources */,
 				7309A57D1A92FA2E0084974E /* Constant.swift in Sources */,
 				7309A57B1A92F9E50084974E /* BaseMapViewController.swift in Sources */,
+				73B85CC51AAC87F0005874FD /* NavigationViewController.swift in Sources */,
+				73B85CBF1AAC87BE005874FD /* HeatMapViewController.swift in Sources */,
+				73B85CC71AAC87FF005874FD /* OpenGLViewController.swift in Sources */,
 				73B90C6B1AA9782C0041BE28 /* MapUIViewController.swift in Sources */,
 				73B90C6D1AA979760041BE28 /* README.md in Sources */,
 				73B90C731AA99ED50041BE28 /* PoiSearchViewController.swift in Sources */,
@@ -527,11 +557,17 @@
 				7309A5831A9329CC0084974E /* MapControlViewController.swift in Sources */,
 				73B90C711AA99EA60041BE28 /* CustomOverlayViewController.swift in Sources */,
 				7309A5771A92F03A0084974E /* BaseTableViewController.swift in Sources */,
+				73B85CC11AAC87CE005874FD /* ShortURLShareViewController.swift in Sources */,
 				73C923B51A8FA30C0065A546 /* BaiduMapTest.xcdatamodeld in Sources */,
+				73B85CB71AAC86AE005874FD /* GeocodeViewController.swift in Sources */,
 				73C923B21A8FA30C0065A546 /* AppDelegate.swift in Sources */,
+				73B85CBD1AAC87A7005874FD /* OfflineViewController.swift in Sources */,
 				7309A57F1A9317450084974E /* MultiMapViewController.swift in Sources */,
 				73B90C6F1AA99E390041BE28 /* AnnotationViewController.swift in Sources */,
+				73B85CB91AAC877A005874FD /* RouteSearchViewController.swift in Sources */,
 				73B90C771AA9A90B0041BE28 /* AnimatedAnnotationView.swift in Sources */,
+				73B85CC31AAC87DD005874FD /* CloudSearchViewController.swift in Sources */,
+				73B85CBB1AAC8794005874FD /* BusLineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
