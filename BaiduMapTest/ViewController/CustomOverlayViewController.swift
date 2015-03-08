@@ -18,22 +18,22 @@ class CustomOverlayViewController: UIViewController, BMKMapViewDelegate {
         super.viewDidLoad()
         
         // 设置标题
-        self.title = arrayOfDemoName[6]
+        self.title = arrayOfDemoName[7]
         
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.addSubview(mapView)
+        self.view = mapView
         
         // 界面初始化
         
-        // 创建地图视图约束
-        var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        //constraints.append(NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: SegmentController, attribute: .Bottom, multiplier: 1, constant: 8))
-        self.view.addConstraints(constraints)
+        // FIXME: CustomOverlay 遵循 BMKOverlay 协议会出错，待解决……
+        var coordinator1 = CLLocationCoordinate2DMake(39.915, 116.404)
+        var point1 = BMKMapPointForCoordinate(coordinator1)
+        var coordinator2 = CLLocationCoordinate2DMake(40.015, 116.404)
+        var point2 = BMKMapPointForCoordinate(coordinator2)
+        var points = [point1, point2]
+        var custom = CustomOverlay(points: points, count: 2)
+        //mapView.addOverlay(custom)
     }
     
     // MARK: - 协议代理设置

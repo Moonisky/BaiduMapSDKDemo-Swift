@@ -147,6 +147,8 @@
                         <segue destination="GhA-my-5u9" kind="show" identifier="MapUISegue" id="OE9-0K-JiY"/>
                         <segue destination="0xf-aK-Smn" kind="show" identifier="LocationSegue" id="AFq-GR-9x6"/>
                         <segue destination="Ish-T3-BH2" kind="show" identifier="AnnotationSegue" id="Z2c-jk-kKv"/>
+                        <segue destination="Ge1-XL-6LU" kind="show" identifier="CustomOverlaySegue" id="eWn-Mn-g0e"/>
+                        <segue destination="TUn-H4-Ffp" kind="show" identifier="PoiSearchSegue" id="uFc-EW-E0R"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YmV-ka-Q2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -543,6 +545,107 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RMU-2y-4lk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1921" y="-584"/>
+        </scene>
+        <!--自定义绘制-->
+        <scene sceneID="mxp-cF-M7Z">
+            <objects>
+                <viewController storyboardIdentifier="CustomOverlay" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ge1-XL-6LU" userLabel="自定义绘制" customClass="CustomOverlayViewController" customModule="BaiduMapTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6oa-y4-q6P"/>
+                        <viewControllerLayoutGuide type="bottom" id="dTj-iq-QO7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0UA-dq-dlz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Wg-3G-Hr2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1921" y="817"/>
+        </scene>
+        <!--Poi 搜索功能-->
+        <scene sceneID="DPU-Gq-pV9">
+            <objects>
+                <viewController storyboardIdentifier="PoiSearch" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TUn-H4-Ffp" userLabel="Poi 搜索功能" customClass="PoiSearchViewController" customModule="BaiduMapTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HSQ-lL-sHy"/>
+                        <viewControllerLayoutGuide type="bottom" id="eBB-SQ-eA5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q8N-DD-LAi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9Y-Kv-H7w">
+                                <rect key="frame" x="16" y="76" width="17" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zj0-OZ-NID">
+                                <rect key="frame" x="41" y="72" width="217" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="市内查找" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCI-S5-gVb">
+                                <rect key="frame" x="266" y="76" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cmb-9l-7aV">
+                                <rect key="frame" x="342" y="72" width="242" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgX-U7-CB7">
+                                <rect key="frame" x="16" y="110" width="60" height="30"/>
+                                <state key="normal" title="开始搜索">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Search:" destination="TUn-H4-Ffp" eventType="touchUpInside" id="4OG-Ch-N1a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQX-mv-Btg">
+                                <rect key="frame" x="509" y="110" width="75" height="30"/>
+                                <state key="normal" title="下一组数据">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="NextData:" destination="TUn-H4-Ffp" eventType="touchUpInside" id="Oq7-C7-syH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="UQX-mv-Btg" secondAttribute="trailing" constant="16" id="4eT-Ns-IAC"/>
+                            <constraint firstItem="CgX-U7-CB7" firstAttribute="top" secondItem="Zj0-OZ-NID" secondAttribute="bottom" constant="8" id="7ka-JF-OtK"/>
+                            <constraint firstAttribute="trailing" secondItem="cmb-9l-7aV" secondAttribute="trailing" constant="16" id="AvM-zE-ya1"/>
+                            <constraint firstAttribute="centerX" secondItem="jCI-S5-gVb" secondAttribute="centerX" id="Bj8-ci-LQf"/>
+                            <constraint firstItem="CgX-U7-CB7" firstAttribute="leading" secondItem="Q8N-DD-LAi" secondAttribute="leading" constant="16" id="Cl2-vQ-fUQ"/>
+                            <constraint firstItem="Zj0-OZ-NID" firstAttribute="top" secondItem="HSQ-lL-sHy" secondAttribute="bottom" constant="8" id="DSk-Rx-jAM"/>
+                            <constraint firstItem="jCI-S5-gVb" firstAttribute="leading" secondItem="Zj0-OZ-NID" secondAttribute="trailing" constant="8" id="IYF-R8-zcF"/>
+                            <constraint firstItem="Zj0-OZ-NID" firstAttribute="leading" secondItem="I9Y-Kv-H7w" secondAttribute="trailing" constant="8" id="TqN-eZ-80u"/>
+                            <constraint firstItem="I9Y-Kv-H7w" firstAttribute="leading" secondItem="Q8N-DD-LAi" secondAttribute="leading" constant="16" id="XIn-Fi-dzC"/>
+                            <constraint firstItem="UQX-mv-Btg" firstAttribute="top" secondItem="cmb-9l-7aV" secondAttribute="bottom" constant="8" id="Ykz-BP-qSg"/>
+                            <constraint firstItem="cmb-9l-7aV" firstAttribute="top" secondItem="HSQ-lL-sHy" secondAttribute="bottom" constant="8" id="fUq-Ab-LcR"/>
+                            <constraint firstItem="cmb-9l-7aV" firstAttribute="leading" secondItem="jCI-S5-gVb" secondAttribute="trailing" constant="8" id="hjV-7L-0yn"/>
+                            <constraint firstItem="I9Y-Kv-H7w" firstAttribute="top" secondItem="HSQ-lL-sHy" secondAttribute="bottom" constant="12" id="yam-nl-uib"/>
+                            <constraint firstItem="jCI-S5-gVb" firstAttribute="top" secondItem="HSQ-lL-sHy" secondAttribute="bottom" constant="12" id="z5l-pm-AVy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btn_Next" destination="UQX-mv-Btg" id="vgr-5E-56t"/>
+                        <outlet property="btn_Search" destination="CgX-U7-CB7" id="9mC-ca-5zN"/>
+                        <outlet property="txf_City" destination="Zj0-OZ-NID" id="VaM-Gv-3te"/>
+                        <outlet property="txf_Search" destination="cmb-9l-7aV" id="QKt-IV-hpv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v3S-Te-4jg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="508" y="-1267"/>
         </scene>
     </scenes>
 </document>
