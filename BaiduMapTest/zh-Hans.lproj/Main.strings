@@ -1,0 +1,237 @@
+
+/* Class = "IBUILabel"; text = "起点："; ObjectID = "1qp-dx-asW"; */
+"1qp-dx-asW.text" = "起点：";
+
+/* Class = "IBUIButton"; normalTitle = "上行"; ObjectID = "2up-Al-EHU"; */
+"2up-Al-EHU.normalTitle" = "上行";
+
+/* Class = "IBUIButton"; normalTitle = "周边云检索"; ObjectID = "38P-od-Czc"; */
+"38P-od-Czc.normalTitle" = "周边云检索";
+
+/* Class = "IBUITextField"; text = "90"; ObjectID = "5Zt-9v-zSh"; */
+"5Zt-9v-zSh.text" = "90";
+
+/* Class = "IBUITextField"; text = "天津"; ObjectID = "8Fr-Mb-32W"; */
+"8Fr-Mb-32W.text" = "天津";
+
+/* Class = "IBUITextField"; placeholder = "到达地点"; ObjectID = "9KM-Nf-yvS"; */
+"9KM-Nf-yvS.placeholder" = "到达地点";
+
+/* Class = "IBUINavigationItem"; title = "百度地图SDK 2.6.0(made by 星夜暮晨)"; ObjectID = "9Yr-mQ-iEG"; */
+"9Yr-mQ-iEG.title" = "百度地图SDK 2.6.0(made by 星夜暮晨)";
+
+/* Class = "IBUITextField"; placeholder = "城市"; ObjectID = "A2v-7t-eLr"; */
+"A2v-7t-eLr.placeholder" = "城市";
+
+/* Class = "IBUIButton"; normalTitle = "步行"; ObjectID = "CE0-gt-Jhr"; */
+"CE0-gt-Jhr.normalTitle" = "步行";
+
+/* Class = "IBUIButton"; normalTitle = "开始搜索"; ObjectID = "CgX-U7-CB7"; */
+"CgX-U7-CB7.normalTitle" = "开始搜索";
+
+/* Class = "IBUILabel"; text = "俯视"; ObjectID = "E9S-kX-S6M"; */
+"E9S-kX-S6M.text" = "俯视";
+
+/* Class = "IBUILabel"; text = "路公交车"; ObjectID = "ELn-jX-3uO"; */
+"ELn-jX-3uO.text" = "路公交车";
+
+/* Class = "IBUILabel"; text = "终点纬度:"; ObjectID = "HLZ-5h-FRQ"; */
+"HLZ-5h-FRQ.text" = "终点纬度:";
+
+/* Class = "IBUILabel"; text = "3D楼宇"; ObjectID = "Hki-e3-83v"; */
+"Hki-e3-83v.text" = "3D楼宇";
+
+/* Class = "IBUIButton"; normalTitle = "web导航"; ObjectID = "Hnn-9d-xmf"; */
+"Hnn-9d-xmf.normalTitle" = "web导航";
+
+/* Class = "IBUILabel"; text = "在"; ObjectID = "I9Y-Kv-H7w"; */
+"I9Y-Kv-H7w.text" = "在";
+
+/* Class = "IBUISegmentedControl"; IXT-Da-jED.segmentTitles[0] = "城市列表"; ObjectID = "IXT-Da-jED"; */
+"IXT-Da-jED.segmentTitles[0]" = "城市列表";
+
+/* Class = "IBUISegmentedControl"; IXT-Da-jED.segmentTitles[1] = "下载管理"; ObjectID = "IXT-Da-jED"; */
+"IXT-Da-jED.segmentTitles[1]" = "下载管理";
+
+/* Class = "IBUILabel"; text = "终点："; ObjectID = "KUK-E7-Kk1"; */
+"KUK-E7-Kk1.text" = "终点：";
+
+/* Class = "IBUISegmentedControl"; L4X-rp-9E2.segmentTitles[0] = "矢量地图"; ObjectID = "L4X-rp-9E2"; */
+"L4X-rp-9E2.segmentTitles[0]" = "矢量地图";
+
+/* Class = "IBUISegmentedControl"; L4X-rp-9E2.segmentTitles[1] = "卫星地图"; ObjectID = "L4X-rp-9E2"; */
+"L4X-rp-9E2.segmentTitles[1]" = "卫星地图";
+
+/* Class = "IBUIButton"; normalTitle = "添加热力图"; ObjectID = "Ljg-EW-ud6"; */
+"Ljg-EW-ud6.normalTitle" = "添加热力图";
+
+/* Class = "IBUIButton"; normalTitle = "客户端导航"; ObjectID = "OUW-1e-Byh"; */
+"OUW-1e-Byh.normalTitle" = "客户端导航";
+
+/* Class = "IBUISegmentedControl"; OWc-8s-9sY.segmentTitles[0] = "地图左上"; ObjectID = "OWc-8s-9sY"; */
+"OWc-8s-9sY.segmentTitles[0]" = "地图左上";
+
+/* Class = "IBUISegmentedControl"; OWc-8s-9sY.segmentTitles[1] = "地图右上"; ObjectID = "OWc-8s-9sY"; */
+"OWc-8s-9sY.segmentTitles[1]" = "地图右上";
+
+/* Class = "IBUIButton"; normalTitle = "删除热力图"; ObjectID = "REH-J7-rLe"; */
+"REH-J7-rLe.normalTitle" = "删除热力图";
+
+/* Class = "IBUILabel"; text = "终点名称:"; ObjectID = "RpP-kU-RHA"; */
+"RpP-kU-RHA.text" = "终点名称:";
+
+/* Class = "IBUIButton"; normalTitle = "停止下载"; ObjectID = "STX-Kd-tn2"; */
+"STX-Kd-tn2.normalTitle" = "停止下载";
+
+/* Class = "IBUIButton"; normalTitle = "导入"; ObjectID = "SdP-K8-s0g"; */
+"SdP-K8-s0g.normalTitle" = "导入";
+
+/* Class = "IBUIButton"; normalTitle = "矩形云检索"; ObjectID = "TZI-4n-5fz"; */
+"TZI-4n-5fz.normalTitle" = "矩形云检索";
+
+/* Class = "IBUIButton"; normalTitle = "下一组数据"; ObjectID = "UQX-mv-Btg"; */
+"UQX-mv-Btg.normalTitle" = "下一组数据";
+
+/* Class = "IBUIButton"; normalTitle = "反向地理编码结果分享"; ObjectID = "Urr-E1-Ay5"; */
+"Urr-E1-Ay5.normalTitle" = "反向地理编码结果分享";
+
+/* Class = "IBUITextField"; placeholder = "到达城市"; ObjectID = "Vfk-fQ-KcI"; */
+"Vfk-fQ-KcI.placeholder" = "到达城市";
+
+/* Class = "IBUILabel"; text = "终点名称:"; ObjectID = "WhA-27-HfS"; */
+"WhA-27-HfS.text" = "终点名称:";
+
+/* Class = "IBUILabel"; text = "ID:"; ObjectID = "X08-In-vaa"; */
+"X08-In-vaa.text" = "ID:";
+
+/* Class = "IBUIButton"; normalTitle = "本地云检索"; ObjectID = "YFK-uj-CSK"; */
+"YFK-uj-CSK.normalTitle" = "本地云检索";
+
+/* Class = "IBUILabel"; text = "比例尺"; ObjectID = "Ye0-ey-PCO"; */
+"Ye0-ey-PCO.text" = "比例尺";
+
+/* Class = "IBUILabel"; text = "终点经度:"; ObjectID = "YmV-X8-vAm"; */
+"YmV-X8-vAm.text" = "终点经度:";
+
+/* Class = "IBUILabel"; text = "在"; ObjectID = "YxN-IF-yfN"; */
+"YxN-IF-yfN.text" = "在";
+
+/* Class = "IBUILabel"; text = "平移"; ObjectID = "ZLP-sT-djS"; */
+"ZLP-sT-djS.text" = "平移";
+
+/* Class = "IBUIButton"; normalTitle = "搜索"; ObjectID = "Zxh-fi-76d"; */
+"Zxh-fi-76d.normalTitle" = "搜索";
+
+/* Class = "IBUITextField"; placeholder = "出发地点"; ObjectID = "aA2-xu-Zhd"; */
+"aA2-xu-Zhd.placeholder" = "出发地点";
+
+/* Class = "IBUITextField"; placeholder = "纬度"; ObjectID = "bzI-FL-CbB"; */
+"bzI-FL-CbB.placeholder" = "纬度";
+
+/* Class = "IBUILabel"; text = "手势缩放"; ObjectID = "cEd-7D-fH7"; */
+"cEd-7D-fH7.text" = "手势缩放";
+
+/* Class = "IBUILabel"; text = "起点纬度:"; ObjectID = "ccb-dM-40K"; */
+"ccb-dM-40K.text" = "起点纬度:";
+
+/* Class = "IBUIButton"; normalTitle = "开始定位"; ObjectID = "ctw-G2-kQE"; */
+"ctw-G2-kQE.normalTitle" = "开始定位";
+
+/* Class = "IBUILabel"; text = "热力图"; ObjectID = "d5R-B2-rby"; */
+"d5R-B2-rby.text" = "热力图";
+
+/* Class = "IBUILabel"; text = "已下载："; ObjectID = "ddJ-hT-7et"; */
+"ddJ-hT-7et.text" = "已下载：";
+
+/* Class = "IBUILabel"; text = "路况"; ObjectID = "ell-xj-xBp"; */
+"ell-xj-xBp.text" = "路况";
+
+/* Class = "IBUILabel"; text = "缩放"; ObjectID = "eoU-Wa-C6f"; */
+"eoU-Wa-C6f.text" = "缩放";
+
+/* Class = "IBUILabel"; text = "点击、长按或者双击地图以获取地图状态"; ObjectID = "heo-mH-889"; */
+"heo-mH-889.text" = "点击、长按或者双击地图以获取地图状态";
+
+/* Class = "IBUIButton"; normalTitle = "使用跟随"; ObjectID = "iAe-IF-l3k"; */
+"iAe-IF-l3k.normalTitle" = "使用跟随";
+
+/* Class = "IBUILabel"; text = "市内查找"; ObjectID = "jCI-S5-gVb"; */
+"jCI-S5-gVb.text" = "市内查找";
+
+/* Class = "IBUITextField"; text = "10"; ObjectID = "jwk-iC-Qj5"; */
+"jwk-iC-Qj5.text" = "10";
+
+/* Class = "IBUIButton"; normalTitle = "详情云检索"; ObjectID = "lTV-5b-bYK"; */
+"lTV-5b-bYK.normalTitle" = "详情云检索";
+
+/* Class = "IBUIButton"; normalTitle = "地理解码"; ObjectID = "mJl-is-1Aa"; */
+"mJl-is-1Aa.normalTitle" = "地理解码";
+
+/* Class = "IBUIButton"; normalTitle = "公交"; ObjectID = "mnw-kU-DDy"; */
+"mnw-kU-DDy.normalTitle" = "公交";
+
+/* Class = "IBUIButton"; normalTitle = "删除"; ObjectID = "n0z-xE-yuc"; */
+"n0z-xE-yuc.normalTitle" = "删除";
+
+/* Class = "IBUIButton"; normalTitle = "下行"; ObjectID = "n3V-VM-j1V"; */
+"n3V-VM-j1V.normalTitle" = "下行";
+
+/* Class = "IBUIButton"; normalTitle = "开始下载"; ObjectID = "oR9-ag-W2z"; */
+"oR9-ag-W2z.normalTitle" = "开始下载";
+
+/* Class = "IBUISegmentedControl"; qZo-5o-CdN.segmentTitles[0] = "内置覆盖物"; ObjectID = "qZo-5o-CdN"; */
+"qZo-5o-CdN.segmentTitles[0]" = "内置覆盖物";
+
+/* Class = "IBUISegmentedControl"; qZo-5o-CdN.segmentTitles[1] = "添加标注"; ObjectID = "qZo-5o-CdN"; */
+"qZo-5o-CdN.segmentTitles[1]" = "添加标注";
+
+/* Class = "IBUISegmentedControl"; qZo-5o-CdN.segmentTitles[2] = " 图片图层"; ObjectID = "qZo-5o-CdN"; */
+"qZo-5o-CdN.segmentTitles[2]" = " 图片图层";
+
+/* Class = "IBUIButton"; normalTitle = "使用罗盘"; ObjectID = "rAx-zw-e6A"; */
+"rAx-zw-e6A.normalTitle" = "使用罗盘";
+
+/* Class = "IBUILabel"; text = "市内找"; ObjectID = "rer-EE-wbZ"; */
+"rer-EE-wbZ.text" = "市内找";
+
+/* Class = "IBUIButton"; normalTitle = "驾乘"; ObjectID = "rfw-Vf-Gea"; */
+"rfw-Vf-Gea.normalTitle" = "驾乘";
+
+/* Class = "IBUITextField"; placeholder = "经度"; ObjectID = "sQ6-0H-rvS"; */
+"sQ6-0H-rvS.placeholder" = "经度";
+
+/* Class = "IBUILabel"; text = "终点经度:"; ObjectID = "sXn-46-H3W"; */
+"sXn-46-H3W.text" = "终点经度:";
+
+/* Class = "IBUITextField"; placeholder = "地址"; ObjectID = "t5l-6a-I8a"; */
+"t5l-6a-I8a.placeholder" = "地址";
+
+/* Class = "IBUIButton"; normalTitle = "地理编码"; ObjectID = "uMW-SI-OS1"; */
+"uMW-SI-OS1.normalTitle" = "地理编码";
+
+/* Class = "IBUILabel"; text = "旋转"; ObjectID = "uae-jY-lsG"; */
+"uae-jY-lsG.text" = "旋转";
+
+/* Class = "IBUIButton"; normalTitle = "POI 搜索结果分享"; ObjectID = "wWu-rs-YF1"; */
+"wWu-rs-YF1.normalTitle" = "POI 搜索结果分享";
+
+/* Class = "IBUILabel"; text = "终点纬度:"; ObjectID = "wi1-xg-kx9"; */
+"wi1-xg-kx9.text" = "终点纬度:";
+
+/* Class = "IBUILabel"; text = "指南针位置："; ObjectID = "xQ0-jk-6bt"; */
+"xQ0-jk-6bt.text" = "指南针位置：";
+
+/* Class = "IBUITextField"; text = "-30"; ObjectID = "xRt-Im-62L"; */
+"xRt-Im-62L.text" = "-30";
+
+/* Class = "IBUILabel"; text = "起点名称:"; ObjectID = "y3U-m3-Dxa"; */
+"y3U-m3-Dxa.text" = "起点名称:";
+
+/* Class = "IBUITextField"; placeholder = "出发城市"; ObjectID = "ygL-1V-WVc"; */
+"ygL-1V-WVc.placeholder" = "出发城市";
+
+/* Class = "IBUILabel"; text = "起点经度:"; ObjectID = "zR5-nq-VHG"; */
+"zR5-nq-VHG.text" = "起点经度:";
+
+/* Class = "IBUIButton"; normalTitle = "停止定位"; ObjectID = "zcW-fR-Sri"; */
+"zcW-fR-Sri.normalTitle" = "停止定位";
