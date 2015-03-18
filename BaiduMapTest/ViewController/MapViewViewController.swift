@@ -39,7 +39,7 @@ class MapViewViewController: UIViewController, BMKMapViewDelegate {
         mapView = BMKMapView(frame: view_mapView.frame)
         mapView.trafficEnabled = false
         mapView.buildingsEnabled = true
-        mapView.baiduHeatMapEnabled = true
+        mapView.baiduHeatMapEnabled = false
         view_mapView.removeFromSuperview()
         self.view.addSubview(mapView)
     }

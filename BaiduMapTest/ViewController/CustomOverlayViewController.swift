@@ -33,7 +33,44 @@ class CustomOverlayViewController: UIViewController, BMKMapViewDelegate {
         var point2 = BMKMapPointForCoordinate(coordinator2)
         var points = [point1, point2]
         var custom = CustomOverlay(points: points, count: 2)
-        //mapView.addOverlay(custom)
+        mapView.addOverlay(Sector(coordinator1, radius: 0.5, startDegree: 0, endDegree: 90))
+    }
+    
+    func Sector(startPoint: CLLocationCoordinate2D, radius: Double, startDegree: Double, endDegree: Double) -> BMKPolygon {
+        var points = [startPoint]
+        var step = (endDegree - startDegree) / 10
+        for var i = startDegree; i < endDegree + 0.001; i += step {
+            points.append(PointMakeWith(StartPoint: startPoint, distance: radius, direction: i))
+        }
+        //points.append(startPoint)
+        var pointss = [BMKMapPointForCoordinate(startPoint)]
+        for i in points {
+            pointss.append(BMKMapPointForCoordinate(i))
+        }
+        //var polygon = BMKPolygon(coordinates: &points, count: UInt(points.count))
+        var polygon = BMKPolygon(points: &pointss, count: UInt(pointss.count))
+        
+        return polygon
+    }
+    
+    func PointMakeWith(#StartPoint: CLLocationCoordinate2D, distance: CLLocationDistance, direction: CLLocationDirection) -> CLLocationCoordinate2D {
+        var latitude = distance * cos(direction * M_PI / 180)
+        var longtitude = distance * sin(direction * M_PI / 180)
+        println("\(StartPoint.latitude + latitude) \(StartPoint.longitude + longtitude)")
+        return CLLocationCoordinate2DMake(StartPoint.latitude + latitude, StartPoint.longitude + longtitude)
+    }
+    
+    func mapView(mapView: BMKMapView!, viewForOverlay overlay: BMKOverlay!) -> BMKOverlayView! {
+        
+        if (overlay as? BMKPolygon) != nil {
+            var polygonView = BMKPolygonView(overlay: overlay)
+            polygonView.strokeColor = UIColor.purpleColor().colorWithAlphaComponent(1)
+            polygonView.fillColor = UIColor.cyanColor().colorWithAlphaComponent(0.2)
+            polygonView.lineWidth = 2
+            
+            return polygonView
+        }
+        return nil
     }
     
     // MARK: - 协议代理设置

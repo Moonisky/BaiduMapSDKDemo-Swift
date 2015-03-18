@@ -47,6 +47,7 @@
 		73C923CB1A8FA30C0065A546 /* BaiduMapTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C923CA1A8FA30C0065A546 /* BaiduMapTestTests.swift */; };
 		73C923D61A8FA37C0065A546 /* tmp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 73C923D51A8FA37C0065A546 /* tmp.mm */; };
 		73C9241D1A8FA6700065A546 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 73C9241A1A8FA6700065A546 /* mapapi.bundle */; };
+		73E415F91AB99A860083B25F /* WayPointRouteSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E415F81AB99A860083B25F /* WayPointRouteSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +181,7 @@
 		73C924241A8FA86D0065A546 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		73C924261A8FA8760065A546 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		73C924281A8FA8C50065A546 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		73E415F81AB99A860083B25F /* WayPointRouteSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WayPointRouteSearchViewController.swift; path = ViewController/WayPointRouteSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 				73B90C721AA99ED50041BE28 /* PoiSearchViewController.swift */,
 				73B85CB61AAC86AE005874FD /* GeocodeViewController.swift */,
 				73B85CB81AAC877A005874FD /* RouteSearchViewController.swift */,
+				73E415F81AB99A860083B25F /* WayPointRouteSearchViewController.swift */,
 				739A87391AAD81C600911136 /* PassPointRouteSearchViewController.swift */,
 				73B85CBA1AAC8794005874FD /* BusLineViewController.swift */,
 				73B85CBC1AAC87A7005874FD /* OfflineViewController.swift */,
@@ -567,6 +570,7 @@
 				7309A5831A9329CC0084974E /* MapControlViewController.swift in Sources */,
 				73B90C711AA99EA60041BE28 /* CustomOverlayViewController.swift in Sources */,
 				7309A5771A92F03A0084974E /* BaseTableViewController.swift in Sources */,
+				73E415F91AB99A860083B25F /* WayPointRouteSearchViewController.swift in Sources */,
 				73B85CC11AAC87CE005874FD /* ShortURLShareViewController.swift in Sources */,
 				73C923B51A8FA30C0065A546 /* BaiduMapTest.xcdatamodeld in Sources */,
 				73B85CB71AAC86AE005874FD /* GeocodeViewController.swift in Sources */,
