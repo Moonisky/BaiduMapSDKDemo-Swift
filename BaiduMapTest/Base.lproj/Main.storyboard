@@ -926,12 +926,18 @@
                                 <state key="normal" title="上行">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="busline_upGoing:" destination="gj6-B6-k7v" eventType="touchUpInside" id="ro0-FU-oq0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3V-VM-j1V">
                                 <rect key="frame" x="367" y="110" width="30" height="30"/>
                                 <state key="normal" title="下行">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="busline_downGoing:" destination="gj6-B6-k7v" eventType="touchUpInside" id="YYb-Pr-GXA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -962,6 +968,11 @@
                             <constraint firstItem="n3V-VM-j1V" firstAttribute="top" secondItem="rJ0-NS-K46" secondAttribute="bottom" constant="8" id="wok-PL-yxN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btn_downGoing" destination="n3V-VM-j1V" id="1f1-TW-qat"/>
+                        <outlet property="txf_Busline" destination="rJ0-NS-K46" id="5qp-N2-Q09"/>
+                        <outlet property="txf_City" destination="vz2-m6-9cE" id="yrN-Zh-77C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="niz-1g-cuv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1454,6 +1465,110 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryX-3v-AKB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1921" y="1524"/>
+        </scene>
+        <!--途经点路径搜索功能-->
+        <scene sceneID="qeG-7I-dHJ">
+            <objects>
+                <viewController storyboardIdentifier="WayPointRouteSearch" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cIo-Bk-Ceh" userLabel="途经点路径搜索功能" customClass="WayPointRouteSearchViewController" customModule="BaiduMapTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mNp-2g-MFe"/>
+                        <viewControllerLayoutGuide type="bottom" id="NFZ-HN-Vpv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0bD-5v-PaQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="起点：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1j-8I-Kuu">
+                                <rect key="frame" x="16" y="32" width="51" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="终点：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6I-7Y-J0H">
+                                <rect key="frame" x="16" y="70" width="51" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ghG-fp-Ntg">
+                                <rect key="frame" x="75" y="28" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="8Xp-xH-vsH">
+                                        <variation key="widthClass=compact" constant="80"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fdk-Jc-49L">
+                                <rect key="frame" x="75" y="66" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="v4j-j9-7TN">
+                                        <variation key="widthClass=compact" constant="80"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XFh-Zc-1c0">
+                                <rect key="frame" x="384" y="28" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="19g-h1-5cR">
+                                        <variation key="widthClass=compact" constant="80"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="途经点：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EQ-gQ-zN6">
+                                <rect key="frame" x="308" y="32" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcn-Hy-IHd">
+                                <rect key="frame" x="454" y="66" width="60" height="30"/>
+                                <state key="normal" title="驾车搜索">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="drivePathSearch:" destination="cIo-Bk-Ceh" eventType="touchUpInside" id="Zsl-P7-o0n"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XFh-Zc-1c0" firstAttribute="leading" secondItem="3EQ-gQ-zN6" secondAttribute="trailing" constant="8" id="2Vb-QP-sBF"/>
+                            <constraint firstItem="r1j-8I-Kuu" firstAttribute="leading" secondItem="0bD-5v-PaQ" secondAttribute="leading" constant="16" id="2ab-0z-swY">
+                                <variation key="widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="fcn-Hy-IHd" firstAttribute="top" secondItem="XFh-Zc-1c0" secondAttribute="bottom" constant="8" id="4fg-Lt-Bf5"/>
+                            <constraint firstItem="ghG-fp-Ntg" firstAttribute="leading" secondItem="r1j-8I-Kuu" secondAttribute="trailing" constant="8" id="Aeb-uw-6or"/>
+                            <constraint firstItem="e6I-7Y-J0H" firstAttribute="top" secondItem="r1j-8I-Kuu" secondAttribute="bottom" constant="17" id="Fre-Rp-VmJ"/>
+                            <constraint firstItem="Fdk-Jc-49L" firstAttribute="leading" secondItem="e6I-7Y-J0H" secondAttribute="trailing" constant="8" id="Jlh-Ar-om7"/>
+                            <constraint firstItem="r1j-8I-Kuu" firstAttribute="top" secondItem="mNp-2g-MFe" secondAttribute="bottom" constant="12" id="bi4-V0-kum"/>
+                            <constraint firstItem="fcn-Hy-IHd" firstAttribute="centerX" secondItem="XFh-Zc-1c0" secondAttribute="centerX" id="kzB-6d-xXX"/>
+                            <constraint firstItem="XFh-Zc-1c0" firstAttribute="top" secondItem="mNp-2g-MFe" secondAttribute="bottom" constant="8" id="qNY-6S-cDF"/>
+                            <constraint firstItem="e6I-7Y-J0H" firstAttribute="leading" secondItem="0bD-5v-PaQ" secondAttribute="leading" constant="16" id="rKD-RW-Geu">
+                                <variation key="widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="Fdk-Jc-49L" firstAttribute="top" secondItem="ghG-fp-Ntg" secondAttribute="bottom" constant="8" id="tNG-TP-zki"/>
+                            <constraint firstAttribute="trailing" secondItem="XFh-Zc-1c0" secondAttribute="trailing" constant="16" id="tza-dC-00D">
+                                <variation key="widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="ghG-fp-Ntg" firstAttribute="top" secondItem="mNp-2g-MFe" secondAttribute="bottom" constant="8" id="z7K-6x-Tke"/>
+                            <constraint firstItem="3EQ-gQ-zN6" firstAttribute="top" secondItem="mNp-2g-MFe" secondAttribute="bottom" constant="12" id="zGV-Wn-eX0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="txf_endAddress" destination="Fdk-Jc-49L" id="FAt-B2-iaS"/>
+                        <outlet property="txf_startAddress" destination="ghG-fp-Ntg" id="B2B-M2-ynf"/>
+                        <outlet property="txf_wayPoint" destination="XFh-Zc-1c0" id="iBb-ft-3k8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l8s-rc-VPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2618" y="1524"/>
         </scene>
     </scenes>
 </document>

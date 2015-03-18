@@ -22,7 +22,6 @@
 		735BF9C41A90CCC600D95BA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924281A8FA8C50065A546 /* Security.framework */; };
 		735BF9C51A90CCCC00D95BA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924241A8FA86D0065A546 /* SystemConfiguration.framework */; };
 		739A87381AAD7E9700911136 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739A87371AAD7E9700911136 /* RouteAnnotation.swift */; };
-		739A873A1AAD81C600911136 /* PassPointRouteSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739A87391AAD81C600911136 /* PassPointRouteSearchViewController.swift */; };
 		73B85CB71AAC86AE005874FD /* GeocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CB61AAC86AE005874FD /* GeocodeViewController.swift */; };
 		73B85CB91AAC877A005874FD /* RouteSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CB81AAC877A005874FD /* RouteSearchViewController.swift */; };
 		73B85CBB1AAC8794005874FD /* BusLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CBA1AAC8794005874FD /* BusLineViewController.swift */; };
@@ -84,7 +83,6 @@
 		7309A5821A9329CC0084974E /* MapControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapControlViewController.swift; path = ViewController/MapControlViewController.swift; sourceTree = "<group>"; };
 		732EF2951AAC3C23004945D1 /* CustomOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomOverlay.swift; path = Elements/CustomOverlay.swift; sourceTree = "<group>"; };
 		739A87371AAD7E9700911136 /* RouteAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteAnnotation.swift; path = Elements/RouteAnnotation.swift; sourceTree = "<group>"; };
-		739A87391AAD81C600911136 /* PassPointRouteSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassPointRouteSearchViewController.swift; path = ViewController/PassPointRouteSearchViewController.swift; sourceTree = "<group>"; };
 		73B85CB61AAC86AE005874FD /* GeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeocodeViewController.swift; path = ViewController/GeocodeViewController.swift; sourceTree = "<group>"; };
 		73B85CB81AAC877A005874FD /* RouteSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteSearchViewController.swift; path = ViewController/RouteSearchViewController.swift; sourceTree = "<group>"; };
 		73B85CBA1AAC8794005874FD /* BusLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusLineViewController.swift; path = ViewController/BusLineViewController.swift; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 				73B85CB61AAC86AE005874FD /* GeocodeViewController.swift */,
 				73B85CB81AAC877A005874FD /* RouteSearchViewController.swift */,
 				73E415F81AB99A860083B25F /* WayPointRouteSearchViewController.swift */,
-				739A87391AAD81C600911136 /* PassPointRouteSearchViewController.swift */,
 				73B85CBA1AAC8794005874FD /* BusLineViewController.swift */,
 				73B85CBC1AAC87A7005874FD /* OfflineViewController.swift */,
 				73B85CBE1AAC87BE005874FD /* HeatMapViewController.swift */,
@@ -561,7 +558,6 @@
 				73B85CC71AAC87FF005874FD /* OpenGLViewController.swift in Sources */,
 				73B90C6B1AA9782C0041BE28 /* MapUIViewController.swift in Sources */,
 				739A87381AAD7E9700911136 /* RouteAnnotation.swift in Sources */,
-				739A873A1AAD81C600911136 /* PassPointRouteSearchViewController.swift in Sources */,
 				73B90C6D1AA979760041BE28 /* README.md in Sources */,
 				73B90C731AA99ED50041BE28 /* PoiSearchViewController.swift in Sources */,
 				73C923D61A8FA37C0065A546 /* tmp.mm in Sources */,

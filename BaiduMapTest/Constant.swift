@@ -26,7 +26,8 @@ let arrayOfDemoName = [   "基本地图功能",
     "短串分享功能",
     "云检索功能",
     "调启百度导航功能",
-    "OpenGL绘制功能"]
+    "OpenGL绘制功能",
+    "途经点路径搜索功能"]
 
 // Scene的名称
 let arrayOfSceneName = ["BaseMap",
@@ -46,4 +47,5 @@ let arrayOfSceneName = ["BaseMap",
     "ShortURLShare",
     "CloudSearch",
     "Navigation",
-    "OpenGL"]
+    "OpenGL",
+    "WayPointRouteSearch"]

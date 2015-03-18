@@ -103,17 +103,10 @@ class AnnotationViewController: UIViewController, BMKMapViewDelegate {
         // 添加多边形覆盖物
         var coordinators = [
             CLLocationCoordinate2DMake(39.915, 116.404),
-            CLLocationCoordinate2DMake(40.4088441702976, 116.48221723252),
-            CLLocationCoordinate2DMake(40.3905282581476, 116.558508497187),
-            CLLocationCoordinate2DMake(40.3605032620942, 116.63099524987),
-        CLLocationCoordinate2DMake(40.3195084971875 ,116.697892626146),
-        CLLocationCoordinate2DMake(40.2685533905933, 116.757553390593),
-        CLLocationCoordinate2DMake(40.2088926261462 ,116.808508497187),
-        CLLocationCoordinate2DMake(40.1419952498698, 116.849503262094),
-        CLLocationCoordinate2DMake(40.0695084971875, 116.879528258148),
-        CLLocationCoordinate2DMake(39.9932172325201 ,116.897844170298),
-        CLLocationCoordinate2DMake(39.915 ,116.904)]
-        polygon = BMKPolygon(coordinates: &coordinators, count:11)
+            CLLocationCoordinate2DMake(39.815, 116.404),
+            CLLocationCoordinate2DMake(39.815, 116.504),
+            CLLocationCoordinate2DMake(39.915, 116.504)]
+        polygon = BMKPolygon(coordinates: &coordinators, count:4)
         mapView.addOverlay(polygon)
         
         // 添加多边形覆盖物2

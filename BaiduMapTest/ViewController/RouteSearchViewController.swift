@@ -103,7 +103,7 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
         routeSearch = BMKRouteSearch()
         
         // 在导航栏上添加“途径点”按钮
-        var screenshotBarButton = UIBarButtonItem(title: "途径点", style: UIBarButtonItemStyle.Bordered, target: self, action: Selector("passPoint"))
+        var screenshotBarButton = UIBarButtonItem(title: "途经点", style: UIBarButtonItemStyle.Bordered, target: self, action: Selector("wayPointRouteSearch"))
         self.navigationItem.rightBarButtonItem = screenshotBarButton
         
         // 创建地图视图约束
@@ -136,8 +136,13 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
     }
     
     // MARK: - 途径点函数的实现
-    func passPoint() {
+    func wayPointRouteSearch() {
         
+        var wayPointRouteSearch = self.storyboard?.instantiateViewControllerWithIdentifier("WayPointRouteSearch") as WayPointRouteSearchViewController
+        var backBarButtonItem = UIBarButtonItem()
+        backBarButtonItem.title = "返回"
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+        self.navigationController!.pushViewController(wayPointRouteSearch, animated: true)
     }
     
     // MARK: - 覆盖物协议设置
