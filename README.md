@@ -111,11 +111,13 @@ POI（Point of Interest），中文可以翻译为“兴趣点”。在地理信
 
 实现了查询某城市某路公交线路的查询功能，并且可以分别查询其上行路线和下行路线。
 
+###离线地图功能
+
+实现了基本的百度地图离线地图功能，可以进行离线地图的下载、删除以及查看。
+
 ##-----------以下未完成--------------
 
 ###自定义绘制
-
-###离线地图功能
 
 ###热力图功能
 
@@ -133,9 +135,8 @@ POI（Point of Interest），中文可以翻译为“兴趣点”。在地理信
 
 > ld: warning: instance method 'update3DView:overlook:' in category from /Users/semper_idem/编程项目/BaiduMapTest/libs/Release-iphonesimulator/libbaidumapapi.a(BMKMapView.o) overrides method from class in /Users/semper_idem/编程项目/BaiduMapTest/libs/Release-iphonesimulator/libbaidumapapi.a(BMKAnnotationView.o)
 
-
 大体意思是百度的 SDK 中的BMKMapView.o这个文件重写了BMKAnnotationView.p这个文件的update3DView:overlook:这个方法。因此会导致后面这个文件的这个方法不可用。
 
 这个是 SDK 2.6.0的一个 BUG，目前官方尚未给出解决方法，只是提出没有任何影响，因为那个方法并不会被调用。
 
-3.仅对 iPhone 5s 做了简要的适配，对 iPad 以及 iPhone 6 Plus 等设备的适配并未完善。
+2.仅对 iPhone 5s 做了简要的适配，对 iPad 以及 iPhone 6 Plus 等设备的适配并未完善。

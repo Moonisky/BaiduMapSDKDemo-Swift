@@ -997,21 +997,30 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="天津" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Fr-Mb-32W">
-                                <rect key="frame" x="112" y="72" width="97" height="30"/>
+                                <rect key="frame" x="112" y="72" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="BxP-nV-d0Q"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zxh-fi-76d">
-                                <rect key="frame" x="285" y="72" width="30" height="30"/>
+                                <rect key="frame" x="324" y="72" width="30" height="30"/>
                                 <state key="normal" title="搜索">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_Search:" destination="LJe-Yz-knw" eventType="touchUpInside" id="vQB-9A-eaR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdP-K8-s0g">
                                 <rect key="frame" x="554" y="72" width="30" height="30"/>
                                 <state key="normal" title="导入">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_Import:" destination="LJe-Yz-knw" eventType="touchUpInside" id="3Dg-fV-JMe"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已下载：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddJ-hT-7et">
                                 <rect key="frame" x="16" y="114" width="68" height="21"/>
@@ -1024,18 +1033,27 @@
                                 <state key="normal" title="开始下载">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_download:" destination="LJe-Yz-knw" eventType="touchUpInside" id="kRc-Gm-8Yv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STX-Kd-tn2">
-                                <rect key="frame" x="270" y="110" width="60" height="30"/>
+                                <rect key="frame" x="294" y="110" width="60" height="30"/>
                                 <state key="normal" title="停止下载">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_stop:" destination="LJe-Yz-knw" eventType="touchUpInside" id="ntP-gi-A04"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0z-xE-yuc">
                                 <rect key="frame" x="554" y="110" width="30" height="30"/>
                                 <state key="normal" title="删除">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_delete:" destination="LJe-Yz-knw" eventType="touchUpInside" id="5CK-6T-7ZY"/>
+                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IXT-Da-jED">
                                 <rect key="frame" x="16" y="148" width="568" height="29"/>
@@ -1043,19 +1061,29 @@
                                     <segment title="城市列表"/>
                                     <segment title="下载管理"/>
                                 </segments>
+                                <connections>
+                                    <action selector="tableViewChange:" destination="LJe-Yz-knw" eventType="valueChanged" id="dOr-kj-Ksj"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-SR-w8v">
                                 <rect key="frame" x="16" y="184" width="568" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="LJe-Yz-knw" id="mza-qS-dhj"/>
+                                    <outlet property="delegate" destination="LJe-Yz-knw" id="Cyq-3q-f3S"/>
+                                </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="G6T-cB-UdE">
                                 <rect key="frame" x="8" y="192" width="584" height="408"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="LJe-Yz-knw" id="F4b-4i-yF3"/>
+                                    <outlet property="delegate" destination="LJe-Yz-knw" id="lKA-ec-RhU"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Zxh-fi-76d" secondAttribute="centerX" id="1Q1-zh-42e"/>
                             <constraint firstItem="G6T-cB-UdE" firstAttribute="top" secondItem="IXT-Da-jED" secondAttribute="bottom" constant="16" id="3jt-oK-If8"/>
                             <constraint firstItem="SdP-K8-s0g" firstAttribute="top" secondItem="2Av-Se-qXT" secondAttribute="bottom" constant="8" id="4JA-F7-68o"/>
                             <constraint firstItem="IXT-Da-jED" firstAttribute="leading" secondItem="lj5-6d-RV2" secondAttribute="leading" constant="16" id="4fk-vQ-RHd"/>
@@ -1067,6 +1095,9 @@
                             <constraint firstItem="X08-In-vaa" firstAttribute="top" secondItem="2Av-Se-qXT" secondAttribute="bottom" constant="12" id="JuR-xb-f8g"/>
                             <constraint firstItem="ddJ-hT-7et" firstAttribute="top" secondItem="X08-In-vaa" secondAttribute="bottom" constant="17" id="NE2-g2-7GL"/>
                             <constraint firstItem="Zxh-fi-76d" firstAttribute="top" secondItem="2Av-Se-qXT" secondAttribute="bottom" constant="8" id="NmM-8C-uBx"/>
+                            <constraint firstItem="n0z-xE-yuc" firstAttribute="leading" secondItem="STX-Kd-tn2" secondAttribute="trailing" constant="200" id="PHK-q9-u0O">
+                                <variation key="widthClass=compact" constant="60"/>
+                            </constraint>
                             <constraint firstItem="aqJ-eZ-QLO" firstAttribute="top" secondItem="G6T-cB-UdE" secondAttribute="bottom" id="Q3c-Rc-GUp"/>
                             <constraint firstAttribute="trailing" secondItem="xHT-SR-w8v" secondAttribute="trailing" constant="16" id="VQB-Wa-RuG"/>
                             <constraint firstAttribute="trailing" secondItem="n0z-xE-yuc" secondAttribute="trailing" constant="16" id="VWJ-jA-G1Y"/>
@@ -1081,16 +1112,23 @@
                             </constraint>
                             <constraint firstItem="xHT-SR-w8v" firstAttribute="leading" secondItem="lj5-6d-RV2" secondAttribute="leading" constant="16" id="lty-ju-EeP"/>
                             <constraint firstItem="STX-Kd-tn2" firstAttribute="top" secondItem="Zxh-fi-76d" secondAttribute="bottom" constant="8" id="mvK-6m-EWe"/>
-                            <constraint firstAttribute="centerX" secondItem="STX-Kd-tn2" secondAttribute="centerX" id="ox8-c3-2R8"/>
+                            <constraint firstItem="SdP-K8-s0g" firstAttribute="leading" secondItem="Zxh-fi-76d" secondAttribute="trailing" constant="200" id="nrO-xZ-Aof">
+                                <variation key="widthClass=compact" constant="60"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="IXT-Da-jED" secondAttribute="trailing" constant="16" id="pet-rU-Wq0"/>
                             <constraint firstItem="n0z-xE-yuc" firstAttribute="top" secondItem="SdP-K8-s0g" secondAttribute="bottom" constant="8" id="qLY-Ch-SE3"/>
-                            <constraint firstItem="Zxh-fi-76d" firstAttribute="leading" secondItem="8Fr-Mb-32W" secondAttribute="trailing" constant="76" id="uQ8-hX-4q9">
-                                <variation key="widthClass=compact" constant="20"/>
-                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="SdP-K8-s0g" secondAttribute="trailing" constant="16" id="xF8-KK-4in"/>
                             <constraint firstItem="8Fr-Mb-32W" firstAttribute="top" secondItem="2Av-Se-qXT" secondAttribute="bottom" constant="8" id="zsm-bL-2qz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lbl_cityID" destination="X08-In-vaa" id="a8T-Iq-t8b"/>
+                        <outlet property="lbl_downloadRatio" destination="ddJ-hT-7et" id="diE-R1-jbD"/>
+                        <outlet property="seg_manager" destination="IXT-Da-jED" id="9gF-4h-oZs"/>
+                        <outlet property="table_groupView" destination="G6T-cB-UdE" id="Afv-Ez-nGC"/>
+                        <outlet property="table_plainView" destination="xHT-SR-w8v" id="7M2-zq-z1G"/>
+                        <outlet property="txf_cityName" destination="8Fr-Mb-32W" id="GxN-q1-39O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgt-hi-SNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
