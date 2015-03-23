@@ -1132,7 +1132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgt-hi-SNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617.5" y="-584"/>
+            <point key="canvasLocation" x="1909.5" y="-707"/>
         </scene>
         <!--热力图功能-->
         <scene sceneID="WS4-yV-7r0">
@@ -1151,12 +1151,18 @@
                                 <state key="normal" title="添加热力图">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addHeatMap:" destination="5iv-Ha-W06" eventType="touchUpInside" id="Uzg-UM-Rme"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REH-J7-rLe">
                                 <rect key="frame" x="509" y="72" width="75" height="30"/>
                                 <state key="normal" title="删除热力图">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="removeHeatMap:" destination="5iv-Ha-W06" eventType="touchUpInside" id="ggf-sh-4bk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1167,6 +1173,9 @@
                             <constraint firstItem="REH-J7-rLe" firstAttribute="top" secondItem="Af0-0c-T3w" secondAttribute="bottom" constant="8" id="h3H-UK-6el"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btn_addHeatMap" destination="Ljg-EW-ud6" id="c02-S1-aVo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TuJ-8z-o2E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1189,12 +1198,18 @@
                                 <state key="normal" title="POI 搜索结果分享">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sharePoiResults:" destination="yNT-d0-e0Q" eventType="touchUpInside" id="ghW-xm-z4L"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Urr-E1-Ay5">
                                 <rect key="frame" x="434" y="72" width="150" height="30"/>
                                 <state key="normal" title="反向地理编码结果分享">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="shareGeocodeResults:" destination="yNT-d0-e0Q" eventType="touchUpInside" id="pXx-Nu-sDY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1205,6 +1220,9 @@
                             <constraint firstItem="Urr-E1-Ay5" firstAttribute="top" secondItem="ueY-MA-QCf" secondAttribute="bottom" constant="8" id="e8r-Yi-EKr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btn_sharePoiResults" destination="wWu-rs-YF1" id="ahM-MJ-shZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAJ-aU-jhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1219,28 +1237,28 @@
                         <viewControllerLayoutGuide type="bottom" id="3ES-kL-HmV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ure-8Q-rRz">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38P-od-Czc">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38P-od-Czc">
                                 <rect key="frame" x="151" y="72" width="75" height="30"/>
                                 <state key="normal" title="周边云检索">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZI-4n-5fz">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZI-4n-5fz">
                                 <rect key="frame" x="374" y="72" width="75" height="30"/>
                                 <state key="normal" title="矩形云检索">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTV-5b-bYK">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTV-5b-bYK">
                                 <rect key="frame" x="509" y="72" width="75" height="30"/>
                                 <state key="normal" title="详情云检索">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFK-uj-CSK">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFK-uj-CSK">
                                 <rect key="frame" x="16" y="72" width="75" height="30"/>
                                 <state key="normal" title="本地云检索">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1267,6 +1285,7 @@
                             <constraint firstItem="38P-od-Czc" firstAttribute="top" secondItem="kes-01-8Gg" secondAttribute="bottom" constant="8" id="gPs-Qw-eZ6"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W7v-V6-Wba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

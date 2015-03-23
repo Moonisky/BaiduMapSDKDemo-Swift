@@ -16,6 +16,8 @@
 		7309A5831A9329CC0084974E /* MapControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7309A5821A9329CC0084974E /* MapControlViewController.swift */; };
 		732EF2961AAC3C23004945D1 /* CustomOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732EF2951AAC3C23004945D1 /* CustomOverlay.swift */; };
 		7332CA721ABE881300260828 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 73B90C6C1AA979750041BE28 /* README.md */; };
+		7332CA741ABEA5D100260828 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 7332CA731ABEA5D100260828 /* locations.json */; };
+		7332CA771ABEA6C700260828 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332CA761ABEA6C700260828 /* SwiftyJSON.swift */; };
 		735BF9C01A90CCAF00D95BA5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C9241E1A8FA8570065A546 /* CoreLocation.framework */; };
 		735BF9C11A90CCB400D95BA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924261A8FA8760065A546 /* CoreGraphics.framework */; };
 		735BF9C21A90CCBB00D95BA5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924221A8FA8640065A546 /* OpenGLES.framework */; };
@@ -23,6 +25,7 @@
 		735BF9C41A90CCC600D95BA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924281A8FA8C50065A546 /* Security.framework */; };
 		735BF9C51A90CCCC00D95BA5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924241A8FA86D0065A546 /* SystemConfiguration.framework */; };
 		737C00861ABB0A7400C8CD8D /* OfflineMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737C00851ABB0A7400C8CD8D /* OfflineMapViewController.swift */; };
+		7383F5141ABEDA1D00FD6477 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7383F5131ABEDA1D00FD6477 /* MessageUI.framework */; };
 		739A87381AAD7E9700911136 /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739A87371AAD7E9700911136 /* RouteAnnotation.swift */; };
 		73B85CB71AAC86AE005874FD /* GeocodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CB61AAC86AE005874FD /* GeocodeViewController.swift */; };
 		73B85CB91AAC877A005874FD /* RouteSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B85CB81AAC877A005874FD /* RouteSearchViewController.swift */; };
@@ -83,7 +86,10 @@
 		7309A5801A9320F10084974E /* MapViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewViewController.swift; path = ViewController/MapViewViewController.swift; sourceTree = "<group>"; };
 		7309A5821A9329CC0084974E /* MapControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapControlViewController.swift; path = ViewController/MapControlViewController.swift; sourceTree = "<group>"; };
 		732EF2951AAC3C23004945D1 /* CustomOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomOverlay.swift; path = Elements/CustomOverlay.swift; sourceTree = "<group>"; };
+		7332CA731ABEA5D100260828 /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = locations.json; path = Elements/locations.json; sourceTree = "<group>"; };
+		7332CA761ABEA6C700260828 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		737C00851ABB0A7400C8CD8D /* OfflineMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineMapViewController.swift; path = ViewController/OfflineMapViewController.swift; sourceTree = "<group>"; };
+		7383F5131ABEDA1D00FD6477 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		739A87371AAD7E9700911136 /* RouteAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteAnnotation.swift; path = Elements/RouteAnnotation.swift; sourceTree = "<group>"; };
 		73B85CB61AAC86AE005874FD /* GeocodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeocodeViewController.swift; path = ViewController/GeocodeViewController.swift; sourceTree = "<group>"; };
 		73B85CB81AAC877A005874FD /* RouteSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteSearchViewController.swift; path = ViewController/RouteSearchViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7383F5141ABEDA1D00FD6477 /* MessageUI.framework in Frameworks */,
 				735BF9C51A90CCCC00D95BA5 /* SystemConfiguration.framework in Frameworks */,
 				735BF9C41A90CCC600D95BA5 /* Security.framework in Frameworks */,
 				735BF9C31A90CCC000D95BA5 /* QuartzCore.framework in Frameworks */,
@@ -212,6 +219,8 @@
 		7309A5711A92EE7F0084974E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7383F5131ABEDA1D00FD6477 /* MessageUI.framework */,
+				7332CA751ABEA6C700260828 /* SwiftyJSON */,
 				73C924281A8FA8C50065A546 /* Security.framework */,
 				73C924261A8FA8760065A546 /* CoreGraphics.framework */,
 				73C924241A8FA86D0065A546 /* SystemConfiguration.framework */,
@@ -284,9 +293,18 @@
 			name = CustomOverlay;
 			sourceTree = "<group>";
 		};
+		7332CA751ABEA6C700260828 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				7332CA761ABEA6C700260828 /* SwiftyJSON.swift */,
+			);
+			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
 		73B90C741AA9A8EB0041BE28 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				7332CA731ABEA5D100260828 /* locations.json */,
 				7309A57C1A92FA2E0084974E /* Constant.swift */,
 				732EF2941AAC3C12004945D1 /* CustomOverlay */,
 				73B90C751AA9A8F10041BE28 /* Annotations */,
@@ -520,6 +538,7 @@
 				73C923BA1A8FA30C0065A546 /* Main.storyboard in Resources */,
 				73C9241D1A8FA6700065A546 /* mapapi.bundle in Resources */,
 				73C923BF1A8FA30C0065A546 /* LaunchScreen.xib in Resources */,
+				7332CA741ABEA5D100260828 /* locations.json in Resources */,
 				73C923BC1A8FA30C0065A546 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,6 +599,7 @@
 				73B90C6F1AA99E390041BE28 /* AnnotationViewController.swift in Sources */,
 				73B85CB91AAC877A005874FD /* RouteSearchViewController.swift in Sources */,
 				73B90C771AA9A90B0041BE28 /* AnimatedAnnotationView.swift in Sources */,
+				7332CA771ABEA6C700260828 /* SwiftyJSON.swift in Sources */,
 				73B85CC31AAC87DD005874FD /* CloudSearchViewController.swift in Sources */,
 				73B85CBB1AAC8794005874FD /* BusLineViewController.swift in Sources */,
 			);

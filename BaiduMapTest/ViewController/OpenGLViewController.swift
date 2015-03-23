@@ -8,10 +8,12 @@
 
 import UIKit
 
-class OpenGLViewController: UIViewController, BMKMapViewDelegate {
+class OpenGLViewController: UIViewController, BMKMapViewDelegate, BMKCloudSearchDelegate {
     
     /// 百度地图视图
     var mapView: BMKMapView!
+    /// 云检索结果
+    var cloudSearch: BMKCloudSearch!
     
     // 界面加载
     override func viewDidLoad() {
