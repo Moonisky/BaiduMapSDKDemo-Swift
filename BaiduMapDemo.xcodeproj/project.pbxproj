@@ -43,7 +43,6 @@
 		73B90C731AA99ED50041BE28 /* PoiSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B90C721AA99ED50041BE28 /* PoiSearchViewController.swift */; };
 		73B90C771AA9A90B0041BE28 /* AnimatedAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B90C761AA9A90B0041BE28 /* AnimatedAnnotationView.swift */; };
 		73C923B21A8FA30C0065A546 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C923B11A8FA30C0065A546 /* AppDelegate.swift */; };
-		73C923B51A8FA30C0065A546 /* BaiduMapTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 73C923B31A8FA30C0065A546 /* BaiduMapTest.xcdatamodeld */; };
 		73C923BA1A8FA30C0065A546 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73C923B81A8FA30C0065A546 /* Main.storyboard */; };
 		73C923BC1A8FA30C0065A546 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73C923BB1A8FA30C0065A546 /* Images.xcassets */; };
 		73C923BF1A8FA30C0065A546 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73C923BD1A8FA30C0065A546 /* LaunchScreen.xib */; };
@@ -615,7 +614,6 @@
 				7309A5771A92F03A0084974E /* BaseTableViewController.swift in Sources */,
 				73E415F91AB99A860083B25F /* WayPointRouteSearchViewController.swift in Sources */,
 				73B85CC11AAC87CE005874FD /* ShortURLShareViewController.swift in Sources */,
-				73C923B51A8FA30C0065A546 /* BaiduMapTest.xcdatamodeld in Sources */,
 				73B85CB71AAC86AE005874FD /* GeocodeViewController.swift in Sources */,
 				73C923B21A8FA30C0065A546 /* AppDelegate.swift in Sources */,
 				73B85CBD1AAC87A7005874FD /* OfflineViewController.swift in Sources */,
