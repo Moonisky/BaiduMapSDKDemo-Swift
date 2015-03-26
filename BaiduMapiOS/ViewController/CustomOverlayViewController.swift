@@ -33,31 +33,25 @@ class CustomOverlayViewController: UIViewController, BMKMapViewDelegate {
         var point2 = BMKMapPointForCoordinate(coordinator2)
         var points = [point1, point2]
         var custom = CustomOverlay(points: points, count: 2)
-        mapView.addOverlay(Sector(coordinator1, radius: 0.5, startDegree: 0, endDegree: 90))
+        mapView.addOverlay(drawSector(WithStartPoint: coordinator1, radius: 5000, startDegree: 0, endDegree: 90))
     }
     
-    func Sector(startPoint: CLLocationCoordinate2D, radius: Double, startDegree: Double, endDegree: Double) -> BMKPolygon {
-        var points = [startPoint]
+    func drawSector(WithStartPoint point: CLLocationCoordinate2D, radius: CLLocationDistance, startDegree: CLLocationDegrees, endDegree: CLLocationDegrees) -> BMKPolygon {
+        var points = [BMKMapPointForCoordinate(point)]
         var step = (endDegree - startDegree) / 10
         for var i = startDegree; i < endDegree + 0.001; i += step {
-            points.append(PointMakeWith(StartPoint: startPoint, distance: radius, direction: i))
+            points.append(pointMakeWith(StartPoint: point, distance: radius, direction: i))
         }
-        //points.append(startPoint)
-        var pointss = [BMKMapPointForCoordinate(startPoint)]
-        for i in points {
-            pointss.append(BMKMapPointForCoordinate(i))
-        }
-        //var polygon = BMKPolygon(coordinates: &points, count: UInt(points.count))
-        var polygon = BMKPolygon(points: &pointss, count: UInt(pointss.count))
+        var polygon = BMKPolygon(points: &points, count: UInt(points.count))
         
         return polygon
     }
     
-    func PointMakeWith(#StartPoint: CLLocationCoordinate2D, distance: CLLocationDistance, direction: CLLocationDirection) -> CLLocationCoordinate2D {
-        var latitude = distance * cos(direction * M_PI / 180)
-        var longtitude = distance * sin(direction * M_PI / 180)
-        println("\(StartPoint.latitude + latitude) \(StartPoint.longitude + longtitude)")
-        return CLLocationCoordinate2DMake(StartPoint.latitude + latitude, StartPoint.longitude + longtitude)
+    func pointMakeWith(StartPoint point: CLLocationCoordinate2D, distance: CLLocationDistance, direction: CLLocationDirection) -> BMKMapPoint {
+        var x = distance * cos(direction * M_PI / 180)
+        var y = distance * sin(direction * M_PI / 180)
+        var startPoint = BMKMapPointForCoordinate(point)
+        return BMKMapPointMake(startPoint.x + x, startPoint.y + y)
     }
     
     func mapView(mapView: BMKMapView!, viewForOverlay overlay: BMKOverlay!) -> BMKOverlayView! {

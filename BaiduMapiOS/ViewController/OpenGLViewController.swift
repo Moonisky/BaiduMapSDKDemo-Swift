@@ -8,8 +8,19 @@
 
 import UIKit
 
+struct GLPoint {
+    var x: GLfloat = 0
+    var y: GLfloat = 0
+}
+
 class OpenGLViewController: UIViewController, BMKMapViewDelegate, BMKCloudSearchDelegate {
     
+    /// OpenGL 点集
+    var Point = [GLPoint]()
+    /// 点的地理位置坐标集
+    var coordinate = [CLLocationCoordinate2D]()
+    /// 判断地图是否加载完毕
+    var mapDidFinishLoad = false
     /// 百度地图视图
     var mapView: BMKMapView!
     /// 云检索结果
@@ -24,18 +35,65 @@ class OpenGLViewController: UIViewController, BMKMapViewDelegate, BMKCloudSearch
         
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.addSubview(mapView)
+        self.view = mapView
+    }
+    
+    // MARK: - 地图加载相关协议
+    func mapViewDidFinishLoading(mapView: BMKMapView!) {
+        coordinate.append(CLLocationCoordinate2DMake(39.965, 116.604))
+        coordinate.append(CLLocationCoordinate2DMake(39.865, 116.604))
+        coordinate.append(CLLocationCoordinate2DMake(39.865, 116.704))
+        coordinate.append(CLLocationCoordinate2DMake(39.965, 116.704))
+        mapDidFinishLoad = true
+    }
+    
+    // 地图渲染每一帧画面过程中，以及每次需要重绘地图时（例如添加覆盖物）都会调用此接口
+    func mapView(mapView: BMKMapView!, onDrawMapFrame status: BMKMapStatus!) {
+        NSLog("地图渲染")
+        if mapDidFinishLoad {
+            GLRender(status)
+        }
+    }
+    
+    func GLRender(status: BMKMapStatus) {
+        var centerPoint = BMKMapPointForCoordinate(status.targetGeoPt)
+        let components = CGColorGetComponents(UIColor.redColor().CGColor)
+        var red = components[0]
+        var green = components[1]
+        var blue = components[2]
+        var alpha = components[3]
+        Point = [GLPoint]()
+        // 坐标系圆点为地图中心点，此处转换坐标为相对坐标
+        for i in 0...3 {
+            var point = BMKMapPointForCoordinate(coordinate[i])
+            var glPoint = GLPoint()
+            glPoint.x = GLfloat(point.x - centerPoint.x)
+            glPoint.y = GLfloat(-point.y + centerPoint.y)
+            Point.append(glPoint)
+        }
+        // 获取缩放比例，18级比例尺为1:1基准
+        var fZoomUnites = powf(2, 18-status.fLevel)
         
-        // 界面初始化
+        glPushMatrix()
+        glRotatef(status.fOverlooking, 1, 0, 0)
+        glRotatef(status.fRotation, 0, 0, 1)
         
-        // 创建地图视图约束
-        var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        //constraints.append(NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: btn_Search, attribute: .Bottom, multiplier: 1, constant: 8))
-        self.view.addConstraints(constraints)
+        fZoomUnites = 1 / fZoomUnites
+        // 缩放使随地图放大或缩小
+        glScalef(fZoomUnites, fZoomUnites, fZoomUnites)
+        glEnableClientState(GLenum(GL_VERTEX_ARRAY))
+        glEnable(GLenum(GL_BLEND))
+        glBlendFunc(GLenum(GL_SRC_ALPHA), GLenum(GL_ONE_MINUS_SRC_ALPHA))
+        
+        glColor4f(GLfloat(red), GLfloat(green), GLfloat(blue), GLfloat(alpha))
+        glVertexPointer(2, GLenum(GL_FLOAT), 0, Point)
+        // 绘制的点个数
+        glDrawArrays(GLenum(GL_TRIANGLE_FAN), 0, 4)
+        
+        glDisable(GLenum(GL_BLEND))
+        glDisableClientState(GLenum(GL_VERTEX_ARRAY))
+        glPopMatrix()
+        glColor4f(1, 1, 1, 1)
     }
     
     // MARK: - 协议代理设置

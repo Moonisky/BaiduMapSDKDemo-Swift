@@ -116,9 +116,7 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
         self.view.addSubview(mapView)
         mapView.zoomLevel = 13
         mapView.isSelectedAnnotationViewFront = true
-        
-        // 界面初始化
-        
+          
         // 初始化导航栏右侧按钮“说明”
         var customRightBarBuutonItem = UIBarButtonItem(title: "说明", style: .Bordered, target: self, action: Selector("showGuide"))
         self.navigationItem.rightBarButtonItem = customRightBarBuutonItem
