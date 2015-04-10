@@ -70,7 +70,7 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
         mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.addSubview(mapView)
+         self.view.addSubview(mapView)
         
         btn_Follow.enabled = false
         btn_FollowHead.enabled = false
@@ -82,6 +82,8 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
         BMKLocationService.setLocationDistanceFilter(10)
         // 定位功能初始化
         locationService = BMKLocationService()
+        
+        locationService.startUserLocationService()
 
         // 创建地图视图约束
         var constraints = [NSLayoutConstraint]()
@@ -103,6 +105,7 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
     func didUpdateBMKUserLocation(userLocation: BMKUserLocation!) {
         mapView.updateLocationData(userLocation)
         mapView.centerCoordinate = userLocation.location.coordinate
+        println("目前位置：\(userLocation.location.coordinate.longitude), \(userLocation.location.coordinate.latitude)")
     }
     
     // 用户方向更新后，会调用此函数

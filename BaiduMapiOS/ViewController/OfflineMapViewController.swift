@@ -18,7 +18,7 @@ class OfflineMapViewController: UIViewController, BMKMapViewDelegate {
         super.viewDidLoad()
         
         // 初始化右边的更新按钮
-        var customRightBarButtonItem = UIBarButtonItem(title: "更新", style: .Bordered, target: self, action: Selector("update"))
+        var customRightBarButtonItem = UIBarButtonItem(title: "更新", style: .Plain, target: self, action: Selector("update"))
         self.navigationItem.rightBarButtonItem = customRightBarButtonItem
         
         // 显示当前某地的离线地图

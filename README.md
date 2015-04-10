@@ -27,14 +27,18 @@
 <h2 id="版本说明">
 版本说明
 </h2>
-1. 目前采用的是百度地图 iOS SDK 2.6.0
-2. Xcode版本采用的是6.2，iOS SDK 采用8.0以上
+1. 目前采用的是百度地图 iOS SDK 2.7.0
+2. Xcode版本采用的是6.3，iOS SDK 采用8.0以上
 3. 项目采用 Swift 语言来进行编写
 4. 项目采用 Storyboard，试图以最简单的方式来展示百度地图 SDK 的使用
 
 <h2 id="更新说明">
 更新说明
 </h2>
+###2015.04.11
+1、更新至Xcode6.3，Swift适配1.2版本
+2、增加了新的功能
+3、百度地图SDK更新至2.7.0版本
 ###2015.03.24
 1、重构目录结构
 2、引入 SwiftyJSON 框架
@@ -45,15 +49,9 @@
 待解决 BUG
 </h2>
 
-1.iOS SDK 2.6.0 版本，Xcode 会提示一个警告：
+1.仅对 iPhone 5s 做了简要的适配，对 iPad 以及 iPhone 6 Plus 等设备的适配并未完善。
 
-> ld: warning: instance method 'update3DView:overlook:' in category from /Users/semper_idem/编程项目/BaiduMapTest/libs/Release-iphonesimulator/libbaidumapapi.a(BMKMapView.o) overrides method from class in /Users/semper_idem/编程项目/BaiduMapTest/libs/Release-iphonesimulator/libbaidumapapi.a(BMKAnnotationView.o)
-
-大体意思是百度的 SDK 中的BMKMapView.o这个文件重写了BMKAnnotationView.p这个文件的update3DView:overlook:这个方法。因此会导致后面这个文件的这个方法不可用。
-
-这个是 SDK 2.6.0的一个 BUG，目前官方尚未给出解决方法，只是提出没有任何影响，因为那个方法并不会被调用。
-
-2.仅对 iPhone 5s 做了简要的适配，对 iPad 以及 iPhone 6 Plus 等设备的适配并未完善。
+2.某些功能仍然存在BUG
 
 <h2 id="功能说明">
 功能说明
@@ -200,8 +198,6 @@ POI（Point of Interest），中文可以翻译为“兴趣点”。在地理信
 </h2>
 
 实现了短信分享功能，将反向地理位置编码进行短信分享。
-
-##-----------以下未完成--------------
 
 <h2 id="云检索功能">
 云检索功能

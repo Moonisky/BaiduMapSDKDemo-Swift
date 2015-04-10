@@ -101,9 +101,9 @@ class PoiSearchViewController: UIViewController, BMKMapViewDelegate, BMKPoiSearc
         // 缓存若没有命中，则自己构造一个，一般首次添加 annotation 代码会运行到此处
         if annotationView == nil {
             annotationView = BMKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationViewID)
-            (annotationView as BMKPinAnnotationView).pinColor =  UInt(BMKPinAnnotationColorRed)
+            (annotationView as! BMKPinAnnotationView).pinColor =  UInt(BMKPinAnnotationColorRed)
             // 设置标注从天上掉下来的效果
-            (annotationView as BMKPinAnnotationView).animatesDrop = true
+            (annotationView as! BMKPinAnnotationView).animatesDrop = true
         }
         
         // 设置位置
@@ -134,7 +134,7 @@ class PoiSearchViewController: UIViewController, BMKMapViewDelegate, BMKPoiSearc
         
         if errorCode.value == 0 {
             for i in 0..<poiResult.poiInfoList.count {
-                var poi = poiResult.poiInfoList[i] as BMKPoiInfo
+                var poi = poiResult.poiInfoList[i] as! BMKPoiInfo
                 var item = BMKPointAnnotation()
                 item.coordinate = poi.pt
                 item.title = poi.name

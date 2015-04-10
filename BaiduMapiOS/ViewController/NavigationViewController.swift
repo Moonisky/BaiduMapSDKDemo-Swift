@@ -85,7 +85,7 @@ class NavigationViewController: UIViewController, BMKMapViewDelegate {
         self.title = arrayOfDemoName[16]
         
         // 初始化导航栏右侧按钮“说明”
-        var customRightBarButtonItem = UIBarButtonItem(title: "说明", style: .Bordered, target: self, action: Selector("showGuide"))
+        var customRightBarButtonItem = UIBarButtonItem(title: "说明", style: .Plain, target: self, action: Selector("showGuide"))
         self.navigationItem.rightBarButtonItem = customRightBarButtonItem
     }
     

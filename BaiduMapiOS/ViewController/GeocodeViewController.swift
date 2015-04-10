@@ -93,9 +93,9 @@ class GeocodeViewController: UIViewController, BMKMapViewDelegate, BMKGeoCodeSea
         // 缓存若没有命中，则自己构造一个，一般首次添加 annotation 代码会运行到此处
         if annotationView == nil {
             annotationView = BMKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationViewID)
-            (annotationView as BMKPinAnnotationView).pinColor =  UInt(BMKPinAnnotationColorRed)
+            (annotationView as! BMKPinAnnotationView).pinColor =  UInt(BMKPinAnnotationColorRed)
             // 设置标注从天上掉下来的效果
-            (annotationView as BMKPinAnnotationView).animatesDrop = true
+            (annotationView as! BMKPinAnnotationView).animatesDrop = true
         }
         
         // 设置位置

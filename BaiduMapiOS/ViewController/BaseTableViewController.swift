@@ -21,7 +21,7 @@ class BaseTableViewController: UITableViewController {
     // 设置Table View单元格的显示样式
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell?
+        var cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell?
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         }

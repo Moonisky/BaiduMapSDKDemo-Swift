@@ -75,7 +75,7 @@ class AnnotationViewController: UIViewController, BMKMapViewDelegate {
     func addGroundOverlay() {
         var bundlepath = NSBundle.mainBundle().resourcePath?.stringByAppendingPathComponent("mapapi.bundle")
         var bundle = NSBundle(path: bundlepath!)!
-        var image = UIImage(contentsOfFile: bundle.pathForResource("test", ofType: "png", inDirectory: "images")!)
+        var image = UIImage(contentsOfFile: bundle.pathForResource("baidumap_logo@2x", ofType: "png", inDirectory: "images")!)
     
         // 第一种
         var coordinator = CLLocationCoordinate2DMake(39.800, 116.404)
@@ -179,7 +179,7 @@ class AnnotationViewController: UIViewController, BMKMapViewDelegate {
             polygonView.strokeColor = UIColor.purpleColor().colorWithAlphaComponent(1)
             polygonView.fillColor = UIColor.cyanColor().colorWithAlphaComponent(0.2)
             polygonView.lineWidth = 2
-            polygonView.lineDash = (overlay as BMKPolygon == polygon2)
+            polygonView.lineDash = (overlay as! BMKPolygon == polygon2)
             
             return polygonView
         }
@@ -205,9 +205,9 @@ class AnnotationViewController: UIViewController, BMKMapViewDelegate {
     // 根据标注生成对应的视图
     func mapView(mapView: BMKMapView!, viewForAnnotation annotation: BMKAnnotation!) -> BMKAnnotationView! {
         // 普通标注
-        if annotation as BMKPointAnnotation == pointAnnotation {
+        if annotation as! BMKPointAnnotation == pointAnnotation {
             var AnnotationViewID = "renameMark"
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(AnnotationViewID) as BMKPinAnnotationView?
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(AnnotationViewID) as! BMKPinAnnotationView?
             if annotationView == nil {
                 annotationView = BMKPinAnnotationView(annotation: annotation, reuseIdentifier: AnnotationViewID)
                 // 设置颜色
@@ -220,7 +220,7 @@ class AnnotationViewController: UIViewController, BMKMapViewDelegate {
             return annotationView
         }
         
-        if annotation as BMKPointAnnotation == animatedAnnotation {
+        if annotation as! BMKPointAnnotation == animatedAnnotation {
             // 动画标注
             var AnnotationViewID = "AnimatedAnnotation"
             var annotationView: AnimatedAnnotationView? = nil
@@ -232,7 +232,7 @@ class AnnotationViewController: UIViewController, BMKMapViewDelegate {
                 var image = UIImage(named: "poi_\(i).png")
                 images[i-1] = image!
             }
-            annotationView?.setAnnotationImages(images)
+            annotationView?.setImages(images)
             return annotationView
         }
         return nil

@@ -131,15 +131,15 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
     }
 
     func mapView(mapView: BMKMapView!, viewForAnnotation annotation: BMKAnnotation!) -> BMKAnnotationView! {
-        if annotation as RouteAnnotation? != nil {
-            return getRouteAnnotationView(mapView, viewForAnnotation: annotation as RouteAnnotation)
+        if annotation as! RouteAnnotation? != nil {
+            return getRouteAnnotationView(mapView, viewForAnnotation: annotation as! RouteAnnotation)
         }
         return nil
     }
     
     func mapView(mapView: BMKMapView!, viewForOverlay overlay: BMKOverlay!) -> BMKOverlayView! {
-        if overlay as BMKPolyline? != nil {
-            var polylineView = BMKPolylineView(overlay: overlay as BMKPolyline)
+        if overlay as! BMKPolyline? != nil {
+            var polylineView = BMKPolylineView(overlay: overlay as! BMKPolyline)
             polylineView.fillColor = UIColor.cyanColor().colorWithAlphaComponent(1)
             polylineView.strokeColor = UIColor.blueColor().colorWithAlphaComponent(0.7)
             polylineView.lineWidth = 3
@@ -158,12 +158,12 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
         mapView.removeOverlays(array)
         
         if error.value == 0 {
-            var plan = result.routes[0] as BMKDrivingRouteLine
+            var plan = result.routes[0] as! BMKDrivingRouteLine
             // 计算路线方案中的路段数目
             let size = plan.steps.count
             var planPointCounts = 0
             for i in 0..<size {
-                var transitStep = plan.steps[i] as BMKDrivingStep
+                var transitStep = plan.steps[i] as! BMKDrivingStep
                 if i == 0 {
                     var item = RouteAnnotation()
                     item.coordinate = plan.starting.location
@@ -191,7 +191,7 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
             
             // 添加途径点
             if plan.wayPoints != nil {
-                for tempNode in plan.wayPoints as [BMKPlanNode] {
+                for tempNode in plan.wayPoints as! [BMKPlanNode] {
                     var item = RouteAnnotation()
                     item.coordinate = tempNode.pt
                     item.type = 5
@@ -204,7 +204,7 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
             var tempPoints = Array(count: planPointCounts, repeatedValue: BMKMapPoint(x: 0, y: 0))
             var i = 0
             for j in 0..<size {
-                var transitStep = plan.steps[j] as BMKDrivingStep
+                var transitStep = plan.steps[j] as! BMKDrivingStep
                 for k in 0..<Int(transitStep.pointsCount) {
                     tempPoints[i].x = transitStep.points[k].x
                     tempPoints[i].y = transitStep.points[k].y

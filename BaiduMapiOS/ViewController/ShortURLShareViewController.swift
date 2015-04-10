@@ -51,7 +51,7 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
         mapView.zoomLevel = 13
         
         // 添加说明按钮
-        var customRightBarButtonItem = UIBarButtonItem(title: "说明", style: .Bordered, target: self, action: Selector("showGuide"))
+        var customRightBarButtonItem = UIBarButtonItem(title: "说明", style: .Plain, target: self, action: Selector("showGuide"))
         self.navigationItem.rightBarButtonItem = customRightBarButtonItem
         
         // 初始化搜索服务
@@ -92,7 +92,7 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
         if errorCode.value == 0 {
             if poiResult.poiInfoList.count > 0 {
                 // 获取第一个 poi 点的数据
-                var poi = poiResult.poiInfoList[0] as BMKPoiInfo
+                var poi = poiResult.poiInfoList[0] as! BMKPoiInfo
                 // 将数据保存到图标上
                 var item = BMKPointAnnotation()
                 item.coordinate = poi.pt
@@ -224,9 +224,9 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
         // 缓存没有命中，则自行构造一个，一般首次添加标注代码会运行到此处
         if annotationView == nil {
             annotationView = BMKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationID)
-            (annotationView as BMKPinAnnotationView).pinColor = UInt(BMKPinAnnotationColorRed)
+            (annotationView as! BMKPinAnnotationView).pinColor = UInt(BMKPinAnnotationColorRed)
             // 设置从天上掉下来的效果
-            (annotationView as BMKPinAnnotationView).animatesDrop = true
+            (annotationView as! BMKPinAnnotationView).animatesDrop = true
         }
         
         // 设置位置

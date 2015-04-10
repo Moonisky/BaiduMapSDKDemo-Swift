@@ -118,7 +118,7 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
         mapView.isSelectedAnnotationViewFront = true
           
         // 初始化导航栏右侧按钮“说明”
-        var customRightBarBuutonItem = UIBarButtonItem(title: "说明", style: .Bordered, target: self, action: Selector("showGuide"))
+        var customRightBarBuutonItem = UIBarButtonItem(title: "说明", style: .Plain, target: self, action: Selector("showGuide"))
         self.navigationItem.rightBarButtonItem = customRightBarBuutonItem
         
         // 初始化云检索服务
@@ -153,9 +153,9 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
         // 如果缓存没有命中，则自行构建一个标注
         if annotationView == nil {
             annotationView = BMKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationViewID)
-            (annotationView as BMKPinAnnotationView).pinColor = UInt(BMKPinAnnotationColorRed)
+            (annotationView as! BMKPinAnnotationView).pinColor = UInt(BMKPinAnnotationColorRed)
             // 设置从天上掉下来的效果
-            (annotationView as BMKPinAnnotationView).animatesDrop = true
+            (annotationView as! BMKPinAnnotationView).animatesDrop = true
         }
         
         // 设置位置
@@ -177,14 +177,14 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
         mapView.removeAnnotations(array)
         
         if error == 0 {
-            var result = poiResultList[0] as BMKCloudPOIList
+            var result = poiResultList[0] as! BMKCloudPOIList
             for i in 0..<result.POIs.count {
-                var poi = result.POIs[i] as BMKCloudPOIInfo
+                var poi = result.POIs[i] as! BMKCloudPOIInfo
                 // 自定义字段
                 if poi.customDict != nil && poi.customDict.count > 1 {
-                    var customStringField = poi.customDict.objectForKey("custom") as String
+                    var customStringField = poi.customDict.objectForKey("custom") as! String
                     NSLog("custom field output = \(customStringField)")
-                    var customDoubleField = poi.customDict.objectForKey("double") as Double
+                    var customDoubleField = poi.customDict.objectForKey("double") as! Double
                     NSLog("custom double field output = \(customDoubleField)")
                 }
                 

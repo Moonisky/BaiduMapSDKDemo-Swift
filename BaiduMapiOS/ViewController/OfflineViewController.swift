@@ -22,7 +22,7 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
         // 根据城市名获取城市信息，得到城市 ID
         var city = offlineMap.searchCity(txf_cityName.text)
         if city.count > 0 {
-            var oneCity = city[0] as BMKOLSearchRecord
+            var oneCity = city[0] as! BMKOLSearchRecord
             lbl_cityID.text = "ID:\(oneCity.cityID)"
             cityID = oneCity.cityID
         }
@@ -63,7 +63,7 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
             table_plainView.hidden = false
             // 获取各城市离线地图更新信息
             if let info = offlineMap.getAllUpdateInfo() {
-                localDownloadMapInfo = info as [BMKOLUpdateElement]
+                localDownloadMapInfo = info as! [BMKOLUpdateElement]
             }else {
                 localDownloadMapInfo = Array(count: 0, repeatedValue: BMKOLUpdateElement())
             }
@@ -96,12 +96,12 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
         // 初始化离线地图服务
         offlineMap = BMKOfflineMap()
         // 获取热门城市
-        hotCityData = offlineMap.getHotCityList() as [BMKOLSearchRecord]
+        hotCityData = offlineMap.getHotCityList() as! [BMKOLSearchRecord]
         // 获取支持离线下载城市列表
-        offlineCityData = offlineMap.getOfflineCityList() as [BMKOLSearchRecord]
+        offlineCityData = offlineMap.getOfflineCityList() as! [BMKOLSearchRecord]
         // 获取离线地图信息
         if let info = offlineMap.getAllUpdateInfo() {
-            localDownloadMapInfo = info as [BMKOLUpdateElement]
+            localDownloadMapInfo = info as! [BMKOLUpdateElement]
         }else {
             localDownloadMapInfo = Array(count: 0, repeatedValue: BMKOLUpdateElement())
         }
@@ -121,7 +121,7 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
             if let info = offlineMap.getUpdateInfo(state) {
                 updateInfo = offlineMap.getUpdateInfo(state)
                 if let info = offlineMap.getAllUpdateInfo() {
-                    localDownloadMapInfo = info as [BMKOLUpdateElement]
+                    localDownloadMapInfo = info as! [BMKOLUpdateElement]
                 }else {
                     localDownloadMapInfo = Array(count: 0, repeatedValue: BMKOLUpdateElement())
                 }
@@ -210,7 +210,7 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
     // 定义单元格样式填充数据
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "OfflineMapCityCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell?
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell?
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
         }
@@ -330,7 +330,7 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
                 var item = offlineCityData[indexPath.row] as BMKOLSearchRecord
                 // 显示子单元格
                 if item.childCities != nil && item.childCities.count > 0 {
-                    for childitem in item.childCities as [BMKOLSearchRecord] {
+                    for childitem in item.childCities as! [BMKOLSearchRecord] {
                         var tempString = "\(childitem.cityName)(\(childitem.cityID))"
                         // 转换包大小
                         var tempPackSize = getDataSizeString(childitem.size)

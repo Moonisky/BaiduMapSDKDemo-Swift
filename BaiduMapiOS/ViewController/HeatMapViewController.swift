@@ -60,7 +60,7 @@ class HeatMapViewController: UIViewController, BMKMapViewDelegate {
         mapView.setCenterCoordinate(CLLocationCoordinate2DMake(35.718, 111.581), animated: true)
         
         // 添加说明按钮
-        var customRightBarButtonItem = UIBarButtonItem(title: "说明", style: .Bordered, target: self, action: Selector("showGuide"))
+        var customRightBarButtonItem = UIBarButtonItem(title: "说明", style: .Plain, target: self, action: Selector("showGuide"))
         self.navigationItem.rightBarButtonItem = customRightBarButtonItem
         
         // 创建地图视图约束

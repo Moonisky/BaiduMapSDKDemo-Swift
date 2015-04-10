@@ -30,7 +30,7 @@ class MapControlViewController: UIViewController, BMKMapViewDelegate {
         txf_Overlook.text = "-30"
         
         // 在导航栏上添加“截图”按钮
-        var screenshotBarButton = UIBarButtonItem(title: "截图", style: UIBarButtonItemStyle.Bordered, target: self, action: Selector("screenshoot"))
+        var screenshotBarButton = UIBarButtonItem(title: "截图", style: .Plain, target: self, action: Selector("screenshoot"))
         self.navigationItem.rightBarButtonItem = screenshotBarButton
         
         // 地图界面初始化

@@ -170,15 +170,15 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
     }
     
     func mapView(mapView: BMKMapView!, viewForAnnotation annotation: BMKAnnotation!) -> BMKAnnotationView! {
-        if annotation as BusLineAnnotation? != nil {
-            return getRouteAnnotationView(mapView, viewForAnnotation: annotation as BusLineAnnotation)
+        if annotation as! BusLineAnnotation? != nil {
+            return getRouteAnnotationView(mapView, viewForAnnotation: annotation as! BusLineAnnotation)
         }
         return nil
     }
     
     func mapView(mapView: BMKMapView!, viewForOverlay overlay: BMKOverlay!) -> BMKOverlayView! {
-        if overlay as BMKPolyline? != nil {
-            var polylineView = BMKPolylineView(overlay: overlay as BMKPolyline)
+        if overlay as! BMKPolyline? != nil {
+            var polylineView = BMKPolylineView(overlay: overlay as! BMKPolyline)
             polylineView.fillColor = UIColor.cyanColor().colorWithAlphaComponent(1)
             polylineView.strokeColor = UIColor.blueColor().colorWithAlphaComponent(0.7)
             polylineView.lineWidth = 3
@@ -232,7 +232,7 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
             // 站点信息
             var size = busLineResult.busStations.count
             for i in 0..<size {
-                var station = busLineResult.busStations[i] as BMKBusStation
+                var station = busLineResult.busStations[i] as! BMKBusStation
                 item = BusLineAnnotation()
                 item.coordinate = station.location
                 item.title = station.title
@@ -243,7 +243,7 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
             // 路段信息
             var index = 0
             for i in 0..<busLineResult.busSteps.count {
-                var step = busLineResult.busSteps[i] as BMKBusStep
+                var step = busLineResult.busSteps[i] as! BMKBusStep
                 index += Int(step.pointsCount)
             }
             
@@ -251,7 +251,7 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
             var tempPoints = Array(count: index, repeatedValue: BMKMapPoint(x: 0, y: 0))
             var k = 0
             for i in 0..<busLineResult.busSteps.count {
-                var step = busLineResult.busSteps[i] as BMKBusStep
+                var step = busLineResult.busSteps[i] as! BMKBusStep
                 for j in 0..<step.pointsCount {
                     var point = BMKMapPoint(x: step.points[Int(j)].x, y: step.points[Int(j)].y)
                     tempPoints[k] = point
@@ -262,7 +262,7 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
             var polyLine = BMKPolyline(points: &tempPoints, count: UInt(index))
             mapView.addOverlay(polyLine)
             
-            var start = busLineResult.busStations[0] as BMKBusStation
+            var start = busLineResult.busStations[0] as! BMKBusStation
             mapView.setCenterCoordinate(start.location, animated: true)
         }
     }

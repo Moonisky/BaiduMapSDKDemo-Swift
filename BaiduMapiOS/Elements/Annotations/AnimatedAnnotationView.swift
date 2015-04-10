@@ -30,7 +30,7 @@ class AnimatedAnnotationView: BMKAnnotationView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setAnnotationImages(images: [UIImage]) {
+    func setImages(images: [UIImage]) {
         annotationImages = images
         updateImageView()
     }
