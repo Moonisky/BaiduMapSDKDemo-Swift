@@ -138,7 +138,7 @@
                             <outlet property="delegate" destination="yol-CR-2KL" id="u7R-YK-DeL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="百度地图SDK 2.6.0(made by 星夜暮晨)" id="9Yr-mQ-iEG"/>
+                    <navigationItem key="navigationItem" title="百度地图SDK 2.7.0(made by 星夜暮晨)" id="9Yr-mQ-iEG"/>
                     <connections>
                         <segue destination="r55-HC-xdi" kind="show" identifier="BaseMapSegue" id="f5j-1R-y9N"/>
                         <segue destination="Mv7-8N-42s" kind="show" identifier="MultiMapSegue" id="jFm-sr-2Ma"/>
