@@ -23,6 +23,7 @@
   * [自定义绘制功能](#自定义绘制功能)
   * [调启百度导航功能](#调启百度导航功能)
   * [OpenGL 绘制功能](#OpenGL 绘制功能)
+* [贡献者](#贡献者)
 
 <h2 id="版本说明">
 版本说明
@@ -214,3 +215,9 @@ POI（Point of Interest），中文可以翻译为“兴趣点”。在地理信
 <h2 id="OpenGL 绘制功能">
 OpenGL 绘制功能
 </h2>
+
+<h2 id="贡献者">
+贡献者
+</h2>
+
+感谢[@linmq](https://github.com/linmq)的贡献，对Demo的Label失误进行了修改
