@@ -77,6 +77,13 @@ class MapControlViewController: UIViewController, BMKMapViewDelegate {
         println("您长按了地图，当前经纬度:(\(coordinate.longitude),\(coordinate.latitude))，缩放级别:\(mapView.zoomLevel)，旋转角度:\(mapView.rotation)，俯视角度:\(mapView.overlooking)")
     }
     
+    // 地图区域发生变更后调用
+    func mapView(mapView: BMKMapView!, regionDidChangeAnimated animated: Bool) {
+        println("当前地图区域发生了变化(x = \(mapView.visibleMapRect.origin.x), y = \(mapView.visibleMapRect.origin.y), ")
+        println("width = \(mapView.visibleMapRect.size.width), height = \(mapView.visibleMapRect.size.height). )")
+        println("ZoomLevel = \(mapView.zoomLevel), RotateAngle = \(mapView.rotation), OverlookAngle = \(mapView.overlooking)")
+    }
+    
     
     // MARK: - UI控件动作处理
     
@@ -86,7 +93,7 @@ class MapControlViewController: UIViewController, BMKMapViewDelegate {
         if value != nil {
             switch sender.tag {
             case 0:
-                // 地图比例尺级别，在手机上当前可使用的级别为3-19级
+                // 地图比例尺级别，在手机上当前可使用的级别为3-20级
                 mapView.zoomLevel = Float(value!)
             case 1:
                 // 地图旋转角度，在手机上当前可使用的范围为－180～180度
