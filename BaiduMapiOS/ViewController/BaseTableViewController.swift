@@ -15,7 +15,7 @@ class BaseTableViewController: UITableViewController {
     
     // 设置tableView显示的行数
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfDemoName.count
+        return arrayOfDemoName.count - 1
     }
     
     // 设置Table View单元格(cell)的显示样式
