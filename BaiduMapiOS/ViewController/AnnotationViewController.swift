@@ -73,9 +73,7 @@ class AnnotationViewController: UIViewController, BMKMapViewDelegate {
     
     /// 添加图片图层覆盖物
     func addGroundOverlay() {
-        var bundlepath = NSBundle.mainBundle().resourcePath?.stringByAppendingPathComponent("mapapi.bundle")
-        var bundle = NSBundle(path: bundlepath!)!
-        var image = UIImage(contentsOfFile: bundle.pathForResource("baidumap_logo@2x", ofType: "png", inDirectory: "images")!)
+        var image = UIImage(named: "test")
     
         // 第一种
         var coordinator = CLLocationCoordinate2DMake(39.800, 116.404)

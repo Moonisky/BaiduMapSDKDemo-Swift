@@ -22,6 +22,8 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
         mapView.showsUserLocation = false  //先关闭显示的定位图层
         mapView.userTrackingMode = BMKUserTrackingModeNone  //设置定位的状态
         mapView.showsUserLocation = true //显示定位图层
+        mapView.scrollEnabled = true  // 允许用户移动地图
+        mapView.updateLocationData(userLocation)  // 更新当前位置信息，强制刷新定位图层
         btn_Start.enabled = false
         btn_Follow.enabled = true
         btn_FollowHead.enabled = true
@@ -34,14 +36,17 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
         mapView.showsUserLocation = false
         mapView.userTrackingMode = BMKUserTrackingModeFollow
         mapView.showsUserLocation = true
+        mapView.scrollEnabled = false  // 禁止用户移动地图
+        mapView.updateLocationData(userLocation)
     }
     
     @IBAction func btnact_FollowHead(sender: UIButton) {
         // 进入罗盘态
         println("进入罗盘态")
-        mapView.showsUserLocation = false
         mapView.userTrackingMode = BMKUserTrackingModeFollowWithHeading
         mapView.showsUserLocation = true
+        mapView.scrollEnabled = false
+        mapView.updateLocationData(userLocation)
     }
     
     @IBAction func btnact_Stop(sender: UIButton) {
@@ -53,12 +58,15 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
         btn_Follow.enabled = false
         btn_FollowHead.enabled = false
         btn_Stop.enabled = false
+        mapView.scrollEnabled = true
     }
 
     /// 百度地图视图
     var mapView: BMKMapView!
     /// 定位服务
     var locationService: BMKLocationService!
+    /// 当前用户位置
+    var userLocation: BMKUserLocation!
     
     // 界面加载
     override func viewDidLoad() {
@@ -105,6 +113,7 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
     func didUpdateBMKUserLocation(userLocation: BMKUserLocation!) {
         mapView.updateLocationData(userLocation)
         mapView.centerCoordinate = userLocation.location.coordinate
+        self.userLocation = userLocation
         println("目前位置：\(userLocation.location.coordinate.longitude), \(userLocation.location.coordinate.latitude)")
     }
     

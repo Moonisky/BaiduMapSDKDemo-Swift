@@ -43,6 +43,7 @@ class NavigationViewController: UIViewController, BMKMapViewDelegate {
         // 调启百度地图客户端导航
         BMKNavigation.openBaiduMapNavigation(parameter)
     }
+    
     @IBAction func webNavigation(sender: UIButton) {
         // 初始化调启导航时的参数管理类
         var parameter = BMKNaviPara()
@@ -74,6 +75,7 @@ class NavigationViewController: UIViewController, BMKMapViewDelegate {
         // 调启 web 导航
         BMKNavigation.openBaiduMapNavigation(parameter)
     }
+    
     var mapView: BMKMapView!
     
     // 界面加载
