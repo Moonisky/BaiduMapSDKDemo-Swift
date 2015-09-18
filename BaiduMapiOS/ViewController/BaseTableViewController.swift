@@ -24,7 +24,7 @@ class BaseTableViewController: UITableViewController {
         let cellIdentifier = "Cell"
         
         // 寻找tableView当中对应ID的复用单元格
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
         if cell == nil {
             // 如果不存在则新建一个对应ID的单元格
             cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
@@ -37,7 +37,7 @@ class BaseTableViewController: UITableViewController {
     // 设置Table View 单元格选中后的跳转，使用Segue跳转的方式，注意这里每个segue都设定了对应的Identifier。如果觉得麻烦的话，可以使用presentViewController，直接跳转到对应名称的view controller
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var segueName = arrayOfSceneName[indexPath.row] + "Segue"
+        let segueName = arrayOfSceneName[indexPath.row] + "Segue"
         self.performSegueWithIdentifier(segueName, sender: self)
     
     }

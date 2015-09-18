@@ -12,12 +12,12 @@ class CustomOverlay:  BMKShape {
     
     // 类方法
     class func customWithPoints(points: [BMKMapPoint], count: UInt) -> CustomOverlay{
-        var polyline = CustomOverlay(points: points, count: count)
+        let polyline = CustomOverlay(points: points, count: count)
         return polyline
     }
     
-    class func MapRectUnionWithPoints(#rect1: BMKMapRect, point: BMKMapPoint) -> BMKMapRect {
-        var rcRet: BMKMapRect = BMKMapRectMake(0, 0, 0, 0)
+    class func MapRectUnionWithPoints(rect1 rect1: BMKMapRect, point: BMKMapPoint) -> BMKMapRect {
+        var rcRet = BMKMapRectMake(0, 0, 0, 0)
         var tmp = max(rect1.origin.x + rect1.size.width, point.x)
         rcRet.origin.x = min(rect1.origin.x, point.x)
         rcRet.size.width = tmp - rcRet.origin.x

@@ -19,17 +19,17 @@ class PoiSearchViewController: UIViewController, BMKMapViewDelegate, BMKPoiSearc
     // 开始搜搜
     @IBAction func Search(sender: UIButton) {
         currentPage = 0
-        var citySearchOption = BMKCitySearchOption()
+        let citySearchOption = BMKCitySearchOption()
         citySearchOption.pageIndex = Int32(currentPage)
         citySearchOption.pageCapacity = 10
         citySearchOption.city = txf_City.text
         citySearchOption.keyword = txf_Search.text
         if poisearch.poiSearchInCity(citySearchOption) {
             btn_Next.enabled = true
-            println("城市内检索发送成功！")
+            print("城市内检索发送成功！")
         }else {
             btn_Next.enabled = false
-            println("城市内检索发送失败！")
+            print("城市内检索发送失败！")
         }
     }
     
@@ -37,17 +37,17 @@ class PoiSearchViewController: UIViewController, BMKMapViewDelegate, BMKPoiSearc
     @IBAction func NextData(sender: UIButton) {
          currentPage++
         // 城市内检索，请求成功发送返回 true，请求失败返回 false
-        var citySearchOption = BMKCitySearchOption()
+        let citySearchOption = BMKCitySearchOption()
         citySearchOption.pageIndex = Int32(currentPage)
         citySearchOption.pageCapacity = 10
         citySearchOption.city = txf_City.text
         citySearchOption.keyword = txf_Search.text
         if poisearch.poiSearchInCity(citySearchOption) {
             btn_Next.enabled = true
-            println("城市内检索发送成功！")
+            print("城市内检索发送成功！")
         }else {
             btn_Next.enabled = false
-            println("城市内检索发送失败！")
+            print("城市内检索发送失败！")
         }
     }
     
@@ -67,7 +67,7 @@ class PoiSearchViewController: UIViewController, BMKMapViewDelegate, BMKPoiSearc
         
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapView)
         
         // 界面初始化
@@ -82,10 +82,10 @@ class PoiSearchViewController: UIViewController, BMKMapViewDelegate, BMKPoiSearc
         
         // 创建地图视图约束
         var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: btn_Search, attribute: .Bottom, multiplier: 1, constant: 8))
+        constraints.append(mapView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor))
+        constraints.append(mapView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor))
+        constraints.append(mapView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor))
+        constraints.append(mapView.topAnchor.constraintEqualToAnchor(btn_Search.bottomAnchor, constant: 8))
         self.view.addConstraints(constraints)
     }
     
@@ -93,26 +93,26 @@ class PoiSearchViewController: UIViewController, BMKMapViewDelegate, BMKPoiSearc
     
     func mapView(mapView: BMKMapView!, viewForAnnotation annotation: BMKAnnotation!) -> BMKAnnotationView! {
         // 生成重用标示 ID
-        var annotationViewID = "Mark"
+        let annotationViewID = "Mark"
         
         // 检查是否有重用的缓存
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationViewID)
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationViewID) as? BMKPinAnnotationView
         
         // 缓存若没有命中，则自己构造一个，一般首次添加 annotation 代码会运行到此处
         if annotationView == nil {
             annotationView = BMKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationViewID)
-            (annotationView as! BMKPinAnnotationView).pinColor =  UInt(BMKPinAnnotationColorRed)
+            annotationView!.pinColor =  UInt(BMKPinAnnotationColorRed)
             // 设置标注从天上掉下来的效果
-            (annotationView as! BMKPinAnnotationView).animatesDrop = true
+            annotationView!.animatesDrop = true
         }
         
         // 设置位置
-        annotationView.centerOffset = CGPointMake(0, -(annotationView.frame.size.height * 0.5))
-        annotationView.annotation = annotation
+        annotationView!.centerOffset = CGPointMake(0, -(annotationView!.frame.size.height * 0.5))
+        annotationView!.annotation = annotation
         // 单击弹出泡泡，弹出泡泡的前提是 annotation 必须实现 title 属性
-        annotationView.canShowCallout = true
+        annotationView!.canShowCallout = true
         // 设置是否可以拖拽
-        annotationView.draggable = false
+        annotationView!.draggable = false
         
         return annotationView
     }
@@ -123,19 +123,19 @@ class PoiSearchViewController: UIViewController, BMKMapViewDelegate, BMKPoiSearc
     }
     
     func mapView(mapView: BMKMapView!, didAddAnnotationViews views: [AnyObject]!) {
-        println("标注添加前的方法调用")
+        print("标注添加前的方法调用")
     }
     
     // MARK: - Poi 搜索的相关方法实现
     func onGetPoiResult(searcher: BMKPoiSearch!, result poiResult: BMKPoiResult!, errorCode: BMKSearchErrorCode) {
         // 清除屏幕中所有的 annotation
-        var array = mapView.annotations
+        let array = mapView.annotations
         mapView.removeAnnotations(array)
         
-        if errorCode.value == 0 {
+        if errorCode.rawValue == 0 {
             for i in 0..<poiResult.poiInfoList.count {
-                var poi = poiResult.poiInfoList[i] as! BMKPoiInfo
-                var item = BMKPointAnnotation()
+                let poi = poiResult.poiInfoList[i] as! BMKPoiInfo
+                let item = BMKPointAnnotation()
                 item.coordinate = poi.pt
                 item.title = poi.name
                 mapView.addAnnotation(item)
@@ -144,8 +144,8 @@ class PoiSearchViewController: UIViewController, BMKMapViewDelegate, BMKPoiSearc
                     mapView.centerCoordinate = poi.pt
                 }
             }
-        }else if errorCode.value == 2 {
-            println("起始点有歧义")
+        }else if errorCode.rawValue == 2 {
+            print("起始点有歧义")
         }else {
             // 各种情况的判断……
         }

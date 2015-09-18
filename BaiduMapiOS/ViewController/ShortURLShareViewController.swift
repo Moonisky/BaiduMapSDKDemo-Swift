@@ -44,14 +44,14 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
         
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapView)
         
         // 界面初始化
         mapView.zoomLevel = 13
         
         // 添加说明按钮
-        var customRightBarButtonItem = UIBarButtonItem(title: "说明", style: .Plain, target: self, action: Selector("showGuide"))
+        let customRightBarButtonItem = UIBarButtonItem(title: "说明", style: .Plain, target: self, action: Selector("showGuide"))
         self.navigationItem.rightBarButtonItem = customRightBarButtonItem
         
         // 初始化搜索服务
@@ -61,21 +61,21 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
         
         // 创建地图视图约束
         var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: btn_sharePoiResults, attribute: .Bottom, multiplier: 1, constant: 8))
+        constraints.append(mapView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor))
+        constraints.append(mapView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor))
+        constraints.append(mapView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor))
+        constraints.append(mapView.topAnchor.constraintEqualToAnchor(btn_sharePoiResults.bottomAnchor, constant: 8))
         self.view.addConstraints(constraints)
     }
     
     // 1. 点击[poi 搜索结果分享]，首先发起 poi 搜索请求
     @IBAction func sharePoiResults(sender: UIButton) {
-        var citySearchOption = BMKCitySearchOption()
+        let citySearchOption = BMKCitySearchOption()
         citySearchOption.pageIndex = 0
         citySearchOption.pageCapacity = 10
         citySearchOption.city = "北京"
         citySearchOption.keyword = "故宫博物院"
-        var flag = poiSearch.poiSearchInCity(citySearchOption)
+        let flag = poiSearch.poiSearchInCity(citySearchOption)
         if flag {
             NSLog("城市内检索发送成功！")
         }else {
@@ -86,15 +86,15 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
     // 2.搜索发送成功后，在回调中根据 UID 发起 poi 短串搜索请求
     func onGetPoiResult(searcher: BMKPoiSearch!, result poiResult: BMKPoiResult!, errorCode: BMKSearchErrorCode) {
         // 清除屏幕中所有的标注
-        var array = mapView.annotations
+        let array = mapView.annotations
         mapView.removeAnnotations(array)
         
-        if errorCode.value == 0 {
+        if errorCode.rawValue == 0 {
             if poiResult.poiInfoList.count > 0 {
                 // 获取第一个 poi 点的数据
-                var poi = poiResult.poiInfoList[0] as! BMKPoiInfo
+                let poi = poiResult.poiInfoList[0] as! BMKPoiInfo
                 // 将数据保存到图标上
-                var item = BMKPointAnnotation()
+                let item = BMKPointAnnotation()
                 item.coordinate = poi.pt
                 item.title = poi.name
                 mapView.addAnnotation(item)
@@ -106,9 +106,9 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
                 // 地址
                 address = poi.address
                 // 发起短串搜索获取 poi 分享 URL
-                var detailShareURLSearchOption = BMKPoiDetailShareURLOption()
+                let detailShareURLSearchOption = BMKPoiDetailShareURLOption()
                 detailShareURLSearchOption.uid = poi.uid
-                var flag = shareURLSearch.requestPoiDetailShareURL(detailShareURLSearchOption)
+                let flag = shareURLSearch.requestPoiDetailShareURL(detailShareURLSearchOption)
                 if flag {
                     NSLog("详情 URL 检索发送成功！")
                 }else {
@@ -123,9 +123,9 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
         // 坐标
         point = CLLocationCoordinate2DMake(116.403981, 39.915101)
         
-        var reverseGeocodeSearchOption = BMKReverseGeoCodeOption()
+        let reverseGeocodeSearchOption = BMKReverseGeoCodeOption()
         reverseGeocodeSearchOption.reverseGeoPoint = point
-        var flag = geoCodeSearch.reverseGeoCode(reverseGeocodeSearchOption)
+        let flag = geoCodeSearch.reverseGeoCode(reverseGeocodeSearchOption)
         if flag {
             NSLog("反向地理编码检索发送成功！")
         }else {
@@ -140,8 +140,8 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
         array = mapView.overlays
         mapView.removeOverlays(array)
         
-        if error.value == 0 {
-            var item = BMKPointAnnotation()
+        if error.rawValue == 0 {
+            let item = BMKPointAnnotation()
             item.coordinate = result.location
             item.title = result.address
             mapView.addAnnotation(item)
@@ -153,11 +153,11 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
             // 地址
             address = result.address
             // 发起短串搜索功能获取反向地理位置分享 URL
-            var option = BMKLocationShareURLOption()
+            let option = BMKLocationShareURLOption()
             option.snippet = address
             option.name = geoName
             option.location = point
-            var flag = shareURLSearch.requestLocationShareURL(option)
+            let flag = shareURLSearch.requestLocationShareURL(option)
             if flag {
                 NSLog("反向地理位置 URL 检索发送成功！")
             }else {
@@ -169,23 +169,23 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
     // 3.返回短串分享 URL
     func onGetPoiDetailShareURLResult(searcher: BMKShareURLSearch!, result: BMKShareURLResult!, errorCode error: BMKSearchErrorCode) {
         shortURL = result.url
-        if error.value == 0 {
+        if error.rawValue == 0 {
             showMessage = "这里是\(geoName)\r\n\(address)\r\n\(shortURL)"
-            var alertView = UIAlertController(title: "短串分享", message:  showMessage, preferredStyle: .Alert)
-            var shareAction = UIAlertAction(title: "分享", style: .Default, handler: { Void in
+            let alertView = UIAlertController(title: "短串分享", message:  showMessage, preferredStyle: .Alert)
+            let shareAction = UIAlertAction(title: "分享", style: .Default, handler: { Void in
                 if MFMessageComposeViewController.canSendText() {
-                    var message = MFMessageComposeViewController()
+                    let message = MFMessageComposeViewController()
                     message.messageComposeDelegate = self
                     message.body = self.showMessage
                     self.presentViewController(message, animated: true, completion: nil)
                 }else {
-                    var alertView = UIAlertController(title: "当前设备暂时没有办法发送短信", message: nil, preferredStyle: .Alert)
-                    var okAction = UIAlertAction(title: "确定", style: .Default, handler: nil)
+                    let alertView = UIAlertController(title: "当前设备暂时没有办法发送短信", message: nil, preferredStyle: .Alert)
+                    let okAction = UIAlertAction(title: "确定", style: .Default, handler: nil)
                     alertView.addAction(okAction)
                     self.presentViewController(alertView, animated: true, completion: nil)
                 }
             })
-            var cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
             alertView.addAction(shareAction)
             alertView.addAction(cancelAction)
             self.presentViewController(alertView, animated: true, completion: nil)
@@ -194,11 +194,11 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
     
     func onGetLocationShareURLResult(searcher: BMKShareURLSearch!, result: BMKShareURLResult!, errorCode error: BMKSearchErrorCode) {
         shortURL = result.url
-        if error.value == 0 {
+        if error.rawValue == 0 {
             showMessage = "这里是\(geoName)\r\n\(address)\r\n\(shortURL)"
-            var alertView = UIAlertController(title: "短串分享", message:  showMessage, preferredStyle: .Alert)
-            var shareAction = UIAlertAction(title: "分享", style: .Default, handler: nil)
-            var cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+            let alertView = UIAlertController(title: "短串分享", message:  showMessage, preferredStyle: .Alert)
+            let shareAction = UIAlertAction(title: "分享", style: .Default, handler: nil)
+            let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
             alertView.addAction(shareAction)
             alertView.addAction(cancelAction)
             self.presentViewController(alertView, animated: true, completion: nil)
@@ -207,8 +207,8 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
     
     // 显示说明
     func showGuide() {
-        var alertView = UIAlertController(title: "短串分享－说明", message: "短串分享是将POI点、反Geo点，生成短链接串，此链接可通过短信等形式分享给好友，好友在终端设备点击此链接可快速打开Web地图、百度地图客户端进行信息展示", preferredStyle: .Alert)
-        var okAction = UIAlertAction(title: "确定", style: .Default, handler: nil)
+        let alertView = UIAlertController(title: "短串分享－说明", message: "短串分享是将POI点、反Geo点，生成短链接串，此链接可通过短信等形式分享给好友，好友在终端设备点击此链接可快速打开Web地图、百度地图客户端进行信息展示", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "确定", style: .Default, handler: nil)
         alertView.addAction(okAction)
         self.presentViewController(alertView, animated: true, completion: nil)
     }
@@ -216,7 +216,7 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
     // MARK: - 覆盖物协议设置
     func mapView(mapView: BMKMapView!, viewForAnnotation annotation: BMKAnnotation!) -> BMKAnnotationView! {
         // 生成重用的标识 ID
-        var annotationID = "testMark"
+        let annotationID = "testMark"
         
         // 检查是否有重用的缓存
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationID)
@@ -241,8 +241,8 @@ class ShortURLShareViewController: UIViewController, BMKMapViewDelegate, BMKShar
     }
     
     // MARK: - Message 相关协议实现
-    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
-        switch result.value {
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        switch result.rawValue {
         case 0:
             // 用户自己取消，不用提醒
             NSLog("用户取消发送")

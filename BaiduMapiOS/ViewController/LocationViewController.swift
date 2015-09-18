@@ -17,7 +17,7 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
     
     @IBAction func btnact_Start(sender: UIButton) {
         // 开启定位
-        println("进入普通定位态")
+        print("进入普通定位态")
         locationService.startUserLocationService()
         mapView.showsUserLocation = false  //先关闭显示的定位图层
         mapView.userTrackingMode = BMKUserTrackingModeNone  //设置定位的状态
@@ -32,7 +32,7 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
     
     @IBAction func btnact_Follow(sender: UIButton) {
         // 进入跟随态
-        println("进入跟随状态")
+        print("进入跟随状态")
         mapView.showsUserLocation = false
         mapView.userTrackingMode = BMKUserTrackingModeFollow
         mapView.showsUserLocation = true
@@ -42,7 +42,7 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
     
     @IBAction func btnact_FollowHead(sender: UIButton) {
         // 进入罗盘态
-        println("进入罗盘态")
+        print("进入罗盘态")
         mapView.userTrackingMode = BMKUserTrackingModeFollowWithHeading
         mapView.showsUserLocation = true
         mapView.scrollEnabled = false
@@ -51,7 +51,7 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
     
     @IBAction func btnact_Stop(sender: UIButton) {
         // 关闭定位
-        println("关闭定位状态")
+        print("关闭定位状态")
         locationService.stopUserLocationService()
         mapView.showsUserLocation = false
         btn_Start.enabled = true
@@ -77,7 +77,7 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
         
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
          self.view.addSubview(mapView)
         
         btn_Follow.enabled = false
@@ -95,10 +95,10 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
 
         // 创建地图视图约束
         var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: btn_Start, attribute: .Bottom, multiplier: 1, constant: 8))
+        constraints.append(mapView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor))
+        constraints.append(mapView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor))
+        constraints.append(mapView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor))
+        constraints.append(mapView.topAnchor.constraintEqualToAnchor(btn_Start.bottomAnchor, constant: 8))
         self.view.addConstraints(constraints)
     }
     
@@ -106,7 +106,7 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
     
     // 在地图将要启动定位时，会调用此函数
     func willStartLocatingUser() {
-        println("启动定位……")
+        print("启动定位……")
     }
     
     // 用户位置更新后，会调用此函数
@@ -114,23 +114,23 @@ class LocationViewController: UIViewController, BMKMapViewDelegate, BMKLocationS
         mapView.updateLocationData(userLocation)
         mapView.centerCoordinate = userLocation.location.coordinate
         self.userLocation = userLocation
-        println("目前位置：\(userLocation.location.coordinate.longitude), \(userLocation.location.coordinate.latitude)")
+        print("目前位置：\(userLocation.location.coordinate.longitude), \(userLocation.location.coordinate.latitude)")
     }
     
     // 用户方向更新后，会调用此函数
     func didUpdateUserHeading(userLocation: BMKUserLocation!) {
         mapView.updateLocationData(userLocation)
-        println("目前朝向：\(userLocation.heading)")
+        print("目前朝向：\(userLocation.heading)")
     }
     
     // 在地图将要停止定位时，会调用此函数
     func didStopLocatingUser() {
-        println("关闭定位")
+        print("关闭定位")
     }
     
     // 定位失败的话，会调用此函数
     func didFailToLocateUserWithError(error: NSError!) {
-        println("定位失败！")
+        print("定位失败！")
         btn_Start.enabled = true
         btn_Follow.enabled = false
         btn_FollowHead.enabled = false

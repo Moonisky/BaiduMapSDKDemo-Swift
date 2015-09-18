@@ -35,14 +35,14 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
     
     // 发起本地云检索
     @IBAction func localCloudSearch(sender: UIButton) {
-        var cloudLocalSearch = BMKCloudLocalSearchInfo()
+        let cloudLocalSearch = BMKCloudLocalSearchInfo()
         cloudLocalSearch.ak = "B266f735e43ab207ec152deff44fec8b"
         cloudLocalSearch.geoTableId = 31869
         cloudLocalSearch.pageIndex = 0
         cloudLocalSearch.pageSize = 10
         cloudLocalSearch.region = "北京市"
         cloudLocalSearch.keyword = "天安门"
-        var flag = cloudSearch.localSearchWithSearchInfo(cloudLocalSearch)
+        let flag = cloudSearch.localSearchWithSearchInfo(cloudLocalSearch)
         if flag {
             NSLog("本地云检索发送成功！")
         }else {
@@ -52,7 +52,7 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
     
     // 发起周边云检索
     @IBAction func nearbySearch(sender: UIButton) {
-        var cloudNearbySearch = BMKCloudNearbySearchInfo()
+        let cloudNearbySearch = BMKCloudNearbySearchInfo()
         cloudNearbySearch.ak = "B266f735e43ab207ec152deff44fec8b"
         cloudNearbySearch.geoTableId = 31869
         cloudNearbySearch.pageIndex = 0
@@ -60,7 +60,7 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
         cloudNearbySearch.location = "116.403402,39.915067"
         cloudNearbySearch.radius = 5
         cloudNearbySearch.keyword = "天安门"
-        var flag = cloudSearch.nearbySearchWithSearchInfo(cloudNearbySearch)
+        let flag = cloudSearch.nearbySearchWithSearchInfo(cloudNearbySearch)
         if flag {
             NSLog("周边云检索发送成功！")
         }else {
@@ -70,14 +70,14 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
     
     // 发起矩形云检索
     @IBAction func boundSearch(sender: UIButton) {
-        var cloudBoundSearch = BMKCloudBoundSearchInfo()
+        let cloudBoundSearch = BMKCloudBoundSearchInfo()
         cloudBoundSearch.ak = "B266f735e43ab207ec152deff44fec8b"
         cloudBoundSearch.geoTableId = 31869
         cloudBoundSearch.pageIndex = 0
         cloudBoundSearch.pageSize = 10
         cloudBoundSearch.bounds = "116.30,36.20;118.30,40.20"
         cloudBoundSearch.keyword = "天安门"
-        var flag = cloudSearch.boundSearchWithSearchInfo(cloudBoundSearch)
+        let flag = cloudSearch.boundSearchWithSearchInfo(cloudBoundSearch)
         if flag {
             NSLog("矩形云检索发送成功！")
         }else {
@@ -87,11 +87,11 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
     
     // 发起详情云检索
     @IBAction func DetailSearch(sender: UIButton) {
-        var cloudDetailSearch = BMKCloudDetailSearchInfo()
+        let cloudDetailSearch = BMKCloudDetailSearchInfo()
         cloudDetailSearch.ak = "B266f735e43ab207ec152deff44fec8b"
         cloudDetailSearch.geoTableId = 31869
         cloudDetailSearch.uid = "19150264"
-        var flag = cloudSearch.detailSearchWithSearchInfo(cloudDetailSearch)
+        let flag = cloudSearch.detailSearchWithSearchInfo(cloudDetailSearch)
         if flag {
             NSLog("详情云检索发送成功！")
         }else {
@@ -112,13 +112,13 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
         
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapView)
         mapView.zoomLevel = 13
         mapView.isSelectedAnnotationViewFront = true
           
         // 初始化导航栏右侧按钮“说明”
-        var customRightBarBuutonItem = UIBarButtonItem(title: "说明", style: .Plain, target: self, action: Selector("showGuide"))
+        let customRightBarBuutonItem = UIBarButtonItem(title: "说明", style: .Plain, target: self, action: Selector("showGuide"))
         self.navigationItem.rightBarButtonItem = customRightBarBuutonItem
         
         // 初始化云检索服务
@@ -126,17 +126,17 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
         
         // 创建地图视图约束
         var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: btn_localCloudSearch, attribute: .Bottom, multiplier: 1, constant: 8))
+        constraints.append(mapView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor))
+        constraints.append(mapView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor))
+        constraints.append(mapView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor))
+        constraints.append(mapView.topAnchor.constraintEqualToAnchor(btn_localCloudSearch.bottomAnchor, constant: 8))
         self.view.addConstraints(constraints)
     }
     
     // 说明按钮
     func showGuide() {
-        var alertView = UIAlertController(title: "LBS.云检索－说明", message: "本示例使用了测试ak,开发者若需使用自有LBS数据,请留意代码中相关注释", preferredStyle: .Alert)
-        var okAction = UIAlertAction(title: "确定", style: .Default, handler: nil)
+        let alertView = UIAlertController(title: "LBS.云检索－说明", message: "本示例使用了测试ak,开发者若需使用自有LBS数据,请留意代码中相关注释", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "确定", style: .Default, handler: nil)
         alertView.addAction(okAction)
         self.presentViewController(alertView, animated: true, completion: nil)
     }
@@ -145,7 +145,7 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
     
     func mapView(mapView: BMKMapView!, viewForAnnotation annotation: BMKAnnotation!) -> BMKAnnotationView! {
         // 生成重用标识 ID
-        var annotationViewID = "'xidanMark"
+        let annotationViewID = "'xidanMark"
         
         // 检查是否有重用的缓存
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationViewID)
@@ -173,23 +173,23 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
     
     func onGetCloudPoiResult(poiResultList: [AnyObject]!, searchType type: Int32, errorCode error: Int32) {
         // 清除屏幕中所有的标注
-        var array = mapView.annotations
+        let array = mapView.annotations
         mapView.removeAnnotations(array)
         
         if error == 0 {
-            var result = poiResultList[0] as! BMKCloudPOIList
+            let result = poiResultList[0] as! BMKCloudPOIList
             for i in 0..<result.POIs.count {
-                var poi = result.POIs[i] as! BMKCloudPOIInfo
+                let poi = result.POIs[i] as! BMKCloudPOIInfo
                 // 自定义字段
                 if poi.customDict != nil && poi.customDict.count > 1 {
-                    var customStringField = poi.customDict.objectForKey("custom") as! String
+                    let customStringField = poi.customDict.objectForKey("custom") as! String
                     NSLog("custom field output = \(customStringField)")
-                    var customDoubleField = poi.customDict.objectForKey("double") as! Double
+                    let customDoubleField = poi.customDict.objectForKey("double") as! Double
                     NSLog("custom double field output = \(customDoubleField)")
                 }
                 
-                var item = BMKPointAnnotation()
-                var point = CLLocationCoordinate2DMake(Double(poi.longitude), Double(poi.latitude))
+                let item = BMKPointAnnotation()
+                let point = CLLocationCoordinate2DMake(Double(poi.longitude), Double(poi.latitude))
                 item.coordinate = point
                 item.title = poi.title
                 mapView.addAnnotation(item)
@@ -205,13 +205,13 @@ class CloudSearchViewController: UIViewController, BMKMapViewDelegate, BMKCloudS
     
     func onGetCloudPoiDetailResult(poiDetailResult: BMKCloudPOIInfo!, searchType type: Int32, errorCode error: Int32) {
         // 清除屏幕中所有的标注
-        var array = mapView.annotations
+        let array = mapView.annotations
         mapView.removeAnnotations(array)
         
         if error == 0 {
-            var poi = poiDetailResult
-            var item = BMKPointAnnotation()
-            var point = CLLocationCoordinate2DMake(Double(poi.longitude), Double(poi.latitude))
+            let poi = poiDetailResult
+            let item = BMKPointAnnotation()
+            let point = CLLocationCoordinate2DMake(Double(poi.longitude), Double(poi.latitude))
             item.coordinate = point
             item.title = poi.title
             mapView.addAnnotation(item)

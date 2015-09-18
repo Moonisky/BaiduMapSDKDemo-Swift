@@ -23,14 +23,14 @@ class NavigationViewController: UIViewController, BMKMapViewDelegate {
     // 调启百度地图 APP 导航
     @IBAction func appNavigation(sender: UIButton) {
         // 初始化调启导航的参数管理类
-        var parameter = BMKNaviPara()
+        let parameter = BMKNaviPara()
         // 指定导航类型
         parameter.naviType = BMK_NAVI_TYPE_NATIVE
         
         // 初始化终点节点
-        var end = BMKPlanNode()
+        let end = BMKPlanNode()
         // 指定终点经纬度
-        var coordinate = CLLocationCoordinate2DMake((txf_endLatitude.text as NSString).doubleValue, (txf_endLongitude.text as NSString).doubleValue)
+        let coordinate = CLLocationCoordinate2DMake(Double(txf_endLatitude.text!)!, Double(txf_endLongitude.text!)!)
         end.pt = coordinate
         // 指定终点名称
         end.name = txf_endName.text
@@ -46,14 +46,14 @@ class NavigationViewController: UIViewController, BMKMapViewDelegate {
     
     @IBAction func webNavigation(sender: UIButton) {
         // 初始化调启导航时的参数管理类
-        var parameter = BMKNaviPara()
+        let parameter = BMKNaviPara()
         // 指定导航类型
         parameter.naviType = BMK_NAVI_TYPE_WEB
         
         // 初始化起点节点
-        var start = BMKPlanNode()
+        let start = BMKPlanNode()
         // 指定起点经纬度
-        var coordinate = CLLocationCoordinate2DMake((txf_startLatitude.text as NSString).doubleValue, (txf_startLongitude.text as NSString).doubleValue)
+        var coordinate = CLLocationCoordinate2DMake(Double(txf_startLatitude.text!)!, Double(txf_startLongitude.text!)!)
         start.pt = coordinate
         // 指定起点名称
         start.name = txf_startName.text
@@ -61,9 +61,9 @@ class NavigationViewController: UIViewController, BMKMapViewDelegate {
         parameter.startPoint = start
         
         // 初始化终点节点
-        var end = BMKPlanNode()
+        let end = BMKPlanNode()
         // 指定终点经纬度
-        coordinate = CLLocationCoordinate2DMake((txf_endLatitude2.text as NSString).doubleValue, (txf_endLongitude2.text as NSString).doubleValue)
+        coordinate = CLLocationCoordinate2DMake(Double(txf_endLatitude2.text!)!, Double(txf_endLongitude2.text!)!)
         end.pt = coordinate
         // 指定终点名称
         end.name = txf_endName2.text
@@ -87,13 +87,13 @@ class NavigationViewController: UIViewController, BMKMapViewDelegate {
         self.title = arrayOfDemoName[16]
         
         // 初始化导航栏右侧按钮“说明”
-        var customRightBarButtonItem = UIBarButtonItem(title: "说明", style: .Plain, target: self, action: Selector("showGuide"))
+        let customRightBarButtonItem = UIBarButtonItem(title: "说明", style: .Plain, target: self, action: Selector("showGuide"))
         self.navigationItem.rightBarButtonItem = customRightBarButtonItem
     }
     
     func showGuide() {
-        var alertView = UIAlertController(title: "调启导航－说明", message: "本示例为调启两种导航（客户端导航和Web导航）的基本使用方法。\n1）确定起终点时有两种方法：经纬度和名称，两者都提供时优先用经纬度，无经纬度时用名称。\n2）百度地图客户端导航默认以当前位置作为起点进行导航，所以只需定义终点即可。", preferredStyle: .Alert)
-        var okAction = UIAlertAction(title: "确定", style: .Default, handler: nil)
+        let alertView = UIAlertController(title: "调启导航－说明", message: "本示例为调启两种导航（客户端导航和Web导航）的基本使用方法。\n1）确定起终点时有两种方法：经纬度和名称，两者都提供时优先用经纬度，无经纬度时用名称。\n2）百度地图客户端导航默认以当前位置作为起点进行导航，所以只需定义终点即可。", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "确定", style: .Default, handler: nil)
         alertView.addAction(okAction)
         self.presentViewController(alertView, animated: true, completion: nil)
     }

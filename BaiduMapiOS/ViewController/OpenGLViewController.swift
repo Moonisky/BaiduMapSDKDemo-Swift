@@ -56,16 +56,16 @@ class OpenGLViewController: UIViewController, BMKMapViewDelegate, BMKCloudSearch
     }
     
     func GLRender(status: BMKMapStatus) {
-        var centerPoint = BMKMapPointForCoordinate(status.targetGeoPt)
+        let centerPoint = BMKMapPointForCoordinate(status.targetGeoPt)
         let components = CGColorGetComponents(UIColor.redColor().CGColor)
-        var red = components[0]
-        var green = components[1]
-        var blue = components[2]
-        var alpha = components[3]
+        let red = components[0]
+        let green = components[1]
+        let blue = components[2]
+        let alpha = components[3]
         Point = [GLPoint]()
         // 坐标系圆点为地图中心点，此处转换坐标为相对坐标
         for i in 0...3 {
-            var point = BMKMapPointForCoordinate(coordinate[i])
+            let point = BMKMapPointForCoordinate(coordinate[i])
             var glPoint = GLPoint()
             glPoint.x = GLfloat(point.x - centerPoint.x)
             glPoint.y = GLfloat(-point.y + centerPoint.y)

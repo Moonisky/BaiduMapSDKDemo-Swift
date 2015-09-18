@@ -18,15 +18,15 @@ class OfflineMapViewController: UIViewController, BMKMapViewDelegate {
         super.viewDidLoad()
         
         // 初始化右边的更新按钮
-        var customRightBarButtonItem = UIBarButtonItem(title: "更新", style: .Plain, target: self, action: Selector("update"))
+        let customRightBarButtonItem = UIBarButtonItem(title: "更新", style: .Plain, target: self, action: Selector("update"))
         self.navigationItem.rightBarButtonItem = customRightBarButtonItem
         
         // 显示当前某地的离线地图
         mapView = BMKMapView(frame: view.frame)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapView)
         
-        var localMapInfo = offlineServiceOfMapview.getUpdateInfo(cityID)
+        let localMapInfo = offlineServiceOfMapview.getUpdateInfo(cityID)
         mapView.setCenterCoordinate(localMapInfo.pt, animated: true)
     }
     

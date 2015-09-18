@@ -27,43 +27,44 @@ class CustomOverlayViewController: UIViewController, BMKMapViewDelegate {
         // 界面初始化
         
         // FIXME: CustomOverlay 遵循 BMKOverlay 协议会出错，待解决……
-        var coordinator1 = CLLocationCoordinate2DMake(39.915, 116.404)
-        var point1 = BMKMapPointForCoordinate(coordinator1)
-        var coordinator2 = CLLocationCoordinate2DMake(40.015, 116.404)
-        var point2 = BMKMapPointForCoordinate(coordinator2)
-        var points = [point1, point2]
-        var custom = CustomOverlay(points: points, count: 2)
+        let coordinator1 = CLLocationCoordinate2DMake(39.915, 116.404)
+        //let point1 = BMKMapPointForCoordinate(coordinator1)
+        //let coordinator2 = CLLocationCoordinate2DMake(40.015, 116.404)
+        //let point2 = BMKMapPointForCoordinate(coordinator2)
+        //let points = [point1, point2]
+        //var custom = CustomOverlay(points: points, count: 2)
         mapView.addOverlay(drawSector(WithStartPoint: coordinator1, radius: 5000, startDegree: 0, endDegree: 90))
     }
     
     func drawSector(WithStartPoint point: CLLocationCoordinate2D, radius: CLLocationDistance, startDegree: CLLocationDegrees, endDegree: CLLocationDegrees) -> BMKPolygon {
         var points = [BMKMapPointForCoordinate(point)]
-        var step = (endDegree - startDegree) / 10
+        let step = (endDegree - startDegree) / 10
         for var i = startDegree; i < endDegree + 0.001; i += step {
             points.append(pointMakeWith(StartPoint: point, distance: radius, direction: i))
         }
-        var polygon = BMKPolygon(points: &points, count: UInt(points.count))
+        let polygon = BMKPolygon(points: &points, count: UInt(points.count))
         
         return polygon
     }
     
     func pointMakeWith(StartPoint point: CLLocationCoordinate2D, distance: CLLocationDistance, direction: CLLocationDirection) -> BMKMapPoint {
-        var x = distance * cos(direction * M_PI / 180)
-        var y = distance * sin(direction * M_PI / 180)
-        var startPoint = BMKMapPointForCoordinate(point)
+        let x = distance * cos(direction * M_PI / 180)
+        let y = distance * sin(direction * M_PI / 180)
+        let startPoint = BMKMapPointForCoordinate(point)
         return BMKMapPointMake(startPoint.x + x, startPoint.y + y)
     }
     
     func mapView(mapView: BMKMapView!, viewForOverlay overlay: BMKOverlay!) -> BMKOverlayView! {
         
-        if (overlay as? BMKPolygon) != nil {
-            var polygonView = BMKPolygonView(overlay: overlay)
+        if let polygon = overlay as? BMKPolygon {
+            let polygonView = BMKPolygonView(overlay: polygon)
             polygonView.strokeColor = UIColor.purpleColor().colorWithAlphaComponent(1)
             polygonView.fillColor = UIColor.cyanColor().colorWithAlphaComponent(0.2)
             polygonView.lineWidth = 2
             
             return polygonView
         }
+        
         return nil
     }
     

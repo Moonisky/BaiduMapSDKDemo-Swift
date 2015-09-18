@@ -18,30 +18,30 @@ class GeocodeViewController: UIViewController, BMKMapViewDelegate, BMKGeoCodeSea
     
     @IBAction func geocode(sender: UIButton) {
         isGeoSearch = true
-        var geocodeSearchOption = BMKGeoCodeSearchOption()
+        let geocodeSearchOption = BMKGeoCodeSearchOption()
         geocodeSearchOption.city = txf_City.text
         geocodeSearchOption.address = txf_Address.text
-        var flag = geocodeSearch.geoCode(geocodeSearchOption)
+        let flag = geocodeSearch.geoCode(geocodeSearchOption)
         if flag {
-            println("geo 检索发送成功！")
+            print("geo 检索发送成功！")
         }else {
-            println("geo 检索发送失败！")
+            print("geo 检索发送失败！")
         }
     }
     
     @IBAction func ungeocode(sender: UIButton) {
         isGeoSearch = false
         var point = CLLocationCoordinate2DMake(0, 0)
-        if txf_Latitude.text != nil && txf_Longtitude.text != nil {
-            point = CLLocationCoordinate2DMake(CLLocationDegrees((txf_Longtitude.text as NSString).floatValue), CLLocationDegrees((txf_Latitude.text as NSString).floatValue))
+        if let latitude = txf_Latitude.text, let longtitude =  txf_Longtitude.text {
+            point = CLLocationCoordinate2DMake(CLLocationDegrees(latitude)!, CLLocationDegrees(longtitude)!)
         }
-        var unGeocodeSearchOption = BMKReverseGeoCodeOption()
+        let unGeocodeSearchOption = BMKReverseGeoCodeOption()
         unGeocodeSearchOption.reverseGeoPoint = point
-        var flag = geocodeSearch.reverseGeoCode(unGeocodeSearchOption)
+        let flag = geocodeSearch.reverseGeoCode(unGeocodeSearchOption)
         if flag {
-            println("反 geo 检索发送成功")
+            print("反 geo 检索发送成功")
         }else {
-            println("反 geo 检索发送失败")
+            print("反 geo 检索发送失败")
         }
     }
     
@@ -61,7 +61,7 @@ class GeocodeViewController: UIViewController, BMKMapViewDelegate, BMKGeoCodeSea
         
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapView)
         
         // 界面初始化
@@ -76,17 +76,17 @@ class GeocodeViewController: UIViewController, BMKMapViewDelegate, BMKGeoCodeSea
         
         // 创建地图视图约束
         var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: txf_Latitude, attribute: .Bottom, multiplier: 1, constant: 8))
+        constraints.append(mapView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor))
+        constraints.append(mapView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor))
+        constraints.append(mapView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor))
+        constraints.append(mapView.topAnchor.constraintEqualToAnchor(txf_Latitude.bottomAnchor, constant: 8))
         self.view.addConstraints(constraints)
     }
     
     // MARK: - 覆盖物协议设置
     
     func mapView(mapView: BMKMapView!, viewForAnnotation annotation: BMKAnnotation!) -> BMKAnnotationView! {
-        var annotationViewID = "annotationViewID"
+        let annotationViewID = "annotationViewID"
         // 根据指定标识查找一个可被复用的标注 View，一般在 delegate 中使用，用此函数来代替新申请一个 View
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationViewID)
         
@@ -114,17 +114,17 @@ class GeocodeViewController: UIViewController, BMKMapViewDelegate, BMKGeoCodeSea
         mapView.removeAnnotations(array)
         array = mapView.overlays
         mapView.removeOverlays(array)
-        if error.value == 0 {
-            var item = BMKPointAnnotation()
+        if error.rawValue == 0 {
+            let item = BMKPointAnnotation()
             item.coordinate = result.location
             item.title = result.address
             mapView.addAnnotation(item)
             mapView.centerCoordinate = result.location
-            var title = "正向地理编码"
-            var showMessage = "经度:\(item.coordinate.latitude)，纬度:\(item.coordinate.longitude)"
+            let title = "正向地理编码"
+            let showMessage = "经度:\(item.coordinate.latitude)，纬度:\(item.coordinate.longitude)"
             
-            var alertView = UIAlertController(title: title, message: showMessage, preferredStyle: .Alert)
-            var okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            let alertView = UIAlertController(title: title, message: showMessage, preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alertView.addAction(okAction)
             self.presentViewController(alertView, animated: true, completion: nil)
         }
@@ -135,18 +135,18 @@ class GeocodeViewController: UIViewController, BMKMapViewDelegate, BMKGeoCodeSea
         mapView.removeAnnotations(array)
         array = mapView.overlays
         mapView.removeOverlays(array)
-        if error.value == 0 {
-            var item = BMKPointAnnotation()
+        if error.rawValue == 0 {
+            let item = BMKPointAnnotation()
             item.coordinate = result.location
             item.title = result.address
             mapView.addAnnotation(item)
             mapView.centerCoordinate = result.location
             
-            var title = "反向地理编码"
-            var showMessage = "\(item.title)"
+            let title = "反向地理编码"
+            let showMessage = "\(item.title)"
             
-            var alertView = UIAlertController(title: title, message: showMessage, preferredStyle: .Alert)
-            var okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            let alertView = UIAlertController(title: title, message: showMessage, preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alertView.addAction(okAction)
             self.presentViewController(alertView, animated: true, completion: nil)
         }

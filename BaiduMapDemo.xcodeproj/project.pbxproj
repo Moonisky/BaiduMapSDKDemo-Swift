@@ -94,7 +94,6 @@
 		73C923AC1A8FA30C0065A546 /* BaiduMapiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiduMapiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73C923B01A8FA30C0065A546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73C923B11A8FA30C0065A546 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		73C923B41A8FA30C0065A546 /* BaiduMapTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BaiduMapTest.xcdatamodel; sourceTree = "<group>"; };
 		73C923B91A8FA30C0065A546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		73C923BB1A8FA30C0065A546 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Media/Images.xcassets; sourceTree = "<group>"; };
 		73C923BE1A8FA30C0065A546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -160,14 +159,6 @@
 			);
 			name = Storyboard;
 			path = Interface;
-			sourceTree = "<group>";
-		};
-		7309A5741A92EF590084974E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				73C923B31A8FA30C0065A546 /* BaiduMapTest.xcdatamodeld */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		7309A5751A92EF650084974E /* View Controller */ = {
@@ -275,7 +266,6 @@
 				735556011AC10E4F0075CB38 /* Media */,
 				73B90C741AA9A8EB0041BE28 /* Elements */,
 				7309A5751A92EF650084974E /* View Controller */,
-				7309A5741A92EF590084974E /* Model */,
 				7309A5731A92EF260084974E /* Storyboard */,
 				73C923AF1A8FA30C0065A546 /* Supporting Files */,
 			);
@@ -331,7 +321,9 @@
 		73C923A41A8FA30C0065A546 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "益行人-星夜暮晨";
 				TargetAttributes = {
 					73C923AB1A8FA30C0065A546 = {
@@ -466,6 +458,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -533,13 +526,14 @@
 					"$(PROJECT_DIR)/Resources/BaiduMapSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BaiduMapiOS/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "-1-xing.com.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BaiduMapiOS/Supporting Files/BaiduMapTest-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -557,13 +551,14 @@
 					"$(PROJECT_DIR)/Resources/BaiduMapSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BaiduMapiOS/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "-1-xing.com.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BaiduMapiOS/Supporting Files/BaiduMapTest-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -592,19 +587,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		73C923B31A8FA30C0065A546 /* BaiduMapTest.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				73C923B41A8FA30C0065A546 /* BaiduMapTest.xcdatamodel */,
-			);
-			currentVersion = 73C923B41A8FA30C0065A546 /* BaiduMapTest.xcdatamodel */;
-			path = BaiduMapTest.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 73C923A41A8FA30C0065A546 /* Project object */;
 }

@@ -31,19 +31,19 @@ class BaseMapViewController: UIViewController, BMKMapViewDelegate, UIGestureReco
     // 地图初始化完毕后会调用此接口
     func mapViewDidFinishLoading(mapView: BMKMapView!) {
         // 弹出提示框，可以换用UIAlertView，但是不推荐
-        var alertController = UIAlertController(title: "", message: "BMKMapView控件初始化完成", preferredStyle: UIAlertControllerStyle.Alert)
-        let okAction = UIAlertAction(title: "知道了", style: UIAlertActionStyle.Default, handler: nil)
+        let alertController = UIAlertController(title: "", message: "BMKMapView控件初始化完成", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "知道了", style: .Default, handler: nil)
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
         addCustomGestures()
     }
     
     func mapView(mapView: BMKMapView!, onClickedMapBlank coordinate: CLLocationCoordinate2D) {
-        println("单击了地图上的空白区域！")
+        print("单击了地图上的空白区域！")
     }
     
     func mapview(mapView: BMKMapView!, onDoubleClick coordinate: CLLocationCoordinate2D) {
-        println("双击了地图区域！")
+        print("双击了地图区域！")
     }
     
     // MARK: - 添加自定义手势（如果不需要自定义手势，那么无需下面的代码）
@@ -54,7 +54,7 @@ class BaseMapViewController: UIViewController, BMKMapViewDelegate, UIGestureReco
         *添加自定义手势时，必须设置UIGestureRecognizer的cancelsTouchesInView 和 delaysTouchesEnded 属性设置为false，否则影响地图内部的手势处理
         */
         // 设定双击手势，需要实现UIGestureRecognizerDelegate协议
-        var doubleTap = UITapGestureRecognizer(target: self, action: Selector("handleDoubleTap:"))
+        let doubleTap = UITapGestureRecognizer(target: self, action: "handleDoubleTap:")
         doubleTap.delegate = self
         doubleTap.numberOfTapsRequired = 2
         doubleTap.cancelsTouchesInView = false
@@ -63,7 +63,7 @@ class BaseMapViewController: UIViewController, BMKMapViewDelegate, UIGestureReco
         self.view.addGestureRecognizer(doubleTap)
         
         // 设定单击手势
-        var singleTap = UITapGestureRecognizer(target: self, action: Selector("handleSingleTap:"))
+        let singleTap = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
         singleTap.delegate = self
         singleTap.cancelsTouchesInView = false
         singleTap.delaysTouchesEnded = false
@@ -73,11 +73,11 @@ class BaseMapViewController: UIViewController, BMKMapViewDelegate, UIGestureReco
     }
     
     func handleDoubleTap(doubleTap: UITapGestureRecognizer) {
-        println("custom double tap handle")
+        print("custom double tap handle")
     }
     
     func handleSingleTap(singleTap: UITapGestureRecognizer) {
-        println("custom single tap handle")
+        print("custom single tap handle")
     }
     
     // MARK: - 协议代理设置

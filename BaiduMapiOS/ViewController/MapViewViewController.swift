@@ -47,7 +47,7 @@ class MapViewViewController: UIViewController, BMKMapViewDelegate {
     // MARK: - UI控件动作处理
     
     @IBAction func changeTheMapType(sender: UISegmentedControl) {
-        var index = sgm_MapChoosen.selectedSegmentIndex
+        let index = sgm_MapChoosen.selectedSegmentIndex
         switch index {
         case 0:
             mapView.mapType = UInt(BMKMapTypeStandard)
@@ -57,7 +57,7 @@ class MapViewViewController: UIViewController, BMKMapViewDelegate {
     }
     
     @IBAction func changeSwitchValue(sender: UISwitch) {
-        var value = sender.on
+        let value = sender.on
         switch sender.tag {
         case 0:
             mapView.trafficEnabled = value

@@ -44,17 +44,17 @@ class MultiMapViewController: UIViewController, BMKMapViewDelegate {
     
     func mapView(mapView: BMKMapView!, onClickedMapBlank coordinate: CLLocationCoordinate2D) {
         if mapView == mapView1 {
-            println("于第一个地图视图上进行了单击操作！")
+            print("于第一个地图视图上进行了单击操作！")
         }else if mapView == mapView2 {
-            println("于第二个地图视图上进行了单击操作！")
+            print("于第二个地图视图上进行了单击操作！")
         }
     }
     
     func mapview(mapView: BMKMapView!, onLongClick coordinate: CLLocationCoordinate2D) {
         if mapView == mapView1 {
-            println("于第一个地图视图上进行了长按操作！")
+            print("于第一个地图视图上进行了长按操作！")
         }else if mapView == mapView2 {
-            println("于第二个地图视图上进行了长按操作！")
+            print("于第二个地图视图上进行了长按操作！")
         }
     }
     

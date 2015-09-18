@@ -18,61 +18,61 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
     @IBOutlet var btn_Bus: UIButton!
     
     @IBAction func SearchBusRoute(sender: UIButton) {
-        var start = BMKPlanNode()
+        let start = BMKPlanNode()
         start.name = txf_StartPlace.text
-        var end = BMKPlanNode()
+        let end = BMKPlanNode()
         end.name = txf_EndPlace.text
         
-        var transitRouteSearchOption = BMKTransitRoutePlanOption()
+        let transitRouteSearchOption = BMKTransitRoutePlanOption()
         transitRouteSearchOption.city = txf_StartCity.text
         transitRouteSearchOption.from = start
         transitRouteSearchOption.to = end
         
-        var flag = routeSearch.transitSearch(transitRouteSearchOption)
+        let flag = routeSearch.transitSearch(transitRouteSearchOption)
         if flag {
-            println("公交检索发送成功！")
+            print("公交检索发送成功！")
         }else {
-            println("公交检索发送失败！")
+            print("公交检索发送失败！")
         }
     }
     
     @IBAction func SearchDriveRoute(sender: UIButton) {
-        var start = BMKPlanNode()
+        let start = BMKPlanNode()
         start.name = txf_StartPlace.text
         start.cityName = txf_StartCity.text
-        var end = BMKPlanNode()
+        let end = BMKPlanNode()
         end.name = txf_EndPlace.text
         end.cityName = txf_EndCity.text
         
-        var drivingRouteSearchOption = BMKDrivingRoutePlanOption()
+        let drivingRouteSearchOption = BMKDrivingRoutePlanOption()
         drivingRouteSearchOption.from = start
         drivingRouteSearchOption.to = end
-        var flag = routeSearch.drivingSearch(drivingRouteSearchOption)
+        let flag = routeSearch.drivingSearch(drivingRouteSearchOption)
         
         if flag {
-            println("驾乘检索发送成功！")
+            print("驾乘检索发送成功！")
         }else {
-            println("驾乘检索发送失败！")
+            print("驾乘检索发送失败！")
         }
     }
     
     @IBAction func SearchWalkRoute(sender: UIButton) {
-        var start = BMKPlanNode()
+        let start = BMKPlanNode()
         start.name = txf_StartPlace.text
         start.cityName = txf_StartCity.text
-        var end = BMKPlanNode()
+        let end = BMKPlanNode()
         end.name = txf_EndPlace.text
         end.cityName = txf_EndCity.text
         
-        var walkingRouteSearchOption = BMKWalkingRoutePlanOption()
+        let walkingRouteSearchOption = BMKWalkingRoutePlanOption()
         walkingRouteSearchOption.from = start
         walkingRouteSearchOption.to = end
-        var flag = routeSearch.walkingSearch(walkingRouteSearchOption)
+        let flag = routeSearch.walkingSearch(walkingRouteSearchOption)
         
         if flag {
-            println("步行检索发送成功！")
+            print("步行检索发送成功！")
         }else {
-            println("步行检索发送失败！")
+            print("步行检索发送失败！")
         }
     }
     
@@ -90,7 +90,7 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
         
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapView)
         
         // 界面初始化
@@ -103,43 +103,43 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
         routeSearch = BMKRouteSearch()
         
         // 在导航栏上添加“途径点”按钮
-        var screenshotBarButton = UIBarButtonItem(title: "途经点", style: .Plain, target: self, action: Selector("wayPointRouteSearch"))
+        let screenshotBarButton = UIBarButtonItem(title: "途经点", style: .Plain, target: self, action: Selector("wayPointRouteSearch"))
         self.navigationItem.rightBarButtonItem = screenshotBarButton
         
         // 创建地图视图约束
         var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: btn_Bus, attribute: .Bottom, multiplier: 1, constant: 8))
+        constraints.append(mapView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor))
+        constraints.append(mapView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor))
+        constraints.append(mapView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor))
+        constraints.append(mapView.topAnchor.constraintEqualToAnchor(btn_Bus.bottomAnchor, constant: 8))
         self.view.addConstraints(constraints)
     }
     
     // 路径获取函数
     func getBundlePath(filename: String?, Directory: String?) -> String? {
-        var bundlePath = NSBundle.mainBundle().resourcePath?.stringByAppendingPathComponent("mapapi.bundle")
-        var bundle = NSBundle(path: bundlePath!)
-        if bundle != nil && filename != nil && Directory != nil {
-            var directory = bundle?.resourcePath?.stringByAppendingPathComponent(Directory!)
-            var string = directory?.stringByAppendingPathComponent(filename!)
-            return string!
+        if let bundlePath = NSBundle.mainBundle().resourceURL?.URLByAppendingPathComponent("mapapi.bundle") {
+            guard let bundle = NSBundle(URL: bundlePath) else { return nil }
+            if let file = filename, direc = Directory {
+                let pathURL = bundle.resourceURL?.URLByAppendingPathComponent(direc)
+                return pathURL?.URLByAppendingPathComponent(file).absoluteString
+            } else if let file = filename {
+                let pathURL = bundle.resourceURL?.URLByAppendingPathComponent(file)
+                return pathURL?.absoluteString
+            } else if let direct = Directory {
+                let pathURL = bundle.resourceURL?.URLByAppendingPathComponent(direct)
+                return pathURL?.absoluteString
+            }
+            return nil
         }
-        if bundle != nil && filename != nil {
-            var string = bundle?.resourcePath?.stringByAppendingPathComponent(filename!)
-            return string!
-        }
-        if bundle != nil && Directory != nil {
-            var string = bundle?.resourcePath?.stringByAppendingPathComponent(Directory!)
-            return string!
-        }
+        
         return nil
     }
     
     // MARK: - 途径点函数的实现
     func wayPointRouteSearch() {
         
-        var wayPointRouteSearch = self.storyboard?.instantiateViewControllerWithIdentifier("WayPointRouteSearch") as! WayPointRouteSearchViewController
-        var backBarButtonItem = UIBarButtonItem()
+        let wayPointRouteSearch = self.storyboard?.instantiateViewControllerWithIdentifier("WayPointRouteSearch") as! WayPointRouteSearchViewController
+        let backBarButtonItem = UIBarButtonItem()
         backBarButtonItem.title = "返回"
         self.navigationItem.backBarButtonItem = backBarButtonItem
         self.navigationController!.pushViewController(wayPointRouteSearch, animated: true)
@@ -149,8 +149,7 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
     
     func getRouteAnnotationView(mapview: BMKMapView, viewForAnnotation routeAnnotation: RouteAnnotation) -> BMKAnnotationView? {
         
-        var view: BMKAnnotationView? = nil
-        var routeType: String = ""
+        var routeType = ""
         
         switch routeAnnotation.type {
         case 0:
@@ -168,7 +167,7 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
         default:
             return nil
         }
-        view = mapview.dequeueReusableAnnotationViewWithIdentifier("\(routeType)Node")
+        var view = mapview.dequeueReusableAnnotationViewWithIdentifier("\(routeType)Node")
         if view == nil {
             view = BMKAnnotationView(annotation: routeAnnotation, reuseIdentifier: "\(routeType)Node")
             view?.image = UIImage(contentsOfFile: getBundlePath("icon_\(routeType).png", Directory: "images")!)
@@ -181,15 +180,15 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
     }
     
     func mapView(mapView: BMKMapView!, viewForAnnotation annotation: BMKAnnotation!) -> BMKAnnotationView! {
-        if annotation as! RouteAnnotation? != nil {
-            return getRouteAnnotationView(mapView, viewForAnnotation: annotation as! RouteAnnotation)
+        if let route = annotation as? RouteAnnotation {
+            return getRouteAnnotationView(mapView, viewForAnnotation: route)
         }
         return nil
     }
     
     func mapView(mapView: BMKMapView!, viewForOverlay overlay: BMKOverlay!) -> BMKOverlayView! {
-        if overlay as! BMKPolyline? != nil {
-            var polylineView = BMKPolylineView(overlay: overlay as! BMKPolyline)
+        if let polyline = overlay as? BMKPolyline {
+            let polylineView = BMKPolylineView(overlay: polyline)
             polylineView.fillColor = UIColor.cyanColor().colorWithAlphaComponent(1)
             polylineView.strokeColor = UIColor.blueColor().colorWithAlphaComponent(0.7)
             polylineView.lineWidth = 3
@@ -207,27 +206,27 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
         array = mapView.overlays
         mapView.removeOverlays(array)
         
-        if error.value == 0 {
-            var plan = result.routes[0] as! BMKTransitRouteLine
+        if error.rawValue == 0 {
+            let plan = result.routes[0] as! BMKTransitRouteLine
             // 计算路线方案中的路段数目
             let size = plan.steps.count
             var planPointCounts = 0
             for i in 0..<size {
-                var transitStep = plan.steps[i] as! BMKTransitStep
+                let transitStep = plan.steps[i] as! BMKTransitStep
                 if i == 0 {
-                   var item = RouteAnnotation()
+                   let item = RouteAnnotation()
                     item.coordinate = plan.starting.location
                     item.title = "起点"
                     item.type = 0
                     mapView.addAnnotation(item)  // 添加起点标注
                 }else if i == size - 1 {
-                    var item = RouteAnnotation()
+                    let item = RouteAnnotation()
                     item.coordinate = plan.terminal.location
                     item.title = "终点"
                     item.type = 1
                     mapView.addAnnotation(item)  // 添加终点标注
                 }
-                var item = RouteAnnotation()
+                let item = RouteAnnotation()
                 item.coordinate = transitStep.entrace.location
                 item.title = transitStep.instruction
                 item.type = 3
@@ -241,7 +240,7 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
             var tempPoints = Array(count: planPointCounts, repeatedValue: BMKMapPoint(x: 0, y: 0))
             var i = 0
             for j in 0..<size {
-                var transitStep = plan.steps[j] as! BMKTransitStep
+                let transitStep = plan.steps[j] as! BMKTransitStep
                 for k in 0..<Int(transitStep.pointsCount) {
                     tempPoints[i].x = transitStep.points[k].x
                     tempPoints[i].y = transitStep.points[k].y
@@ -250,7 +249,7 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
             }
             
             // 通过 points 构建 BMKPolyline
-            var polyLine = BMKPolyline(points: &tempPoints, count: UInt(planPointCounts))
+            let polyLine = BMKPolyline(points: &tempPoints, count: UInt(planPointCounts))
             mapView.addOverlay(polyLine)  // 添加路线 overlay
         }
     }
@@ -261,28 +260,28 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
         array = mapView.overlays
         mapView.removeOverlays(array)
         
-        if error.value == 0 {
-            var plan = result.routes[0] as! BMKDrivingRouteLine
+        if error.rawValue == 0 {
+            let plan = result.routes[0] as! BMKDrivingRouteLine
             // 计算路线方案中的路段数目
             let size = plan.steps.count
             var planPointCounts = 0
             for i in 0..<size {
-                var transitStep = plan.steps[i] as! BMKDrivingStep
+                let transitStep = plan.steps[i] as! BMKDrivingStep
                 if i == 0 {
-                    var item = RouteAnnotation()
+                    let item = RouteAnnotation()
                     item.coordinate = plan.starting.location
                     item.title = "起点"
                     item.type = 0
                     mapView.addAnnotation(item)  // 添加起点标注
                 }else if i == size - 1 {
-                    var item = RouteAnnotation()
+                    let item = RouteAnnotation()
                     item.coordinate = plan.terminal.location
                     item.title = "终点"
                     item.type = 1
                     mapView.addAnnotation(item)  // 添加终点标注
                 }
                 // 添加 annotation 节点
-                var item = RouteAnnotation()
+                let item = RouteAnnotation()
                 item.coordinate = transitStep.entrace.location
                 item.title = transitStep.instruction
                 item.degree = Int(transitStep.direction) * 30
@@ -296,7 +295,7 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
             // 添加途径点
             if plan.wayPoints != nil {
                 for tempNode in plan.wayPoints as! [BMKPlanNode] {
-                    var item = RouteAnnotation()
+                    let item = RouteAnnotation()
                     item.coordinate = tempNode.pt
                     item.type = 5
                     item.title = tempNode.name
@@ -308,7 +307,7 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
             var tempPoints = Array(count: planPointCounts, repeatedValue: BMKMapPoint(x: 0, y: 0))
             var i = 0
             for j in 0..<size {
-                var transitStep = plan.steps[j] as! BMKDrivingStep
+                let transitStep = plan.steps[j] as! BMKDrivingStep
                 for k in 0..<Int(transitStep.pointsCount) {
                     tempPoints[i].x = transitStep.points[k].x
                     tempPoints[i].y = transitStep.points[k].y
@@ -317,7 +316,7 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
             }
             
             // 通过 points 构建 BMKPolyline
-            var polyLine = BMKPolyline(points: &tempPoints, count: UInt(planPointCounts))
+            let polyLine = BMKPolyline(points: &tempPoints, count: UInt(planPointCounts))
             mapView.addOverlay(polyLine)  // 添加路线 overlay
         }
     }
@@ -328,28 +327,28 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
         array = mapView.overlays
         mapView.removeOverlays(array)
         
-        if error.value == 0 {
-            var plan = result.routes[0] as! BMKWalkingRouteLine
+        if error.rawValue == 0 {
+            let plan = result.routes[0] as! BMKWalkingRouteLine
             // 计算路线方案中的路段数目
             let size = plan.steps.count
             var planPointCounts = 0
             for i in 0..<size {
-                var transitStep = plan.steps[i] as! BMKWalkingStep
+                let transitStep = plan.steps[i] as! BMKWalkingStep
                 if i == 0 {
-                    var item = RouteAnnotation()
+                    let item = RouteAnnotation()
                     item.coordinate = plan.starting.location
                     item.title = "起点"
                     item.type = 0
                     mapView.addAnnotation(item)  // 添加起点标注
                 }else if i == size - 1 {
-                    var item = RouteAnnotation()
+                    let item = RouteAnnotation()
                     item.coordinate = plan.terminal.location
                     item.title = "终点"
                     item.type = 1
                     mapView.addAnnotation(item)  // 添加终点标注
                 }
                 // 添加 annotation 节点
-                var item = RouteAnnotation()
+                let item = RouteAnnotation()
                 item.coordinate = transitStep.entrace.location
                 item.title = transitStep.entraceInstruction
                 item.degree = Int(transitStep.direction) * 30
@@ -364,7 +363,7 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
             var tempPoints = Array(count: planPointCounts, repeatedValue: BMKMapPoint(x: 0, y: 0))
             var i = 0
             for j in 0..<size {
-                var transitStep = plan.steps[j] as! BMKWalkingStep
+                let transitStep = plan.steps[j] as! BMKWalkingStep
                 for k in 0..<Int(transitStep.pointsCount) {
                     tempPoints[i].x = transitStep.points[k].x
                     tempPoints[i].y = transitStep.points[k].y
@@ -373,7 +372,7 @@ class RouteSearchViewController: UIViewController, BMKMapViewDelegate, BMKRouteS
             }
             
             // 通过 points 构建 BMKPolyline
-            var polyLine = BMKPolyline(points: &tempPoints, count: UInt(planPointCounts))
+            let polyLine = BMKPolyline(points: &tempPoints, count: UInt(planPointCounts))
             mapView.addOverlay(polyLine)  // 添加路线 overlay
         }
     }

@@ -26,12 +26,12 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
     @IBAction func busline_upGoing(sender: UIButton) {
         
         busPoiArray.removeAll(keepCapacity: false)
-        var citySearchOption = BMKCitySearchOption()
+        let citySearchOption = BMKCitySearchOption()
         citySearchOption.pageIndex = 0
         citySearchOption.pageCapacity = 10
         citySearchOption.city = txf_City.text
         citySearchOption.keyword = txf_Busline.text
-        var flag = poiSearch.poiSearchInCity(citySearchOption)
+        let flag = poiSearch.poiSearchInCity(citySearchOption)
         
         if flag {
             NSLog("城市内检索发送成功！")
@@ -45,11 +45,11 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
             if ++currentIndex >= busPoiArray.count {
                 currentIndex -= busPoiArray.count
             }
-            var strKey = (busPoiArray[currentIndex] as BMKPoiInfo).uid
-            var buslineSearchOption = BMKBusLineSearchOption()
+            let strKey = (busPoiArray[currentIndex] as BMKPoiInfo).uid
+            let buslineSearchOption = BMKBusLineSearchOption()
             buslineSearchOption.city = txf_City.text
             buslineSearchOption.busLineUid = strKey
-            var flag = buslineSearch.busLineSearch(buslineSearchOption)
+            let flag = buslineSearch.busLineSearch(buslineSearchOption)
             
             if flag {
                 NSLog("公交线路检索发送成功！")
@@ -57,12 +57,12 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
                 NSLog("公交线路检索发送失败！")
             }
         }else {
-            var citySearchOption = BMKCitySearchOption()
+            let citySearchOption = BMKCitySearchOption()
             citySearchOption.pageIndex = 0
             citySearchOption.pageCapacity = 10
             citySearchOption.city = txf_City.text
             citySearchOption.keyword = txf_Busline.text
-            var flag = poiSearch.poiSearchInCity(citySearchOption)
+            let flag = poiSearch.poiSearchInCity(citySearchOption)
             
             if flag {
                 NSLog("城市内检索发送成功！")
@@ -92,7 +92,7 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
         
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapView)
         
         // 搜索器初始化
@@ -106,30 +106,30 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
         
         // 创建地图视图约束
         var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: btn_downGoing, attribute: .Bottom, multiplier: 1, constant: 8))
+        constraints.append(mapView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor))
+        constraints.append(mapView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor))
+        constraints.append(mapView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor))
+        constraints.append(mapView.topAnchor.constraintEqualToAnchor(btn_downGoing.bottomAnchor, constant: 8))
         self.view.addConstraints(constraints)
     }
     
     // 路径获取函数
     func getBundlePath(filename: String?, Directory: String?) -> String? {
-        var bundlePath = NSBundle.mainBundle().resourcePath?.stringByAppendingPathComponent("mapapi.bundle")
-        var bundle = NSBundle(path: bundlePath!)
-        if bundle != nil && filename != nil && Directory != nil {
-            var directory = bundle?.resourcePath?.stringByAppendingPathComponent(Directory!)
-            var string = directory?.stringByAppendingPathComponent(filename!)
-            return string!
+        if let bundlePath = NSBundle.mainBundle().resourceURL?.URLByAppendingPathComponent("mapapi.bundle") {
+            guard let bundle = NSBundle(URL: bundlePath) else { return nil }
+            if let file = filename, direc = Directory {
+                let pathURL = bundle.resourceURL?.URLByAppendingPathComponent(direc)
+                return pathURL?.URLByAppendingPathComponent(file).absoluteString
+            } else if let file = filename {
+                let pathURL = bundle.resourceURL?.URLByAppendingPathComponent(file)
+                return pathURL?.absoluteString
+            } else if let direct = Directory {
+                let pathURL = bundle.resourceURL?.URLByAppendingPathComponent(direct)
+                return pathURL?.absoluteString
+            }
+            return nil
         }
-        if bundle != nil && filename != nil {
-            var string = bundle?.resourcePath?.stringByAppendingPathComponent(filename!)
-            return string!
-        }
-        if bundle != nil && Directory != nil {
-            var string = bundle?.resourcePath?.stringByAppendingPathComponent(Directory!)
-            return string!
-        }
+        
         return nil
     }
     
@@ -138,8 +138,7 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
     // 获取不同的标注视图
     func getRouteAnnotationView(mapview: BMKMapView!, viewForAnnotation routeAnnotation: BusLineAnnotation!) -> BMKAnnotationView? {
         
-        var view: BMKAnnotationView? = nil
-        var routeType: String = ""
+        var routeType = ""
         
         switch routeAnnotation.type {
         case 0:
@@ -157,7 +156,7 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
         default:
             return nil
         }
-        view = mapview.dequeueReusableAnnotationViewWithIdentifier("\(routeType)Node")
+        var view = mapview.dequeueReusableAnnotationViewWithIdentifier("\(routeType)Node")
         if view == nil {
             view = BMKAnnotationView(annotation: routeAnnotation, reuseIdentifier: "\(routeType)Node")
             view?.image = UIImage(contentsOfFile: getBundlePath("icon_\(routeType).png", Directory: "images")!)
@@ -170,15 +169,15 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
     }
     
     func mapView(mapView: BMKMapView!, viewForAnnotation annotation: BMKAnnotation!) -> BMKAnnotationView! {
-        if annotation as! BusLineAnnotation? != nil {
-            return getRouteAnnotationView(mapView, viewForAnnotation: annotation as! BusLineAnnotation)
+        if let busLine = annotation as? BusLineAnnotation {
+            return getRouteAnnotationView(mapView, viewForAnnotation: busLine)
         }
         return nil
     }
     
     func mapView(mapView: BMKMapView!, viewForOverlay overlay: BMKOverlay!) -> BMKOverlayView! {
-        if overlay as! BMKPolyline? != nil {
-            var polylineView = BMKPolylineView(overlay: overlay as! BMKPolyline)
+        if let polyline = overlay as? BMKPolyline {
+            let polylineView = BMKPolylineView(overlay: polyline)
             polylineView.fillColor = UIColor.cyanColor().colorWithAlphaComponent(1)
             polylineView.strokeColor = UIColor.blueColor().colorWithAlphaComponent(0.7)
             polylineView.lineWidth = 3
@@ -191,7 +190,7 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
     // MARK: - 百度搜索相关协议实现
     
     func onGetPoiResult(searcher: BMKPoiSearch!, result poiResult: BMKPoiResult!, errorCode: BMKSearchErrorCode) {
-        if errorCode.value == 0 {
+        if errorCode.rawValue == 0 {
             var poi: BMKPoiInfo?
             var findBusline = false
             for i in 0..<poiResult.poiInfoList.count {
@@ -204,11 +203,11 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
             // 开始 busline 详情搜索
             if findBusline {
                 currentIndex = 0
-                var strKey = busPoiArray[currentIndex].uid
-                var buslineSearchOption = BMKBusLineSearchOption()
+                let strKey = busPoiArray[currentIndex].uid
+                let buslineSearchOption = BMKBusLineSearchOption()
                 buslineSearchOption.city = "北京市"
                 buslineSearchOption.busLineUid = strKey
-                var flag = buslineSearch.busLineSearch(buslineSearchOption)
+                let flag = buslineSearch.busLineSearch(buslineSearchOption)
                 
                 if flag {
                     NSLog("公交线路检索发送成功！")
@@ -226,13 +225,13 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
         array = mapView.overlays
         mapView.removeOverlays(array)
         
-        if error.value == 0 {
+        if error.rawValue == 0 {
             var item = BusLineAnnotation()
             
             // 站点信息
-            var size = busLineResult.busStations.count
+            let size = busLineResult.busStations.count
             for i in 0..<size {
-                var station = busLineResult.busStations[i] as! BMKBusStation
+                let station = busLineResult.busStations[i] as! BMKBusStation
                 item = BusLineAnnotation()
                 item.coordinate = station.location
                 item.title = station.title
@@ -243,7 +242,7 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
             // 路段信息
             var index = 0
             for i in 0..<busLineResult.busSteps.count {
-                var step = busLineResult.busSteps[i] as! BMKBusStep
+                let step = busLineResult.busSteps[i] as! BMKBusStep
                 index += Int(step.pointsCount)
             }
             
@@ -251,18 +250,18 @@ class BusLineViewController: UIViewController, BMKMapViewDelegate, BMKBusLineSea
             var tempPoints = Array(count: index, repeatedValue: BMKMapPoint(x: 0, y: 0))
             var k = 0
             for i in 0..<busLineResult.busSteps.count {
-                var step = busLineResult.busSteps[i] as! BMKBusStep
+                let step = busLineResult.busSteps[i] as! BMKBusStep
                 for j in 0..<step.pointsCount {
-                    var point = BMKMapPoint(x: step.points[Int(j)].x, y: step.points[Int(j)].y)
+                    let point = BMKMapPoint(x: step.points[Int(j)].x, y: step.points[Int(j)].y)
                     tempPoints[k] = point
                     k++
                 }
             }
             
-            var polyLine = BMKPolyline(points: &tempPoints, count: UInt(index))
+            let polyLine = BMKPolyline(points: &tempPoints, count: UInt(index))
             mapView.addOverlay(polyLine)
             
-            var start = busLineResult.busStations[0] as! BMKBusStation
+            let start = busLineResult.busStations[0] as! BMKBusStation
             mapView.setCenterCoordinate(start.location, animated: true)
         }
     }

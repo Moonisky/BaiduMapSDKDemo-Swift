@@ -16,23 +16,23 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
     
     @IBAction func drivePathSearch(sender: UIButton) {
         
-        var start = BMKPlanNode()
+        let start = BMKPlanNode()
         start.name = txf_startAddress.text
         start.cityName = "北京市"
-        var end = BMKPlanNode()
+        let end = BMKPlanNode()
         end.name = txf_endAddress.text
         end.cityName = "北京市"
         var array = Array(count: 0, repeatedValue: BMKPlanNode())
-        var wayPointItem1 = BMKPlanNode()
+        let wayPointItem1 = BMKPlanNode()
         wayPointItem1.cityName = "北京市"
         wayPointItem1.name = txf_wayPoint.text
         array.append(wayPointItem1)
         
-        var drivingRouteSearchOption = BMKDrivingRoutePlanOption()
+        let drivingRouteSearchOption = BMKDrivingRoutePlanOption()
         drivingRouteSearchOption.from = start
         drivingRouteSearchOption.to = end
         drivingRouteSearchOption.wayPointsArray = array
-        var flag = routeSearch.drivingSearch(drivingRouteSearchOption)
+        let flag = routeSearch.drivingSearch(drivingRouteSearchOption)
         
         if flag {
             NSLog("搜索成功！")
@@ -55,7 +55,7 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
         
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapView)
         
         // 界面初始化
@@ -68,30 +68,30 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
         
         // 创建地图视图约束
         var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: txf_endAddress, attribute: .Bottom, multiplier: 1, constant: 8))
+        constraints.append(mapView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor))
+        constraints.append(mapView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor))
+        constraints.append(mapView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor))
+        constraints.append(mapView.topAnchor.constraintEqualToAnchor(txf_endAddress.bottomAnchor, constant: 8))
         self.view.addConstraints(constraints)
     }
     
     // 路径获取函数
     func getBundlePath(filename: String?, Directory: String?) -> String? {
-        var bundlePath = NSBundle.mainBundle().resourcePath?.stringByAppendingPathComponent("mapapi.bundle")
-        var bundle = NSBundle(path: bundlePath!)
-        if bundle != nil && filename != nil && Directory != nil {
-            var directory = bundle?.resourcePath?.stringByAppendingPathComponent(Directory!)
-            var string = directory?.stringByAppendingPathComponent(filename!)
-            return string!
+        if let bundlePath = NSBundle.mainBundle().resourceURL?.URLByAppendingPathComponent("mapapi.bundle") {
+            guard let bundle = NSBundle(URL: bundlePath) else { return nil }
+            if let file = filename, direc = Directory {
+                let pathURL = bundle.resourceURL?.URLByAppendingPathComponent(direc)
+                return pathURL?.URLByAppendingPathComponent(file).absoluteString
+            } else if let file = filename {
+                let pathURL = bundle.resourceURL?.URLByAppendingPathComponent(file)
+                return pathURL?.absoluteString
+            } else if let direct = Directory {
+                let pathURL = bundle.resourceURL?.URLByAppendingPathComponent(direct)
+                return pathURL?.absoluteString
+            }
+            return nil
         }
-        if bundle != nil && filename != nil {
-            var string = bundle?.resourcePath?.stringByAppendingPathComponent(filename!)
-            return string!
-        }
-        if bundle != nil && Directory != nil {
-            var string = bundle?.resourcePath?.stringByAppendingPathComponent(Directory!)
-            return string!
-        }
+        
         return nil
     }
     
@@ -99,8 +99,7 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
     
     func getRouteAnnotationView(mapview: BMKMapView, viewForAnnotation routeAnnotation: RouteAnnotation) -> BMKAnnotationView? {
         
-        var view: BMKAnnotationView? = nil
-        var routeType: String = ""
+        var routeType = ""
         
         switch routeAnnotation.type {
         case 0:
@@ -118,7 +117,7 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
         default:
             return nil
         }
-        view = mapview.dequeueReusableAnnotationViewWithIdentifier("\(routeType)Node")
+        var view = mapview.dequeueReusableAnnotationViewWithIdentifier("\(routeType)Node")
         if view == nil {
             view = BMKAnnotationView(annotation: routeAnnotation, reuseIdentifier: "\(routeType)Node")
             view?.image = UIImage(contentsOfFile: getBundlePath("icon_\(routeType).png", Directory: "images")!)
@@ -131,15 +130,15 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
     }
 
     func mapView(mapView: BMKMapView!, viewForAnnotation annotation: BMKAnnotation!) -> BMKAnnotationView! {
-        if annotation as! RouteAnnotation? != nil {
-            return getRouteAnnotationView(mapView, viewForAnnotation: annotation as! RouteAnnotation)
+        if let route = annotation as? RouteAnnotation {
+            return getRouteAnnotationView(mapView, viewForAnnotation: route)
         }
         return nil
     }
     
     func mapView(mapView: BMKMapView!, viewForOverlay overlay: BMKOverlay!) -> BMKOverlayView! {
-        if overlay as! BMKPolyline? != nil {
-            var polylineView = BMKPolylineView(overlay: overlay as! BMKPolyline)
+        if let polyline = overlay as? BMKPolyline {
+            let polylineView = BMKPolylineView(overlay: polyline)
             polylineView.fillColor = UIColor.cyanColor().colorWithAlphaComponent(1)
             polylineView.strokeColor = UIColor.blueColor().colorWithAlphaComponent(0.7)
             polylineView.lineWidth = 3
@@ -157,28 +156,28 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
         array = mapView.overlays
         mapView.removeOverlays(array)
         
-        if error.value == 0 {
-            var plan = result.routes[0] as! BMKDrivingRouteLine
+        if error.rawValue == 0 {
+            let plan = result.routes[0] as! BMKDrivingRouteLine
             // 计算路线方案中的路段数目
             let size = plan.steps.count
             var planPointCounts = 0
             for i in 0..<size {
-                var transitStep = plan.steps[i] as! BMKDrivingStep
+                let transitStep = plan.steps[i] as! BMKDrivingStep
                 if i == 0 {
-                    var item = RouteAnnotation()
+                    let item = RouteAnnotation()
                     item.coordinate = plan.starting.location
                     item.title = "起点"
                     item.type = 0
                     mapView.addAnnotation(item)  // 添加起点标注
                 }else if i == size - 1 {
-                    var item = RouteAnnotation()
+                    let item = RouteAnnotation()
                     item.coordinate = plan.terminal.location
                     item.title = "终点"
                     item.type = 1
                     mapView.addAnnotation(item)  // 添加终点标注
                 }
                 // 添加 annotation 节点
-                var item = RouteAnnotation()
+                let item = RouteAnnotation()
                 item.coordinate = transitStep.entrace.location
                 item.title = transitStep.instruction
                 item.degree = Int(transitStep.direction) * 30
@@ -192,7 +191,7 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
             // 添加途径点
             if plan.wayPoints != nil {
                 for tempNode in plan.wayPoints as! [BMKPlanNode] {
-                    var item = RouteAnnotation()
+                    let item = RouteAnnotation()
                     item.coordinate = tempNode.pt
                     item.type = 5
                     item.title = tempNode.name
@@ -204,7 +203,7 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
             var tempPoints = Array(count: planPointCounts, repeatedValue: BMKMapPoint(x: 0, y: 0))
             var i = 0
             for j in 0..<size {
-                var transitStep = plan.steps[j] as! BMKDrivingStep
+                let transitStep = plan.steps[j] as! BMKDrivingStep
                 for k in 0..<Int(transitStep.pointsCount) {
                     tempPoints[i].x = transitStep.points[k].x
                     tempPoints[i].y = transitStep.points[k].y
@@ -213,7 +212,7 @@ class WayPointRouteSearchViewController: UIViewController, BMKMapViewDelegate, B
             }
             
             // 通过 points 构建 BMKPolyline
-            var polyLine = BMKPolyline(points: &tempPoints, count: UInt(planPointCounts))
+            let polyLine = BMKPolyline(points: &tempPoints, count: UInt(planPointCounts))
             mapView.addOverlay(polyLine)  // 添加路线 overlay
         }
     }

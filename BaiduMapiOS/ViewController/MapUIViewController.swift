@@ -28,7 +28,7 @@ class MapUIViewController: UIViewController, BMKMapViewDelegate {
     }
     
     @IBAction func CompassPositionChange(sender: UISegmentedControl) {
-        var point: CGPoint
+        let point: CGPoint
         switch sender.selectedSegmentIndex {
         case 0:
             point = CGPointMake(10, 10)
@@ -53,7 +53,7 @@ class MapUIViewController: UIViewController, BMKMapViewDelegate {
         
         // 地图界面初始化
         mapView = BMKMapView(frame: view.frame)
-        mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapView)
         
         // 界面初始化
@@ -63,10 +63,10 @@ class MapUIViewController: UIViewController, BMKMapViewDelegate {
         
         // 创建地图视图约束
         var constraints = [NSLayoutConstraint]()
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1, constant: 0))
-        constraints.append(NSLayoutConstraint(item: mapView, attribute: .Top, relatedBy: .Equal, toItem: SegmentController, attribute: .Bottom, multiplier: 1, constant: 8))
+        constraints.append(mapView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor))
+        constraints.append(mapView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor))
+        constraints.append(mapView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor))
+        constraints.append(mapView.topAnchor.constraintEqualToAnchor(SegmentController.bottomAnchor, constant: 8))
         self.view.addConstraints(constraints)
     }
     

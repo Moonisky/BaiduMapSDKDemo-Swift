@@ -22,7 +22,7 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
         // 根据城市名获取城市信息，得到城市 ID
         var city = offlineMap.searchCity(txf_cityName.text)
         if city.count > 0 {
-            var oneCity = city[0] as! BMKOLSearchRecord
+            let oneCity = city[0] as! BMKOLSearchRecord
             lbl_cityID.text = "ID:\(oneCity.cityID)"
             cityID = oneCity.cityID
         }
@@ -117,9 +117,9 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
     func onGetOfflineMapState(type: Int32, withState state: Int32) {
         if type == 0 {
             // ID 为 state 的城市正在下载或更新，开始后会回调此类型
-            var updateInfo: BMKOLUpdateElement
+            var updateInfo = offlineMap.getUpdateInfo(state)
             if let info = offlineMap.getUpdateInfo(state) {
-                updateInfo = offlineMap.getUpdateInfo(state)
+                updateInfo = info
                 if let info = offlineMap.getAllUpdateInfo() {
                     localDownloadMapInfo = info as! [BMKOLUpdateElement]
                 }else {
@@ -133,7 +133,7 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
             table_plainView.reloadData()
         }else if type == 4 {
             // ID 为 state 的城市有新版本，可调用 update 接口进行更新
-            var updateInfo = offlineMap.getUpdateInfo(state)
+            let updateInfo = offlineMap.getUpdateInfo(state)
             NSLog("是否有更新\(updateInfo.update)")
         }else if type == 2 {
             // 正在解压第 state 个离线包，导入时会回调此类型
@@ -155,8 +155,8 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
     
     // 导入提示框
     func showImportMessage(count: Int32) {
-        var alertView = UIAlertController(title: "导入离线地图", message: "成功导入离线地图包个数:\(count)", preferredStyle: .Alert)
-        var okaction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
+        let alertView = UIAlertController(title: "导入离线地图", message: "成功导入离线地图包个数:\(count)", preferredStyle: .Alert)
+        let okaction = UIAlertAction(title: "确定", style: .Default, handler: nil)
         alertView.addAction(okaction)
         self.presentViewController(alertView, animated: true, completion: nil)
     }
@@ -176,7 +176,7 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if tableView == table_groupView {
             // 定义每个分组的标题
-            var provinceName = ""
+            let provinceName: String
             switch section {
             case 0:
                 provinceName = "热门城市"
@@ -210,18 +210,18 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
     // 定义单元格样式填充数据
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "OfflineMapCityCell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell?
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) 
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
         }
         if tableView == table_groupView {
             // 热门城市列表
             if indexPath.section == 0 {
-                var item = hotCityData[indexPath.row] as BMKOLSearchRecord
+                let item = hotCityData[indexPath.row] as BMKOLSearchRecord
                 cell?.textLabel?.text = "\(item.cityName)(\(item.cityID))"
                 // 转换包大小
-                var packSize = getDataSizeString(item.size)
-                var sizeLabel = UILabel(frame: CGRectMake(250, 0, 60, 40))
+                let packSize = getDataSizeString(item.size)
+                let sizeLabel = UILabel(frame: CGRectMake(250, 0, 60, 40))
                 sizeLabel.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin
                 sizeLabel.text = packSize
                 sizeLabel.backgroundColor = UIColor.clearColor()
@@ -229,11 +229,11 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
             }
                 // 支持离线下载城市列表
             else if indexPath.section == 1 {
-                var item = offlineCityData[indexPath.row] as BMKOLSearchRecord
+                let item = offlineCityData[indexPath.row] as BMKOLSearchRecord
                 cell?.textLabel?.text = "\(item.cityName)(\(item.cityID))"
                 // 转换包大小
-                var packSize = getDataSizeString(item.size)
-                var sizeLabel = UILabel(frame: CGRectMake(250, 0, 60, 40))
+                let packSize = getDataSizeString(item.size)
+                let sizeLabel = UILabel(frame: CGRectMake(250, 0, 60, 40))
                 sizeLabel.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin
                 sizeLabel.text = packSize
                 sizeLabel.backgroundColor = UIColor.clearColor()
@@ -242,17 +242,17 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
         }
         else {
             if localDownloadMapInfo != nil  {
-                var item = localDownloadMapInfo[indexPath.row] as BMKOLUpdateElement
+                let item = localDownloadMapInfo[indexPath.row] as BMKOLUpdateElement
                 // 单元格右侧文字
-                var packSize = getDataSizeString(item.size)
-                var sizeLabel = UILabel(frame: CGRectMake(250, 0, 110, 40))
+                let packSize = getDataSizeString(item.size)
+                let sizeLabel = UILabel(frame: CGRectMake(250, 0, 110, 40))
                 sizeLabel.backgroundColor = UIColor.clearColor()
                 sizeLabel.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin
                 
                 if item.ratio == 100{
                     sizeLabel.text = packSize
                 }else{
-                    var currentSize = getDataSizeString(item.size * item.ratio / 100)
+                    let currentSize = getDataSizeString(item.size * item.ratio / 100)
                     sizeLabel.text = currentSize + "/" + packSize
                 }
                 if item.update {
@@ -283,7 +283,7 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
         if editingStyle == UITableViewCellEditingStyle.Delete {
             // 删除 Poi
             if tableView == table_plainView {
-                var item = localDownloadMapInfo[indexPath.row] as BMKOLUpdateElement
+                let item = localDownloadMapInfo[indexPath.row] as BMKOLUpdateElement
                 // 删除指定城市 ID 的离线地图
                 offlineMap.remove(item.cityID)
                 // 将此城市的离线地图信息从数组中删除
@@ -297,15 +297,15 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         if tableView == table_plainView {
-            var item = localDownloadMapInfo[indexPath.row] as BMKOLUpdateElement
-            println(item.update)
+            let item = localDownloadMapInfo[indexPath.row] as BMKOLUpdateElement
+            print(item.update)
             if item.ratio == 100 {
                 // 跳转到地图查看页面进行地图更新操作
-                var offlineMapViewController = OfflineMapViewController()
+                let offlineMapViewController = OfflineMapViewController()
                 offlineMapViewController.title = "查看离线地图"
                 offlineMapViewController.cityID = item.cityID
                 offlineMapViewController.offlineServiceOfMapview = offlineMap
-                var customLeftBarButtonItem = UIBarButtonItem()
+                let customLeftBarButtonItem = UIBarButtonItem()
                 customLeftBarButtonItem.title = "返回"
                 self.navigationItem.backBarButtonItem = customLeftBarButtonItem
                 self.navigationController?.pushViewController(offlineMapViewController, animated: true)
@@ -316,24 +316,24 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
                 cityID = item.cityID
                 txf_cityName.text = item.cityName
                 lbl_downloadRatio.text = "已下载:\(item.ratio)"
-                var alertView = UIAlertController(title: "提示", message: "该离线地图未完全下载，请继续下载！", preferredStyle: .Alert)
-                var okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
+                let alertView = UIAlertController(title: "提示", message: "该离线地图未完全下载，请继续下载！", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
                 alertView.addAction(okAction)
                 self.presentViewController(alertView, animated: true, completion: nil)
             }
         }else {
             // 获得当前选中的城市信息
             if indexPath.section == 0 {
-                var item = hotCityData[indexPath.row] as BMKOLSearchRecord
+                let item = hotCityData[indexPath.row] as BMKOLSearchRecord
                 NSLog("热门城市：\(item.cityName)(\(item.cityID))--包大小：\(getDataSizeString(item.size))")
             }else if indexPath.section == 1 {
-                var item = offlineCityData[indexPath.row] as BMKOLSearchRecord
+                let item = offlineCityData[indexPath.row] as BMKOLSearchRecord
                 // 显示子单元格
                 if item.childCities != nil && item.childCities.count > 0 {
                     for childitem in item.childCities as! [BMKOLSearchRecord] {
-                        var tempString = "\(childitem.cityName)(\(childitem.cityID))"
+                        let tempString = "\(childitem.cityName)(\(childitem.cityID))"
                         // 转换包大小
-                        var tempPackSize = getDataSizeString(childitem.size)
+                        let tempPackSize = getDataSizeString(childitem.size)
                         NSLog("支持离线包城市：\(tempString)--包大小：\(tempPackSize)")
                     }
                 }
@@ -360,7 +360,7 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
                 if decimal < 10 {
                     decimalString = "0"
                 }else if decimal >= 10 && decimal < 100 {
-                    var i = decimal / 10
+                    let i = decimal / 10
                     if i >= 5 {
                         decimalString = "1"
                     }else {
@@ -368,7 +368,7 @@ class OfflineViewController: UIViewController, BMKMapViewDelegate, BMKOfflineMap
                     }
                 }
                 else if decimal >= 100 && decimal < 1024 {
-                    var i = decimal / 100
+                    let i = decimal / 100
                     if i >= 5 {
                         decimal = i + 1
                         

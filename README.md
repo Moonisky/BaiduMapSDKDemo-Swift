@@ -33,20 +33,22 @@
 3. 项目采用 Swift 语言来进行编写
 4. 项目采用 Storyboard，试图以最简单的方式来展示百度地图 SDK 的使用
 
+点此前往 [master 分支](https://github.com/SemperIdem/BaiduMapSDKDemo-Swift)。
+
 <h2 id="更新说明">
 更新说明
 </h2>
 ###2015.09.18
-1、更新至Xcode6.4
-2、百度地图SDK更新至2.8.1版本
-3、增加新的分支(Swift2.0)，适配 Swift 2.0 和 iOS 9.0
+1. 更新至Xcode6.4
+2. 百度地图SDK更新至2.8.1版本
+3. 增加新的分支(Swift2.0)，适配 Swift 2.0 和 iOS 9.0
 ###2015.04.11
-1、更新至Xcode6.3，Swift适配1.2版本
-2、增加了新的功能
-3、百度地图SDK更新至2.7.0版本
+1. 更新至Xcode6.3，Swift适配1.2版本
+2. 增加了新的功能
+3. 百度地图SDK更新至2.7.0版本
 ###2015.03.24
-1、重构目录结构
-2、引入 SwiftyJSON 框架
+1. 重构目录结构
+2. 引入 SwiftyJSON 框架
 ###2015.02.14
 创建项目
 
