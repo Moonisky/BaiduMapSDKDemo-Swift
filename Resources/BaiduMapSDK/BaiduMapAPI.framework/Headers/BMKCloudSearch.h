@@ -21,6 +21,18 @@ enum BMKCloudSearchType
     BMK_CLOUD_DETAIL_SEARCH         = 4///<POI详情
 };
 
+//云检索结果状态码
+typedef enum{
+    BMK_CLOUD_NETWOKR_ERROR = -3,///网络连接错误
+    BMK_CLOUD_NETWOKR_TIMEOUT = -2,///网络连接超时
+    BMK_CLOUD_RESULT_NOT_FOUND = -1,///<没有找到检索结果
+    BMK_CLOUD_NO_ERROR = 0,///<检索结果正常返回
+    /*
+     *更多云检索状态码请参考：
+     *http://developer.baidu.com/map/index.php?title=lbscloud/api/appendix
+     */
+}BMKCloudErrorCode;
+
 ///云检索服务
 @interface BMKCloudSearch : NSObject
 /// 检索模块的Delegate，此处记得不用的时候需要置nil，否则影响内存的释放
@@ -64,7 +76,7 @@ enum BMKCloudSearchType
  *返回云检索POI列表结果
  *@param poiResultList 云检索结果列表，成员类型为BMKCloudPOIList
  *@param type 返回结果类型： BMK_CLOUD_LOCAL_SEARCH,BMK_CLOUD_NEARBY_SEARCH,BMK_CLOUD_BOUND_SEARCH
- *@param error 错误号，@see BMKErrorCode
+ *@param error 错误号，@see BMKCloudErrorCode
  */
 - (void)onGetCloudPoiResult:(NSArray*)poiResultList searchType:(int)type errorCode:(int)error;
 
@@ -72,7 +84,7 @@ enum BMKCloudSearchType
  *返回云检索POI详情
  *@param poiDetailResult 类型为BMKCloudPOIInfo
  *@param type 返回结果类型： BMK_CLOUD_DETAIL_SEARCH
- *@param error 错误号，@see BMKErrorCode
+ *@param error 错误号，@see BMKCloudErrorCode
  */
 - (void)onGetCloudPoiDetailResult:(BMKCloudPOIInfo*)poiDetailResult searchType:(int)type errorCode:(int)error;
 @end

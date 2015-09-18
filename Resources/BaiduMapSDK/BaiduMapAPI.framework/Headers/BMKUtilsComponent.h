@@ -9,3 +9,8 @@
 
 #import "BMKGeometry.h"
 #import "BMKNavigation.h"
+#import "BMKOpenPoi.h"
+#import "BMKOpenRoute.h"
+#import "BMKOpenPoiOption.h"
+#import "BMKOpenRouteOption.h"
+#import "BMKFavPoiManager.h"

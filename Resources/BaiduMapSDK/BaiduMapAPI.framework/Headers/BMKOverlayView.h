@@ -126,6 +126,16 @@
  @param looped 是否闭合, 如polyline会设置NO, polygon会设置YES.
  */
 - (void)renderTexturedLinesWithPoints:(BMKMapPoint *)points pointCount:(NSUInteger)pointCount lineWidth:(CGFloat)lineWidth textureID:(GLuint)textureID looped:(BOOL)looped;
+
+/**
+ *使用OpenGLES 分段纹理绘制线
+ @param partPt 分段直角坐标点
+ @param lineWidth OpenGLES支持线宽尺寸
+ @param textureIndexs 分段纹理索引,使用- (void)loadStrokeTextureImage:(UIImage *)textureImage;加载
+ @param isFoucs 是否使用分段纹理绘制
+ */
+-(void)renderTexturedLinesWithPartPoints:(NSArray*)partPt lineWidth:(CGFloat)lineWidth textureIndexs:(NSArray*)textureIndexs isFocus:(BOOL) isFoucs;
+
 /**
  *使用OpenGLES 绘制区域
  @param points 直角坐标点
@@ -157,6 +167,13 @@
  @return openGL纹理ID, 若纹理加载失败返回0
  */
 - (GLuint)loadStrokeTextureImage:(UIImage *)textureImage;
+
+/**
+ *加载分段纹理绘制 所需的纹理图片
+ @param textureImages 必须UIImage数组，opengl要求图片宽高必须是2的n次幂，否则，返回NO，无法分段纹理绘制
+ @return 是否成功
+ */
+- (BOOL)loadStrokeTextureImages:(NSArray *)textureImages;
 
 @end
 

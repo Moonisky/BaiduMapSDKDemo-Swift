@@ -28,9 +28,21 @@ enum EN_PERMISSION_STATUS
 -(BOOL)start:(NSString*)key generalDelegate:(id<BMKGeneralDelegate>)delegate;
 
 /**
+ *获取所有在线服务消耗的发送流量,单位：字节
+ */
+-(int)getTotalSendFlaxLength;
+
+/**
+ *获取所有在线服务消耗的接收流量,单位：字节
+ */
+-(int)getTotalRecvFlaxLength;
+
+/**
 *停止引擎
 */
 -(BOOL)stop;
+
+
 
 @end
 

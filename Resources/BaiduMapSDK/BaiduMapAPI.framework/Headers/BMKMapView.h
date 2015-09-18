@@ -109,6 +109,11 @@ typedef enum {
 -(void)viewWillDisappear;
 
 /**
+ *强制刷新mapview
+ */
+- (void)mapForceRefresh;
+
+/**
  *放大一级比例尺
  *@return 是否成功
  */
@@ -551,6 +556,13 @@ typedef enum {
  *@param overlayViews 新添加的overlay views
  */
 - (void)mapView:(BMKMapView *)mapView didAddOverlayViews:(NSArray *)overlayViews;
+
+/**
+ *点中覆盖物后会回调此接口，目前只支持点中BMKPolylineView时回调
+ *@param mapview 地图View
+ *@param overlayView 覆盖物view信息
+ */
+- (void)mapView:(BMKMapView *)mapView onClickedBMKOverlayView:(BMKOverlayView *)overlayView;
 
 /**
  *点中底图标注后会回调此接口

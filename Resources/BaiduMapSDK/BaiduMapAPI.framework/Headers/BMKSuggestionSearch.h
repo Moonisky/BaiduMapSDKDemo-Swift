@@ -22,6 +22,11 @@
 @property (nonatomic, strong) NSArray* cityList;
 ///district列表，成员是NSString
 @property (nonatomic, strong) NSArray* districtList;
+///poiId列表，成员是NSString
+@property (nonatomic, strong) NSArray* poiIdList;
+///pt列表，成员是：封装成NSValue的CLLocationCoordinate2D
+@property (nonatomic, strong) NSArray* ptList;
+
 @end
 
 @protocol BMKSuggestionSearchDelegate;

@@ -24,4 +24,10 @@
 /// 该View对应的折线数据对象
 @property (nonatomic, readonly) BMKPolyline *polyline;
 
+
+#pragma mark - 以下方法和属性只适用于分段纹理绘制
+
+/// 是否分段纹理绘制（突出显示），默认YES，YES:使用分段纹理绘制 NO:使用默认的灰色纹理绘制
+@property (nonatomic, assign) BOOL isFocus;
+
 @end

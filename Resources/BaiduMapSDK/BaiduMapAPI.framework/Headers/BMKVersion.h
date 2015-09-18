@@ -454,6 +454,120 @@
  2. 修复云检索过程中偶现崩溃的bug；
  3. 修复地图在autolayout布局下无效的bug；
  4. 修复BMKAnnotationView重叠的bug；
+ 
+ 
+ --------------------
+ v2.8.0
+
+ 注：百度地图iOS SDK向广大开发者提供了配置更简单的 .framework形式的开发包，请开发者选择此种类型的开发包使用。
+ 
+ 【 新  增 】
+ 	 周边雷达
+	利用周边雷达功能，开发者可在App内低成本、快速实现查找周边使用相同App的用户位置的功能。
+ 新增周边雷达管理类：BMKRadarManager
+ 新增周边雷达protocol：BMKRadarManagerDelegate
+ 1.提供单次位置信息上传功能；
+ - (BOOL)uploadInfoRequest:(BMKRadarUploadInfo*) info;
+ 2.提供位置信息连续自动上传功能；
+ - (void)startAutoUpload:(NSTimeInterval) interval;//启动自动上传用户位置信息
+ - (void)stopAutoUpload;//停止自动上传用户位置信息
+ 3.提供周边位置信息检索功能；
+ - (BOOL)getRadarNearbySearchRequest:(BMKRadarNearbySearchOption*) option;
+ 4.提供清除我的位置信息功能
+ - (BOOL)clearMyInfoRequest;
+ 
+  基础地图
+	1.新增折线多段颜色绘制能力；
+ 1）BMKPolyline中新增接口：
+ ///纹理索引数组
+ @property (nonatomic, strong) NSArray *textureIndex;
+ //分段纹理绘制，根据指定坐标点生成一段折线
+ + (BMKPolyline *)polylineWithPoints:(BMKMapPoint *)points count:(NSUInteger)count textureIndex:(NSArray*) textureIndex;
+ //根据指定坐标点生成一段折线
+ + (BMKPolyline *)polylineWithCoordinates:(CLLocationCoordinate2D *)coords count:(NSUInteger)count textureIndex:(NSArray*) textureIndex;
+ 2）BMKPolylineView新增接口
+ /// 是否分段纹理绘制（突出显示）
+ @property (nonatomic, assign) BOOL isFocus;
+ 2.可以修改BMKPolyline、BMKPolygon、BMKCircle、BMKArcline的端点数据了
+ 3.新增地图强制刷新功能：
+ BMKMapView新增接口：
+ - (void)mapForceRefresh;//强制刷新mapview
+ 
+ 	检索功能
+ 1.在线建议检索结果开放POI经纬度及UID信息；
+ BMKSuggestionResult新增接口：
+ ///poiId列表，成员是NSString
+ @property (nonatomic, strong) NSArray* poiIdList;
+ ///pt列表，成员是：封装成NSValue的CLLocationCoordinate2D
+ @property (nonatomic, strong) NSArray* ptList;
+ 2.更新检索状态码
+ BMKSearchErrorCode中新增：
+ BMK_SEARCH_NETWOKR_ERROR,///网络连接错误
+ BMK_SEARCH_NETWOKR_TIMEOUT,///网络连接超时
+ BMK_SEARCH_PERMISSION_UNFINISHED,///还未完成鉴权，请在鉴权通过后重试
+ 
+ 	计算工具
+ 1.新增调启百度地图客户端功能；
+ 1）调起百度地图客户端 – poi调起
+ 新增调起百度地图poi管理类：BMKOpenPoi
+ //调起百度地图poi详情页面
+ + (BMKOpenErrorCode)openBaiduMapPoiDetailPage:(BMKOpenPoiDetailOption *) option;
+ //调起百度地图poi周边检索页面
+ + (BMKOpenErrorCode)openBaiduMapPoiNearbySearch:(BMKOpenPoiNearbyOption *) option;
+ 2）调起百度地图客户端 – 路线调起
+ 新增调起百度地图路线管理类类：BMKOpenRoute
+ //调起百度地图步行路线页面
+ + (BMKOpenErrorCode)openBaiduMapWalkingRoute:(BMKOpenWalkingRouteOption *) option;
+ //调起百度地图公交路线页面
+ + (BMKOpenErrorCode)openBaiduMapTransitRoute:(BMKOpenTransitRouteOption *) option;
+ //调起百度地图驾车路线检索页面
+  + (BMKOpenErrorCode)openBaiduMapDrivingRoute:(BMKOpenDrivingRouteOption *) option;
+ 2.新增本地收藏夹功能；
+ 新增收藏点信息类：BMKFavPoiInfo
+ 新增收藏点管理类：BMKFavPoiManager
+ 新增接口：
+ //添加一个poi点
+ - (NSInteger)addFavPoi:(BMKFavPoiInfo*) favPoiInfo;
+ //获取一个收藏点信息
+ - (BMKFavPoiInfo*)getFavPoi:(NSString*) favId;
+ //获取所有收藏点信息
+ - (NSArray*)getAllFavPois;
+ //更新一个收藏点
+ - (BOOL)updateFavPoi:(NSString*) favIdfavPoiInfo:(BMKFavPoiInfo*) favPoiInfo;
+ //删除一个收藏点
+ - (BOOL)deleteFavPoi:(NSString*) favId;
+ //清空所有收藏点
+ - (BOOL)clearAllFavPois;
+ 
+【 修  复 】
+1、修复setMinLevel、setMaxLevel生效的是整型的问题；
+2、修复setRegion精准度不高的问题；
+3、修复POI检索结果，pageNum不正确的问题；
+4、修复定位结果海拔始终为0的问题；
+5、修复反地理编码检索在特定情况下，收不到回调的问题；
+
+ 
+ --------------------
+ v2.8.1
+ 
+ 注：百度地图iOS SDK向广大开发者提供了配置更简单的 .framework形式的开发包，请开发者选择此种类型的开发包使用。自V2.8.1后，百度地图iOS SDK将不再提供 .a形式的开发包。
+ 
+ 【 修  复 】
+ 修复了升级IOS 9 beta 3系统后闪退的问题
+ 
+ 【 提  示 】
+ 1、由于iOS9改用更安全的https，为了能够在iOS9中正常使用地图SDK，请在"Info.plist"中进行如下配置，否则影响SDK的使用。
+ <key>NSAppTransportSecurity</key>
+ <dict>
+ <key>NSAllowsArbitraryLoads</key>
+ <true/>
+ </dict>
+ 2、如果在iOS9中使用了调起百度地图客户端功能，必须在"Info.plist"中进行如下配置，否则不能调起百度地图客户端。
+ <key>LSApplicationQueriesSchemes</key>
+ <array>
+ <string>baidumap</string>
+ </array>
+
 
  *********************/
 /**
@@ -463,5 +577,5 @@
 
 UIKIT_STATIC_INLINE NSString* BMKGetMapApiVersion()
 {
-	return @"2.7.0";
+	return @"2.8.1";
 }

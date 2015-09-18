@@ -1,72 +1,46 @@
+百度地图iOS SDK自v2.3.0起，采用可定制的形式为您提供开发包，当前开发包包含如下功能：
+--------------------------------------------------------------------------------------
 基础地图：包括基本矢量地图、卫星图、实时路况图和各种地图覆盖物，此外还包括各种与地图相关的操作和事件监听；
 检索功能：包括POI检索，公交信息查询，路线规划，地理编码/反地理编码，在线建议查询，短串分享等；
 LBS云检索：包括LBS云检索（周边、区域、城市内、详情）；
 定位功能：获取当前位置信息；
-计算工具：包括测距（两点之间距离）、坐标转换、调起百度地图导航等功能；
-百度地图iOS SDK自v2.3.0起，采用可定制的形式为您提供开发包，当前开发包包含如下功能：
-
---------------------------------------------------------------------------------------
-
-基础地图：包括基本矢量地图、卫星图、实时路况图和各种地图覆盖物，此外还包括各种与地图相关的操作和事件监听；
-检索功能：包括POI检索，Place详情检索，公交信息查询，路线规划，地理编码/反地理编码，在线建议查询，短串分享等；
-LBS云检索：包括LBS云检索（周边、区域、城市内、详情）；
-定位功能：获取当前位置信息；
-计算工具：包括测距（两点之间距离）、坐标转换、调起百度地图导航等功能；
+计算工具：包括测距（两点之间距离）、坐标转换、调起百度地图等功能；
+周边雷达：包含位置信息上传和检索周边相同应用的用户位置信息功能；
 
 
 --------------------------------------------------------------------------------------
+地图SDK功能介绍（全功能开发包）：
 
-当前版本为v2.7.0，较上一个版本（v2.6.0）的更新内容如下：
+地图：提供地图展示和地图操作功能；
+POI检索：支持周边检索、区域检索和城市内兴趣点检索；
+地理编码：提供经纬度和地址信息相互转化的功能接口；
+线路规划：支持公交、驾车、步行三种方式的线路规划；
+覆盖物图层：支持在地图上添加覆盖物（标注、几何图形、热力图、地形图图层等），展示更丰富的LBS信息；
+定位：获取当前位置信息，并在地图上展示（支持普通、跟随、罗盘三种模式）；
+离线地图：使用离线地图可节省用户流量，提供更好的地图展示效果；
+调启百度地图：利用SDK接口，直接在本地打开百度地图客户端或WebApp，实现地图功能；
+周边雷达：利用周边雷达功能，开发者可在App内低成本、快速实现查找周边使用相同App的用户位置的功能；
+LBS云检索：支持查询存储在LBS云内的自有数据；
+特色功能：提供短串分享、Place详情检索、热力图等特色功能，帮助开发者搭建功能更加强大的应用；
 
+--------------------------------------------------------------------------------------
+较之v2.8.0，升级功能：
 
-自当前版本起，百度地图iOS SDK推出 .framework形式的开发包。此种类型的开发包配置简单、使用方便，欢迎开发者选用！
-【 新 增 】
-基础地图
-    1. 增加地图缩放等级到20级（10米）；
-    2. 新增地理坐标与OpenGL坐标转换接口：
-        BMKMapView新增接口：
-        -(CGPoint)glPointForMapPoint:(BMKMapPoint)mapPoint;//将BMKMapPoint转换为OpenGL ES可以直接使用的坐标
-        -(CGPoint *)glPointsForMapPoints:(BMKMapPoint *)mapPoints count:(NSUInteger)count;// 批量将BMKMapPoint转换为OpenGL ES可以直接使用的坐标
-    3. 开放区域截图能力：
-        BMKMapView新增接口：
-        -(UIImage*) takeSnapshot:(CGRect)rect;// 获得地图区域区域截图
-检索功能
-    1. 开放驾车线路规划，返回多条线路的能力：
-        BMKDrivingRouteResult中，routes数组有多条数据，支持检索结果为多条线路
-    2. 驾车线路规划结果中，新增路况信息字段：
-        BMKDrivingRoutePlanOption新增属性：
-        ///驾车检索获取路线每一个step的路况，默认使用BMK_DRIVING_REQUEST_TRAFFICE_TYPE_NONE
-        @property (nonatomic) BMKDrivingRequestTrafficType drivingRequestTrafficType;
-        BMKDrivingStep新增属性：
-        ///路段是否有路况信息
-        @property (nonatomic) BOOL hasTrafficsInfo;
-        ///路段的路况信息，成员为NSNumber。0：无数据；1：畅通；2：缓慢；3：拥堵
-        @property (nonatomic, strong) NSArray* traffics;
-    3.废弃接口：
-        BMKDrivingRouteLine中，废弃属性：isSupportTraffic
-计算工具
-    1. 新增点与圆、多边形位置关系判断方法：
-        工具类BMKGeometry.h中新增接口：
-        //判断点是否在圆内
-        UIKIT_EXTERN BOOL BMKCircleContainsPoint(BMKMapPoint point, BMKMapPoint center, double radius);
-        UIKIT_EXTERN BOOL BMKCircleContainsCoordinate(CLLocationCoordinate2D point, CLLocationCoordinate2D center, double radius);
-        //判断点是否在多边形内
-        UIKIT_EXTERN BOOL BMKPolygonContainsPoint(BMKMapPoint point, BMKMapPoint *polygon, NSUInteger count);
-        UIKIT_EXTERN BOOL BMKPolygonContainsCoordinate(CLLocationCoordinate2D point, CLLocationCoordinate2D *polygon, NSUInteger count);
-    2. 新增获取折线外某点到这线上距离最近的点：
-        工具类BMKGeometry.h中新增接口：
-        UIKIT_EXTERN BMKMapPoint BMKGetNearestMapPointFromPolyline(BMKMapPoint point, BMKMapPoint* polyline, NSUInteger count);
-    3、新增计算地理矩形区域的面积
-        工具类BMKGeometry.h中新增接口：
-        UIKIT_EXTERN double BMKAreaBetweenCoordinates(CLLocationCoordinate2D leftTop, CLLocationCoordinate2D rightBottom);
-【 优 化 】
-    1. 减少首次启动SDK时的数据流量；
-    2. 检索协议优化升级；
-    3. 优化Annotation拖拽方法（长按后开始拖拽）；
-【 修 复 】
-    1. 修复在线地图和离线地图穿插使用时，地图内存不释放的bug；
-    2. 修复云检索过程中偶现崩溃的bug；
-    3. 修复地图在autolayout布局下无效的bug；
-    4. 修复BMKAnnotationView重叠的bug；
+注：百度地图iOS SDK向广大开发者提供了配置更简单的 .framework形式的开发包，请开发者选择此种类型的开发包使用。自V2.8.1后，百度地图iOS SDK将不再提供 .a形式的开发包。
 
+【修复】
 
+修复了升级IOS 9 beta 3系统后闪退的问题
+
+【提示】
+1、由于iOS9改用更安全的https，为了能够在iOS9中正常使用地图SDK，请在"Info.plist"中进行如下配置，否则影响SDK的使用。
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+2、如果在iOS9中使用了调起百度地图客户端功能，必须在"Info.plist"中进行如下配置，否则不能调起百度地图客户端。
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>baidumap</string>
+    </array>

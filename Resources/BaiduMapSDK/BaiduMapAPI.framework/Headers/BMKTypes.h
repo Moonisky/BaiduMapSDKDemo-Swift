@@ -55,7 +55,22 @@ typedef enum{
     BMK_SEARCH_RESULT_NOT_FOUND,///<没有找到检索结果
     BMK_SEARCH_ST_EN_TOO_NEAR,///<起终点太近
     BMK_SEARCH_KEY_ERROR,///<key错误
+    BMK_SEARCH_NETWOKR_ERROR,///网络连接错误
+    BMK_SEARCH_NETWOKR_TIMEOUT,///网络连接超时
+    BMK_SEARCH_PERMISSION_UNFINISHED,///还未完成鉴权，请在鉴权通过后重试
 }BMKSearchErrorCode;
+
+//调起百度地图结果状态码
+typedef enum{
+    BMK_OPEN_NO_ERROR = 0,///<正常
+    BMK_OPEN_WEB_MAP,///打开的是web地图
+    BMK_OPEN_OPTION_NULL,///<传入的参数为空
+    BMK_OPEN_NOT_SUPPORT,///<没有安装百度地图，或者版本太低
+    BMK_OPEN_POI_DETAIL_UID_NULL,///<poi详情 poiUid为空
+    BMK_OPEN_POI_NEARBY_KEYWORD_NULL,///<poi周边 keyWord为空
+    BMK_OPEN_ROUTE_START_ERROR,///<路线起点有误
+    BMK_OPEN_ROUTE_END_ERROR,///<路线终点有误
+}BMKOpenErrorCode;
 
 ///表示一个经纬度范围
 typedef struct {

@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>F457061C-BA03-4717-974B-985A0E45B6AB</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>BaiduMapDemo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>9A4863CA16BA602242A95C12601571518967EAA8</key>
 		<string>https://github.com/SemperIdem/BaiduMapSDKDemo-Swift.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>BaiduMapDemo.xcodeproj/project.xcworkspace</string>
+	<string>BaiduMapDemo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>9A4863CA16BA602242A95C12601571518967EAA8</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>9A4863CA16BA602242A95C12601571518967EAA8</string>
 			<key>IDESourceControlWCCName</key>
-			<string>BaiduMapTest</string>
+			<string>BaiduMapSDKDemo-Swift</string>
 		</dict>
 	</array>
 </dict>

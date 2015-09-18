@@ -40,14 +40,14 @@
 		73C923BF1A8FA30C0065A546 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73C923BD1A8FA30C0065A546 /* LaunchScreen.xib */; };
 		73C923D61A8FA37C0065A546 /* tmp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 73C923D51A8FA37C0065A546 /* tmp.mm */; };
 		73E415F91AB99A860083B25F /* WayPointRouteSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E415F81AB99A860083B25F /* WayPointRouteSearchViewController.swift */; };
+		D816572E1BAB9F5E00F0CF6E /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D816572D1BAB9F5E00F0CF6E /* BaiduMapAPI.framework */; };
+		D81657301BABA09400F0CF6E /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D816572F1BABA09400F0CF6E /* mapapi.bundle */; };
 		D8D2FEDE1AD842F7007265EF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C9241E1A8FA8570065A546 /* CoreLocation.framework */; };
 		D8D2FEDF1AD842FE007265EF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924201A8FA85D0065A546 /* QuartzCore.framework */; };
 		D8D2FEE01AD84303007265EF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924221A8FA8640065A546 /* OpenGLES.framework */; };
 		D8D2FEE11AD8430C007265EF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924241A8FA86D0065A546 /* SystemConfiguration.framework */; };
 		D8D2FEE21AD84313007265EF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924261A8FA8760065A546 /* CoreGraphics.framework */; };
 		D8D2FEE31AD84319007265EF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C924281A8FA8C50065A546 /* Security.framework */; };
-		D8D2FEE51AD84511007265EF /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D8D2FEE41AD84511007265EF /* mapapi.bundle */; };
-		D8D2FEE61AD84613007265EF /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D2FEDA1AD83D7B007265EF /* BaiduMapAPI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,8 +107,8 @@
 		73C924261A8FA8760065A546 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		73C924281A8FA8C50065A546 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		73E415F81AB99A860083B25F /* WayPointRouteSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WayPointRouteSearchViewController.swift; path = ViewController/WayPointRouteSearchViewController.swift; sourceTree = "<group>"; };
-		D8D2FEDA1AD83D7B007265EF /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = Resources/BaiduMapSDK/BaiduMapAPI.framework; sourceTree = "<group>"; };
-		D8D2FEE41AD84511007265EF /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = Resources/BaiduMapSDK/BaiduMapAPI.framework/Resources/mapapi.bundle; sourceTree = "<group>"; };
+		D816572D1BAB9F5E00F0CF6E /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI.framework; sourceTree = "<group>"; };
+		D816572F1BABA09400F0CF6E /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = BaiduMapAPI.framework/Resources/mapapi.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,10 +116,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8D2FEE61AD84613007265EF /* BaiduMapAPI.framework in Frameworks */,
 				D8D2FEE31AD84319007265EF /* Security.framework in Frameworks */,
 				D8D2FEE21AD84313007265EF /* CoreGraphics.framework in Frameworks */,
 				D8D2FEE11AD8430C007265EF /* SystemConfiguration.framework in Frameworks */,
+				D816572E1BAB9F5E00F0CF6E /* BaiduMapAPI.framework in Frameworks */,
 				D8D2FEE01AD84303007265EF /* OpenGLES.framework in Frameworks */,
 				D8D2FEDF1AD842FE007265EF /* QuartzCore.framework in Frameworks */,
 				D8D2FEDE1AD842F7007265EF /* CoreLocation.framework in Frameworks */,
@@ -146,8 +146,8 @@
 		7309A5721A92EE990084974E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D816572C1BAB9F5E00F0CF6E /* BaiduMapSDK */,
 				735555FF1AC10BB10075CB38 /* SwiftyJSON */,
-				735555FC1AC10AAC0075CB38 /* BaiduMapSDK */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -204,15 +204,6 @@
 				732EF2951AAC3C23004945D1 /* CustomOverlay.swift */,
 			);
 			path = CustomOverlay;
-			sourceTree = "<group>";
-		};
-		735555FC1AC10AAC0075CB38 /* BaiduMapSDK */ = {
-			isa = PBXGroup;
-			children = (
-				D8D2FEE41AD84511007265EF /* mapapi.bundle */,
-				D8D2FEDA1AD83D7B007265EF /* BaiduMapAPI.framework */,
-			);
-			name = BaiduMapSDK;
 			sourceTree = "<group>";
 		};
 		735555FF1AC10BB10075CB38 /* SwiftyJSON */ = {
@@ -302,6 +293,16 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D816572C1BAB9F5E00F0CF6E /* BaiduMapSDK */ = {
+			isa = PBXGroup;
+			children = (
+				D816572F1BABA09400F0CF6E /* mapapi.bundle */,
+				D816572D1BAB9F5E00F0CF6E /* BaiduMapAPI.framework */,
+			);
+			name = BaiduMapSDK;
+			path = Resources/BaiduMapSDK;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -363,7 +364,7 @@
 				7332CA721ABE881300260828 /* README.md in Resources */,
 				73C923BA1A8FA30C0065A546 /* Main.storyboard in Resources */,
 				73C923BF1A8FA30C0065A546 /* LaunchScreen.xib in Resources */,
-				D8D2FEE51AD84511007265EF /* mapapi.bundle in Resources */,
+				D81657301BABA09400F0CF6E /* mapapi.bundle in Resources */,
 				7332CA741ABEA5D100260828 /* locations.json in Resources */,
 				73C923BC1A8FA30C0065A546 /* Images.xcassets in Resources */,
 			);
